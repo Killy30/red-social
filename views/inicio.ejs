@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="../css/inicio.css">
+</head>
+
+<body>
+   <%include header%>
+   
+   <div class="user_p">
+       <div class="content_user">
+           <div class="f_n">
+                <div class="fotoPerfil">
+                    <%if(!user.userFoto){%>
+                        <img class="img_user" src="../userIcon.jpg" >
+                    <%}%>
+                    <img class="img_user" src="<%=user.userFoto%> " >
+                    <div class="cambiarFoto">
+                        <a class="a_cam" href="cambiar_foto_perfil/<%=user._id%>">Cambiar foto</a>
+                    </div>
+                </div>
+                <div class="nameUser">
+                    <div class="divUserName">
+                        <h4 class="h3_userName verde"><%=user.nombre%></h4>
+                    </div>
+                    <div class="divUserName">
+                        <h5 class="h3_userEmail"><%=user.email%></h5>
+                    </div>
+                </div>
+           </div>
+           <div class="h_d">
+               <div class="h_d_a">
+                   <a class="la" href="/guardados">Guardados</a>
+               </div>
+               <div class="h_d_a">
+                   <a class="la" href="/message">Message</a>
+               </div>
+               <div class="h_d_a">
+                   <a class="la" href="/usuario">Usuarios</a>
+               </div>
+               <div class="h_d_a">
+                    <a class="la" href="/usuario">Configuraciones</a>
+                </div>
+               <div class="h_d_a">
+                    <a class="la" href="/logout">Salir</a>
+               </div>
+           </div>
+           
+        </div>
+   </div>
+   
+   <div class="content">
+        <div class="form">
+            <div class="post">
+                <h2 class="h2">Crear Post</h2>
+            </div>
+            <form class="formulario" id="form" enctype="multipart/form-data">
+                <textarea id="descripcion" placeholder="Escribir un post"  cols="30" required rows="10"></textarea>
+                <div class="preView-img" id="preView-img"></div>
+                <div class="box_input_file">
+                    <input type="file"  id="image" name="image" class="file_img">
+                    <label for="image">Subir foto</label>
+                    <button type="submit" id="btnSbmit">Publicar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="div" data-date="<%=format%>" data-id="<%=user.id%>" class="contenido"></div>
+       
+    </div>
+
+    <script src="../js/showFiles.js"></script>
+    <script src="../js/posts.js"></script>
+</body>
+
+</html>

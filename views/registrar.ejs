@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registrar</title>
+    <link rel="stylesheet" href="../css/registrar.css">
+</head>
+<body>
+    <h1>PostGram</h1>
+    <div class="contenido">
+        <div class="p_c">
+            <p>Crear cuenta</p>
+        </div>
+        <% if(registroMessage) { %>
+            <div class="registroMessage"><%=registroMessage%></div>
+        <% } %>
+        <div class="form">
+            <form action="/registrar-usuario" method="post">
+                <div class="box_input">
+                    <input type="text" name="nombre" placeholder="Ingresa tu nombre y tu Apellido">
+                </div>
+                <div class="box_input">
+                    <input type="email" name="email" placeholder="Ingresa tu email">
+                </div>
+                <div class="box_input">
+                    <input type="password" name="password" placeholder="Ingrese tu contraseña">
+                </div>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+        <p>Ya tienes una cuenta?  </p><a href="/iniciar-sesion">Iniciar sesion</a>
+    </div>
+</body>
+</html>

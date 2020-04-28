@@ -1,0 +1,347 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.box_chat{
+    width: 80%;
+    height: 600px;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.box_user{
+    width: 30%;
+    height: 95%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.box_contain_chat{
+    width: 65%;
+    height: 95%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.contain_chat{
+    width: 100%;
+    height: 90%;
+}
+.box_form{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    background-color: #7F25D9;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    align-items: center;
+}
+.box_form form{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.box_form form button{
+    background-color: #05F29B;
+    border: 0;
+    outline: none;
+    height: 30px;
+    width: 15%;
+    border-radius: 7px;
+    font-size: 15px;
+}
+textarea{
+    width: 80%;
+    height: 30px;
+    min-height: 30px;
+    max-height: 50px;
+    font-family: sans-serif;
+    border-radius: 7px;
+    border: 0;
+    resize: none;
+    padding: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+.name_user{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.myUserName{
+    width: 100%;
+    height: 57%;
+    display: flex;
+    padding-left: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    background-color: #7F25D9;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+    color: #fff;
+}
+.myUserPic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid rgb(7, 216, 0);
+}
+.imgU{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.imgU img{
+    width: 100%;
+    
+}
+.myName{
+    width: 70%;
+    padding-left: 5px;
+}
+.myName p{
+    width: 100%;
+    align-items: center;
+    font-family: sans-serif;
+}
+.formSearch{
+    width: 100%;
+    height: 43%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(46, 46, 46);
+}
+.formSearch input{
+    width: 75%;
+    border-bottom-left-radius: 9px;
+    border-top-left-radius: 9px;
+    outline: none;
+    padding: 5px;
+    border: 0;
+    box-sizing: border-box;
+}
+.formSearch button{
+    background-color: #05F29B;
+    width: 20%;
+    border-bottom-right-radius: 9px;
+    border-top-right-radius: 9px;
+    outline: none;
+    padding: 5px;
+    border: 0;
+    box-sizing: border-box;
+}
+.users_to_chat{
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+}
+
+.ubs{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+.ubs:hover{
+    background-color: #ddd;
+}
+.chat_name{
+    width: 97%;
+    height: 100%;
+    display: flex;
+    text-decoration: none;
+    padding: 7px;
+    box-sizing: border-box;
+    border-bottom: 0.7px solid #ddd;
+}
+.userFotoSelect{
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    border: 2px solid #85E7F2;
+    overflow: hidden;
+}
+.userFotoSelect img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.contentUserSelect{
+    width: 75%;
+    padding-left: 5px;
+}
+.userNameSelect{
+    font-family: sans-serif;
+    margin: 0;
+    color: rgb(31, 31, 31);
+}
+.oldMessage{
+    color: rgb(83, 83, 83);
+    margin: 0;
+    padding-top: 5px;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 14px;
+    height: 20px;
+}
+.box{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+}
+.header{
+    width: 100%;
+    height: 12%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius:10px;
+    border-top-right-radius: 10px;
+    background-color: #7F25D9;
+    color: #fff;
+    font-family: sans-serif;
+}
+.fn{
+    width: 50%;
+    display: flex;
+    margin-left: 7px;
+    align-items: center;
+}
+.t_n{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 60%;
+}
+.user_typping{
+    color: #05F29B;
+    width: 100%;
+    transition: 1s;
+
+}
+.name_u{
+    display: flex;
+    align-self: flex-start;
+    font-weight: bold;
+}
+.fn p{
+    margin: 0;
+}
+.fotoUser{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+.fotoUser img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+#message{
+    width: 100%;
+    height: 88%;
+    overflow-y: scroll;
+    padding-top: 10px;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+.box_message{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.opklo{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+.opklo span{
+    border: 0.7px solid #ccc;
+    max-width:  60%;
+    padding: 6px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-family: sans-serif;
+}
+.opkl{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 25px;
+}
+.opkl span{
+    background-color: #85E7F2;
+    border-radius: 6px;
+    max-width:  60%;
+    padding: 6px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+
+
+@media only screen and (max-width: 500px){
+    .container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .box_chat{
+        width: 98%;
+        height: 550px;
+        margin-top: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .box_user{
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    .box_contain_chat{
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    .fn{
+        width: 90%;
+        display: flex;
+        margin-left: 7px;
+        align-items: center;
+    }
+    .ue{
+        display: none;
+    }
+    .box_form form button{
+        background-color: #05F29B;
+        border: 0;
+        outline: none;
+        height: 30px;
+        width: 19%;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.contenair{
+    width: 90%;
+    margin-top: 100px;
+}
+.postSave{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.publicacion{
+    width: 30%;
+    height: 300px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+.images{
+    border: 1px solid rgb(243, 243, 243);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.img_p{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+h4{
+    font-family: sans-serif;
+    font-size: 20px;
+
+}

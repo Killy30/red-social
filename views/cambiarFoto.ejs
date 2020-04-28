@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/cambiarFoto.css">
+</head>
+<body>
+    <header>
+        <a href="/inicio" class="p">
+            <div class="h1">
+                <h1 class="h">PostGram</h1>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li class="li"> <a class="la" href="/inicio">Inicio</a></li>
+                <li class="li"> <a class="la" href="/my_perfil">Perfil</a></li>
+                <li lass="li"> <a class="la" href="/usuario">Usuarios</a> </li>
+                <li lass="li"><a class="la" href="/logout">Salir</a></li>
+            </ul>
+    
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="foto">
+            <div class="boxF">
+                <%if(!user.userFoto){%>
+                    <img class="imgU" src="../userIcon.jpg" >
+                <%}%>
+                <img class="imgU" src="<%=user.userFoto%>" alt="">
+            </div>
+        </div>
+        <div class="formulario">
+            <form action="/cambiar_foto_perfil/<%=user._id%>" method="post" enctype="multipart/form-data">
+                <div class="in_file">
+                    <input class="input" type="file" required name="file" id="">
+                </div>
+                <div class="in_btn">
+                    <button type="submit">Cambiar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>

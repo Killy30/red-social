@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(240, 240, 240);
+}
+.users{
+    width: 17.6%;
+    height: 75px;
+    border: 0.5px solid #eee;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+.content{
+    width: 90%;
+    /* padding-left: 20px; */
+    box-sizing: border-box;
+}
+.user{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+}
+.formB{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 70px;
+}
+form{
+    display: flex;
+    align-items: center;
+}
+.user_a{
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(2, 170, 2);
+    display: flex;
+    align-items: center
+}
+.img{
+    width: 60px;
+    object-fit:cover;
+}
+.divImg{
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+    display: flex;
+    margin-right: 5px;
+    background-color: #ddd;
+}
+.text{
+    width: 100%;
+    height: 50px;
+    font-family: sans-serif;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    align-self:flex-start;
+    font-size: 23px;
+    align-items: center;
+}
+.text h4{
+    margin: 0;
+}

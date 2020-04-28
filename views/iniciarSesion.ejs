@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iniciar sesion</title>
+    <link rel="stylesheet" href="../css/iniciarSesion.css">
+</head>
+<body>
+<h1>PostGram</h1>
+    <div class="contenido">
+        <div class="p_c">
+            <p>Iniciar sesion</p>
+        </div>
+        <% if(iniciarMessage) { %>
+            <div class="iniciarMessage"><%=iniciarMessage%></div>
+        <% } %>
+        <div class="form">
+            <form action="/iniciar-sesion" method="post">
+                <div class="box_input">
+                    <input type="email" autofocus name="email" placeholder="Ingresa tu email">
+                </div>
+                <div class="box_input">
+                    <input type="password" name="password" placeholder="Ingrese tu contraseña">
+                </div>
+                <button type="submit">Iniciar sesion</button>
+            </form>
+        </div>
+        <p>No tienes una cuenta?</p>  <a href="/registrar-usuario">Registrar</a>
+    </div>
+</body>
+</html>

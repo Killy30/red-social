@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/guardados.css">
+</head>
+<body>
+    <%include header%>
+    <div class="contenair">
+        <div>
+            <h4>Fotos guardados</h4>
+        </div>
+        <div class="postSave">
+            <%for(var c = p_s.length-1; c >=0; c--){%>
+                
+                <div class="publicacion">
+                    <div class="images">
+                        <img class="img_p" src="<%=p_s[c].fotoPost%>" alt="">
+                    </div>
+                </div>
+            <%}%>
+        </div>
+    </div>
+</body>
+</html>

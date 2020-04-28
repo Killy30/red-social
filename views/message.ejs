@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message</title>
+    <link rel="stylesheet" href="../css/message.css">
+</head>
+<body>
+    <%include header%>
+    
+    <div class="container">
+        <div class="box_chat">
+            <div class="box_user">
+                <div class="name_user">
+                    <div class="myUserName">
+                        <div class="myUserPic">
+                            <div class="imgU">
+                                <img src="<%=user.userFoto%>" alt="">
+                            </div>
+                        </div>
+                        <div class="myName">
+                            <p><%=user.nombre%></p>
+                        </div>
+                    </div>
+                    <div class="formSearch">
+                        <input type="text" placeholder="Buscar" name="" id="text_search">
+                        <button id="btn_search">Buscar</button>
+                    </div>
+                </div>
+                <div id="users_to_chat" data-id="<%=user.id%>" class="users_to_chat">
+
+                </div>
+            </div>
+            <div class="box_contain_chat">
+                <div id="contain_chat" class="contain_chat"></div>
+                <div class="box_form">
+                    <form id="form">
+                        <textarea id="text_msg" cols="30" placeholder="Escribe un mensaje" rows="10"></textarea>
+                        <button type="submit" id="btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script src="../js/message.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+body{
+    background-color: #ddd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color:  rgb(51, 51, 51);
+    justify-content: space-around;
+    position: relative;
+    position: fixed;
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+.h1d{
+    margin: 0;
+    color: #fff;
+    font-family: sans-serif;
+    width: 200px;
+    margin-left: 0;
+}
+.pa{
+    text-decoration: none;
+}
+h1{
+    margin: 0;
+    font-weight: 100;
+    margin-top: 5px;
+    
+}
+nav ul{
+    display: flex;
+    justify-content:flex-end;
+    text-align: center;
+    margin: 8px;
+}
+li{
+    padding: 6px;
+    list-style: none;
+}
+li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    font-family: sans-serif;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+}
+.container{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 70px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.publicacion{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.post{
+    width: 100%;
+}
+.headerPost{
+    width: 100%;
+    height: 50px;
+    border-bottom: 0.5px solid #eee;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: rgb(2, 170, 2);
+}
+.postTitulo{
+    width: 100%;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.p{
+    width: 100%;
+}
+.p p{
+    width: 95%;
+}
+h2,h4,p{
+    margin: 0;
+}
+.divImg{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+}
+.coment{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.divForm{
+    width: 100%;
+    height: 40px;
+}
+form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+form input{
+    width: 80%;
+    height: 20px;
+}
+form button{
+    width: 20%;
+    height: 25px;
+    background-color: rgb(2, 170, 2);
+    border: 0;
+    color: #fff;
+}
+#comments{
+    width: 100%;
+}
+.comentarios{
+    width: 100%;
+    background-color: #eee;
+    margin-bottom: 3px;
+    border-radius: 8px;
+    padding: 5px 8px;
+    font-family:sans-serif;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+b{
+    color: rgb(2, 170, 2);
+}
+
+@media only screen and (max-width: 500px){
+    .container{
+        width: 98%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 70px;
+        background-color: #fff;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+}

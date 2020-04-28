@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.contenido{
+    width: 330px;
+    height: 180px;
+    border: 1px solid rgb(71, 71, 71);
+    margin-top: 170px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 10px;
+}
+.p_c{
+    width: 100%;
+    background-color: rgb(71, 71, 71);
+    height: 30px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 20px;
+    align-self: flex-start;
+}
+.p_c p{
+    margin: 0;
+}
+.iniciarMessage{
+    font-family: sans-serif;
+    width: 90%;
+    background-color: rgba(255, 0, 0, 0.301);
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+}
+.form{
+    width: 90%
+}
+input{
+    width: 100%;
+    border: 0;
+    outline-style: none;
+    height: 25px;
+    border-radius: 8px;
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+.box_input{
+    width: 100%;
+    border: 1px solid rgb(124, 124, 124);
+    margin-bottom: 5px;
+    border-radius: 7px;
+}
+button{
+    width: 100%;
+    background-color: rgb(2, 170, 2);
+    border: none;
+    color: #fff;
+    font-family: sans-serif;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-top: 7px;
+    height: 20px;
+}
+a{
+    font-family: sans-serif;
+}
+p{
+    font-family: sans-serif;
+    margin: 5px 5px;
+}
+h1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-weight:100;
+    background-color: rgb(51, 51, 51);
+    color: #fff;
+    padding: 10px;
+    margin-top: 0;
+}

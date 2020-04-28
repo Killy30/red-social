@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/mi_perfil.css">
+</head>
+<body>
+    <%-include('header')%>
+    
+
+    
+    <div class="content">
+
+        <div class="cabecera">
+            <div class="portada">
+
+            </div>
+            <div class="foto">
+                <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
+            </div>
+            <div class="name">
+                <h2 class="h2"><%=user.nombre%></h2>
+            </div>
+        </div>
+<video src=""  a></video>
+        <div class="publicaciones">
+            <div class="box">
+                <%for(var c = user.posts.length-1; c >=0; c--){%>
+                    <%if(!user.posts[c].descripcion) {%>
+                        <div class="box_publicacion">
+                            <div class="box_img">
+                                <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                                    <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"</video>
+                                <%}%>
+                                <img class="imgPost" src="<%=user.posts[c].fotoPost%>" alt="">
+                            </div>
+                        </div>
+                    <%}%>    
+                <%}%>    
+            </div>
+        </div>
+    </div>
+</body>
+</html>
