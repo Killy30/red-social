@@ -11,9 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
     "ejs-mate": "^3.0.0",

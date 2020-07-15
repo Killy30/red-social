@@ -136,52 +136,61 @@ router.post('/coment/:id',async (req, res) =>{
     res.json({resp:'hey'})
 });
 
-//eliminaar
+//eliminar post
 router.get('/eliminar/:id',estaAutenticado, async(req, res) => {
     let id = req.params.id;
-    const post = await Posts.findByIdAndDelete(req.params.id)
+    const post = await Posts.findByIdAndDelete(id)
     const allUser = await User.find()
-    const comments = await Coment.find()
     const user = req.user;
-    let ind = user.posts.indexOf(id)
-    const fv = user.postsSaved.indexOf(id)
-    const com = await Coment.deleteMany({post: req.params.id})
 
-    if(ind >= 0){
-        user.posts.splice(ind, 1)
+    let i = user.posts.indexOf(id)
+    const i_ = user.postsSaved.indexOf(id)
+    const com = await Coment.deleteMany({post:id})
+
+    if(i >= 0){
+        user.posts.splice(i, 1)
         await user.save()
-    }else if(fv >= 0){
-        user.postsSaved.splice(fv, 1)
+    }
+    if(i_ >= 0){
+        user.postsSaved.splice(i_, 1)
         await user.save()
     }
 
-    allUser.forEach(async(item, i) => { 
-        if (item.postsSaved.length != 0) {
-            var index = item.postsSaved.indexOf(id)
+    //esta es pata recorrer todos los usuarios y eliminar el post en "postsSaved" si se encuentra
+    allUser.forEach(async(user) => {
+        let vf = user.postsSaved.includes(id)
+        if(vf){
+            let index = user.postsSaved.indexOf(id)
             if (index >= 0) {
-                console.log('index for delete ', index); 
-                let h = item.postsSaved.splice(index, 1)
-        
-                await item.save()
-                console.log('deleting ');
+                user.postsSaved.splice(index, 1)
+                await user.save()
             }
         }
     })
-    res.json({ data: 'datos eliminados' })
+
+    res.json({ data: 'Post eliminado' })
 })
 
 //like
 router.post('/like/:id', async(req, res) => {
-    var like = await Posts.findById(req.params.id)
-    
-    like.like = like.like + 1;
-    await like.save()
-    res.json({
-        likes: like.like,
-        idy: like._id
-    })
+    const _ids = JSON.parse(req.params.id)
+    var post = await Posts.findById(_ids.post_id)
+
+    let v_f = post.like.includes(req.user._id)
+
+    if(v_f == false){
+        post.like.push(req.user)
+        await post.save()
+    }else{
+        let i = post.like.indexOf(req.user._id)
+        post.like.splice(i,1)
+        await post.save()
+    }
+
+    res.json({v_f})
 })
 
+//funcion para la vista de los posts guardados
 router.get('/guardados',estaAutenticado, async(req, res) => {
     let user = req.user;
     const myUser = await User.findOne({_id: user._id}).populate('posts');
@@ -195,6 +204,7 @@ router.get('/guardados',estaAutenticado, async(req, res) => {
     res.render('guardados', {myUser,p_s})
 })
 
+//funcion para guardar los posts
 router.post('/savedPost/:id', async(req, res) => {
     const user = req.user;
     let id = req.params.id;

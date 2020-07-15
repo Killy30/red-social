@@ -24,8 +24,22 @@
             <div class="name">
                 <h2 class="h2"><%=user.nombre%></h2>
             </div>
+            <div class="more">
+                <div class="nav_p">
+                    <a href="/guardados">Guardados</a>
+                </div>
+                <div class="nav_p">
+                    <a href="/message">Message</a>
+                </div>
+                <div class="nav_p">
+                    <a  href="/usuario">Configuraciones</a>
+                </div>
+                <div class="nav_p">
+                    <a class="a_cam" href="cambiar_foto_perfil/<%=user._id%>">Cambiar foto perfil</a>
+                </div>
+            </div>
         </div>
-<video src=""  a></video>
+   
         <div class="publicaciones">
             <div class="box">
                 <%for(var c = user.posts.length-1; c >=0; c--){%>

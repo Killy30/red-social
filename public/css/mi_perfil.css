@@ -14,7 +14,7 @@ h1{
 .content{
   width: 70%;
   background-color: rgb(218, 218, 218);
-  margin-top: 60px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -22,7 +22,7 @@ h1{
 }
 .cabecera{
   width: 100%;
-  height: 500px;
+  height: 520px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -45,8 +45,8 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid #7F25D9;
-  border-radius: 10px;
+  border: 5px solid #7F25D9;
+  border-radius: 50%;
   overflow: hidden;
 }
 .imgPerfil{
@@ -55,11 +55,10 @@ h1{
 }
 .name{
   width: 100%;
-  height: 70px;
-  /* background-color: #eee; */
+  height: 45px;
   display: flex;
   align-self: flex-end;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
 }
 .h2{
@@ -67,6 +66,35 @@ h1{
   font-family: sans-serif;
 
 }
+.more{
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: space-around;
+}
+.nav_p{
+  width: 20%;
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav_p a{
+  text-decoration: none;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: #313131;
+  padding: 5px;
+}
+.nav_p a:hover{
+  background-color: #313131;
+  border-radius: 8px;
+  color:#fff;
+}
+
+
+
+
 .publicaciones{
   width: 100%;
   background-color: #fff;
@@ -79,7 +107,8 @@ h1{
   box-sizing: border-box;
 }
 .box_publicacion{
-  width: 23%;
+  width: 24%;
+  /* height: 300px; */
   border: 0.5px solid #ddd;
   display: flex;
   margin-bottom: 10px;
@@ -114,7 +143,6 @@ h1{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 @media only screen and (max-width: 500px){

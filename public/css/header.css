@@ -18,7 +18,7 @@ header{
     width: 100%;
     object-fit: contain;
 }
-.p{
+.p_a{
     text-decoration: none;
     padding-bottom: 5px;
     box-sizing: border-box;
@@ -46,7 +46,10 @@ li a {
     color: #fff;
     font-size: 15px;
     font-family: sans-serif;
+    transition: 1s;
+
 }
 li a:hover{
-    border-bottom: 2px solid #7F25D9
+    transition: 1s;
+    border-bottom: 1px solid #ffffff
 }

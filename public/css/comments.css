@@ -6,7 +6,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
 }
-header{
+/* header{
     width: 100%;
     height: 50px;
     display: flex;
@@ -51,7 +51,7 @@ li a {
     padding: 6px;
     border-radius: 6px;
     border: 1px solid #fff;
-}
+} */
 .container{
     width: 40%;
     display: flex;
@@ -101,7 +101,7 @@ h2,h4,p{
 }
 .divImg{
     width: 100%;
-    height: 500px;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,7 +109,8 @@ h2,h4,p{
 }
 img{
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
 }
 .coment{
     width: 95%;

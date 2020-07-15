@@ -7,9 +7,12 @@ const btn_search = document.getElementById('btn_search')
 
 var roomId;
 var theUserId;
+console.log(innerHeight);
 
 document.addEventListener('DOMContentLoaded', () => {
     uiChat.showUsers()
+    const h = innerHeight;
+    document.querySelector('.container').style.height = h+'px'
 })
 
 class DataUsers{
@@ -153,6 +156,7 @@ class UiChat{
     }
 
     async showUserToChat(data){
+       
         console.log(data);
         if (innerWidth <= 500) {
             document.querySelector('.box_user').style.display = "none"

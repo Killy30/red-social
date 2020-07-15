@@ -7,6 +7,8 @@ body{
 .contenair{
     width: 90%;
     margin-top: 100px;
+    padding: 0px 20px;
+    box-sizing: border-box;
 }
 .postSave{
     width: 100%;
@@ -14,7 +16,7 @@ body{
     flex-wrap: wrap;
 }
 .publicacion{
-    width: 30%;
+    width: 24%;
     height: 300px;
     margin-left: 5px;
     margin-bottom: 5px;

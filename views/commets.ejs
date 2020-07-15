@@ -8,14 +8,15 @@
     <title>Comentarios</title>
     
     <link rel="stylesheet" href="../css/comments.css">
-
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 
 <body>
+
     <header>
-        <a href="/inicio" class="pa">
-            <div class="h1d">
-                <h1 class="h">PostGram</h1>
+        <a href="/inicio" class="p_a">
+            <div class="h1">
+                <img src="../logop.png" alt="">
             </div>
         </a>
         <nav>
@@ -23,11 +24,11 @@
                 <li class="li"> <a class="la" href="/inicio">Inicio</a></li>
                 <li class="li"> <a class="la" href="/my_perfil">Perfil</a></li>
                 <li lass="li"><a class="la" href="/message">Message</a></li>
-                <li lass="li"> <a class="la" href="/usuario">Usuarios</a> </li>
                 <li lass="li"><a class="la" href="/logout">Salir</a></li>
             </ul>
         </nav>
     </header>
+
     <div class="container">
         <div data-id="<%=posts.id%>" class="publicacion" id="container"></div>
     

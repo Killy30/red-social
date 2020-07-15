@@ -7,7 +7,7 @@ var postSchema = new Schema({
     descripcion:  {type: String},
     fotoPost: { type: String},
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    like: { type: Number, default: 0},
+    like: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     coment: [{ type: Schema.Types.ObjectId, ref: 'coment' }],
     timesAgo: {type: Date, default: Date.now}
 });
