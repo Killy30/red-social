@@ -29,22 +29,22 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="view_img" id="view_img" style="display: none"></div>
+
+    <div id="off" class="container">
         <div data-id="<%=posts.id%>" class="publicacion" id="container"></div>
     
         <div class="coment">
             <div class="divForm">
                 <form id="formComment" >
-                    <input id="comentario" type="text" autocomplete="off"  required placeholder="Comentar" name="comentario">
+                    <textarea id="comentario" required placeholder="Comentar" name="comentario" ></textarea>
+                    <!-- <input id="comentario" type="text" autocomplete="off"  required placeholder="Comentar" name="comentario"> -->
                     <button type="submit">Comentar</button>
                 </form>
             </div>
-            <div id="comments">
-              
-            </div>
+            <div id="comments"></div>
         </div>
     </div >
-    
     
     <script src="../js/fileComment.js"></script>
 </body>

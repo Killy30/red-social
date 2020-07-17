@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="../css/mi_perfil.css">
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <header>
         <a href="/inicio" class="p">
             <div class="h1">
-                <h1 class="h">PostGram</h1>
+                <img src="../logop.png" alt="">
             </div>
         </a>
         <nav>
@@ -31,15 +31,13 @@
     <div class="content">
 
         <div class="cabecera">
-            <div class="portada">
-
-            </div>
+            <div class="portada"></div>
             <div class="foto">
                 <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
             </div>
             <div class="name">
                 <h2 class="h2"><%=user.nombre%></h2>
-                <h3 class="h2"><%=user.email%></h3>
+                <h3 class=""><%=user.email%></h3>
             </div>
         </div>
 
@@ -48,15 +46,16 @@
         <div class="publicaciones">
             <div class="box">
                 <%for(var c = user.posts.length-1; c >=0; c--){%>
-                <div class="box_publicacion">
-                    <div class="t_d">
-                        <b><%=user.posts[c].titulo%></b>
-                        <p><%=user.posts[c].descripcion%></p>
-                    </div>
-                    <div class="box_img">
-                        <img class="imgPost" src="<%=user.posts[c].fotoPost%>" alt="">
-                    </div>
-                </div>
+                    <%if(!user.posts[c].descripcion) {%>
+                        <div class="box_publicacion">
+                            <div class="box_img">
+                                <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                                    <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"</video>
+                                <%}%>
+                                <img class="imgPost" src="<%=user.posts[c].fotoPost%>" alt="">
+                            </div>
+                        </div>
+                    <%}%>
                 <%}%>    
             </div>
         </div>

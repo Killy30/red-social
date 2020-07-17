@@ -112,9 +112,10 @@ router.get('/coment/:id', estaAutenticado, async(req, res) => {
 
 router.get('/postComment/:id', estaAutenticado, async (req, res) => {
     const id = req.params.id;
+    const user = req.user;
     const post = await Posts.findById(id).populate('user').populate('coment');
     const comments = await Coment.find().populate('user');
-    res.json({post,comments})
+    res.json({post,comments,user})
 })
 
 //comentario
@@ -277,7 +278,7 @@ router.post('/messageSend/:msg', async(req, res) => {
 
 router.get('/my_perfil', estaAutenticado,async(req,res) => {
     var usuario = req.user;
-    const user = await User.findOne({nombre:usuario.nombre}).populate('posts');
+    const user = await User.findOne({_id:usuario._id}).populate('posts');
     
     res.render('my_perfil', {
         user :  user

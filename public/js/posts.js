@@ -233,7 +233,6 @@ div.addEventListener('click', (e) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data, i, id);
             uiAddPost.changeColor(data, e)
             uiAddPost.addPost()
         })

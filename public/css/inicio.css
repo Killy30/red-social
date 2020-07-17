@@ -334,7 +334,7 @@ button{
     object-fit:contain;
 }
 .l_c{
-    width: 420px;
+    width: 500px;
     display: flex;
     justify-content: space-between;
     border-bottom: 0.5px solid #ddd;
