@@ -48,8 +48,9 @@ router.get('/inicio', estaAutenticado, async (req, res, next) => {
 })
 
 router.get('/usuarios',estaAutenticado, async(req, res)=> {
+    let user = req.user;
     var users = await User.find({});
-    res.json({users})
+    res.json({users, user})
 })
 
 

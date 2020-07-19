@@ -13,7 +13,7 @@ body{
 }
 
 .box_chat{
-    width: 80%;
+    width: 95%;
     height: 90%;
     margin-top: 80px;
     display: flex;
@@ -41,7 +41,7 @@ body{
     height: 10%;
     display: flex;
     justify-content: center;
-    background-color: #7F25D9;
+    background-color: rgb(46, 46, 46);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     align-items: center;
@@ -53,17 +53,18 @@ body{
     justify-content: space-between;
 }
 .box_form form button{
-    background-color: #05F29B;
+    background-color: #01c52b;
     border: 0;
     outline: none;
     height: 30px;
     width: 15%;
     border-radius: 7px;
-    font-size: 15px;
+    font-size: 16px;
+    color: #fff;
 }
 textarea{
     width: 80%;
-    height: 30px;
+    height: 40px;
     min-height: 30px;
     max-height: 50px;
     font-family: sans-serif;
@@ -73,6 +74,7 @@ textarea{
     padding: 5px;
     outline: none;
     box-sizing: border-box;
+    font-size: 16px;
 }
 .name_user{
     width: 100%;
@@ -87,17 +89,18 @@ textarea{
     padding-left: 10px;
     padding-top: 10px;
     box-sizing: border-box;
-    background-color: #7F25D9;
+    background-color: #ffffff;
     border-top-left-radius:10px;
     border-top-right-radius: 10px;
-    color: #fff;
+    color: rgb(34, 34, 34);
+    align-items: center;
 }
 .myUserPic{
     width: 50px;
     height: 50px;
     border-radius: 50px;
     overflow: hidden;
-    border: 2px solid rgb(7, 216, 0);
+    /* border: 3px solid rgb(255, 0, 0); */
 }
 .imgU{
     width: 100%;
@@ -114,9 +117,12 @@ textarea{
     padding-left: 5px;
 }
 .myName p{
+    margin: 0;
     width: 100%;
     align-items: center;
     font-family: sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 }
 .formSearch{
     width: 100%;
@@ -136,7 +142,7 @@ textarea{
     box-sizing: border-box;
 }
 .formSearch button{
-    background-color: #05F29B;
+    background-color: #01c52b;
     width: 20%;
     border-bottom-right-radius: 9px;
     border-top-right-radius: 9px;
@@ -153,12 +159,13 @@ textarea{
 
 .ubs{
     width: 100%;
-    height: 60px;
+    height: 70px;
     display: flex;
     justify-content: center;
 }
 .ubs:hover{
-    background-color: #ddd;
+    background-color: rgb(231, 231, 231);
+    color: rgb(255, 255, 255);
 }
 .chat_name{
     width: 97%;
@@ -167,13 +174,14 @@ textarea{
     text-decoration: none;
     padding: 7px;
     box-sizing: border-box;
-    border-bottom: 0.7px solid #ddd;
+    border-bottom: 0.7px solid rgb(231, 231, 231);
+    align-items: center;
 }
 .userFotoSelect{
     width: 45px;
     height: 45px;
     border-radius: 50px;
-    border: 2px solid #85E7F2;
+    /* border: 2px solid #85E7F2; */
     overflow: hidden;
 }
 .userFotoSelect img{
@@ -183,6 +191,8 @@ textarea{
 }
 .contentUserSelect{
     width: 75%;
+    font-size: 15px;
+    font-weight: bold;
     padding-left: 5px;
 }
 .userNameSelect{
@@ -196,8 +206,9 @@ textarea{
     padding-top: 5px;
     overflow: hidden;
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     height: 20px;
+    font-weight: normal;
 }
 .box{
     width: 100%;
@@ -209,14 +220,13 @@ textarea{
 .header{
     width: 100%;
     height: 12%;
-    background-color: #ccc;
     display: flex;
     justify-content: space-between;
     border-top-left-radius:10px;
     border-top-right-radius: 10px;
-    background-color: #7F25D9;
-    color: #fff;
+    background-color: #ffffff;
     font-family: sans-serif;
+    border-bottom: 0.5px solid #bdbdbd;
 }
 .fn{
     width: 50%;
@@ -229,9 +239,14 @@ textarea{
     flex-wrap: wrap;
     width: 80%;
     height: 60%;
+    padding-top: 5px;
+    box-sizing: border-box;
+}
+.t_n a{
+    text-decoration: none;
 }
 .user_typping{
-    color: #05F29B;
+    color: rgb(202, 0, 0);
     width: 100%;
     transition: 1s;
 
@@ -240,6 +255,8 @@ textarea{
     display: flex;
     align-self: flex-start;
     font-weight: bold;
+    color: rgb(70, 70, 70);
+    font-size: 18px;
 }
 .fn p{
     margin: 0;
@@ -255,6 +272,18 @@ textarea{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.ue{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 16px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    color: rgb(78, 78, 78);
 }
 
 
@@ -276,12 +305,14 @@ textarea{
     padding-right: 15px;
 }
 .opklo span{
-    border: 0.7px solid #ccc;
+    /* border: 0.7px solid #ccc; */
     max-width:  60%;
-    padding: 6px;
+    padding: 6px 10px;
     box-sizing: border-box;
     border-radius: 6px;
     font-family: sans-serif;
+    background-color: rgb(202, 0, 0);
+    color: white;
 }
 .opkl{
     display: flex;
@@ -289,12 +320,13 @@ textarea{
     padding-left: 25px;
 }
 .opkl span{
-    background-color: #85E7F2;
+    background-color: rgb(46, 46, 46);
     border-radius: 6px;
     max-width:  60%;
-    padding: 6px;
+    padding: 6px 10px;
     box-sizing: border-box;
     font-family: sans-serif;
+    color: rgb(255, 255, 255);
 }
 
 

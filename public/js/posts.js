@@ -94,7 +94,7 @@ class UiAddPost{
                             Eliminar
                             </a>
                         `: ''}
-                        <p>${times.getDay()}/${times.getMonth()}/${times.getFullYear()}</p>
+                        <p>${times.toLocaleDateString()}--${times.toLocaleTimeString()}</p>
                     </div>
                 </div>
                 <div class="postTitulo">

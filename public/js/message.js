@@ -156,7 +156,7 @@ class UiChat{
     }
 
     async showUserToChat(data){
-       
+        document.querySelector('.box_form').style.display = 'flex'
         console.log(data);
         if (innerWidth <= 500) {
             document.querySelector('.box_user').style.display = "none"
@@ -172,7 +172,9 @@ class UiChat{
                         <img src="${data.user.userFoto}" alt="">
                     </div>
                     <div class="t_n">
-                        <p class="name_u">${data.user.nombre}</p>
+                        <a href="/perfil/${data.user._id}">
+                            <p class="name_u">${data.user.nombre}</p>
+                        </a>
                         <p class="user_typping" id="user_typping"></p>
                     </div>
                 </div>

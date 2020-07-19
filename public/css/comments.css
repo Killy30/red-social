@@ -79,6 +79,7 @@ h2,h4,p{
 img{
     width: 100%;
     object-fit: contain;
+    cursor: pointer;
 }
 .info{
     width: 100%;
@@ -135,6 +136,7 @@ img{
     background-color: rgb(61, 61, 61);
     margin-top: 10px;
     outline: none;
+    cursor: pointer;
 }
 
 
