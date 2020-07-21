@@ -279,12 +279,6 @@ button{
     width: 45px;
     object-fit: contain;
 }
-.eliminar{
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 12px;
-    color: rgb(250, 11, 11); 
-}
 .m{
     margin: 0;
     font-family: sans-serif;
@@ -304,16 +298,26 @@ button{
     display: flex;
     flex-wrap: wrap;
     height: 80%;
+    width: 30%;
     justify-content: center;
+}
+.eliminar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: rgb(250, 11, 11); 
 }
 .div_E_D p{
     display: flex;
     margin: 0;
-    width: 100%;
     color: rgb(102, 102, 102);
     font-family: sans-serif;
     font-size: 13px;
     justify-content: center;
+    align-items: center;
 }
 .images{
     width: 100%;

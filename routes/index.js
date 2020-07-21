@@ -20,6 +20,10 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage}).single('image');
 
+router.get('/', (req, res) =>{
+    res.send('Hello world Jesus saved')
+})
+
 router.get('/registrar-usuario', async (req, res, next) => {
     res.render('registrar')
 });
@@ -158,7 +162,7 @@ router.get('/eliminar/:id',estaAutenticado, async(req, res) => {
         await user.save()
     }
 
-    //esta es pata recorrer todos los usuarios y eliminar el post en "postsSaved" si se encuentra
+    //esta es para recorrer todos los usuarios y eliminar el post en "postsSaved" si se encuentra
     allUser.forEach(async(user) => {
         let vf = user.postsSaved.includes(id)
         if(vf){
@@ -227,13 +231,14 @@ router.post('/savedPost/:id', async(req, res) => {
 })
 
 //----------------------------------------------------------------------------------------//
-//functions of chat
-//message
+//funciones del chat
+//vista de messager
 router.get('/message', estaAutenticado, async (req, res) => {
     const user = req.user
     res.render('message', {user})
 })
 
+//funcion para crear un nuevo room para el chat
 router.post('/userToChat/:id', async(req, res) => {
     const idUser = req.params.id
     const myUser = req.user
@@ -277,6 +282,7 @@ router.post('/messageSend/:msg', async(req, res) => {
     }
 })
 
+//vista de mi perfil
 router.get('/my_perfil', estaAutenticado,async(req,res) => {
     var usuario = req.user;
     const user = await User.findOne({_id:usuario._id}).populate('posts');
@@ -286,7 +292,7 @@ router.get('/my_perfil', estaAutenticado,async(req,res) => {
     })
 })
 
-//cambiar foto de perfil
+//vista de para cambiar foto de perfil
 router.get('/cambiar_foto_perfil/:id', estaAutenticado,async(req,res) => {
     var usuario = req.user;
     const userfoto = await User.findById({_id:req.params.id})
@@ -296,6 +302,7 @@ router.get('/cambiar_foto_perfil/:id', estaAutenticado,async(req,res) => {
     })
 })
 
+//cambiar foto de perfil
 router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
     let form = formidable.IncomingForm()
     const usuario = await User.findById(req.params.id)
@@ -313,14 +320,36 @@ router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
     res.redirect('/cambiar_foto_perfil/'+ usuario.id)
 })
 
+//vista de perfil de los usuarios
 router.get('/perfil/:id', estaAutenticado,async(req,res) => {
     const user = await User.findById(req.params.id).populate('posts');
     res.render('perfil', {user})
 })
 
+//vista para buscar usuarios
 router.get('/usuario', estaAutenticado, async (req, res) => {
     const user = await User.find();
     res.render('users', {user:user})
+})
+
+//vista de configuraciones
+router.get('/config', estaAutenticado, (req, res) =>{
+    res.render('configuracion', {user:req.user})
+})
+
+//actualizar los datos de la vista config
+router.post('/config', async(req, res) =>{
+    let _user = req.user;
+    let data = req.body;
+    await User.update({_id: _user._id},{$set: {nombre: data.c_nombre}})
+    await User.update({_id: _user._id},{$set: {estudio: data.estudios}})
+    await User.update({_id: _user._id},{$set: {pais: data.pais}})
+    await User.update({_id: _user._id},{$set: {cuidad: data.cuidad}})
+    await User.update({_id: _user._id},{$set: {dia: data.dia}})
+    await User.update({_id: _user._id},{$set: {mes: data.mes}})
+    await User.update({_id: _user._id},{$set: {ano: data.ano}})
+
+    res.redirect('/config')
 })
 
 router.get('/logout', (req, res, next) => {

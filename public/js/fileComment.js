@@ -205,7 +205,6 @@ container.addEventListener('click', (e) => {
     // view img
     if(e.target.classList.contains('view') ){  
         e.preventDefault()
-        console.log('kkkkk');
         let img = e.target.dataset.img_
         let h = innerHeight;
         let w = innerWidth;
@@ -221,18 +220,13 @@ container.addEventListener('click', (e) => {
                 <button class="btn_x" id="btn_x">X</button>
             </div>
         `
-        
-        console.log('listo', innerHeight, innerWidth);
     }
- 
 })
 
 window.addEventListener('click', e => {
     if(e.target.classList.contains('btn_x') ){
         e.preventDefault()
-        console.log('jsgu');
         view_img.style.display = "none"
         document.getElementById('off').style.display = 'flex'
-
     } 
 })

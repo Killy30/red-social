@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/config.css">
+    <title>Configuracion</title>
+</head>
+<body>
+    <%include header%>
+    <div class="container">
+        <div class="logo">
+            <img src="../img/logo_postLine.png" alt="">
+        </div>
+        <div class="form">
+            <h3>Configuraciones</h3>
+            <form action="/config" method="post">
+                <div class="infog_text">
+                    <h2>Informacion personal</h2>
+                </div>
+                <div class="fv">
+                    <p>Cambiar nombre</p>
+                    <input type="text" name="c_nombre" id="" value="<%=user.nombre%>">
+                </div>
+                <div class="fv">
+                    <p>Estudio o carera</p>
+                    <input type="text" name="estudios" id="" value="<%=user.estudio%>">
+                </div>
+                <div class="fv">
+                    <p>Pais</p>
+                    <input type="text" name="pais" id="" value="<%=user.pais%>">
+                </div>
+                <div class="fv">
+                    <p>Cuidad</p>
+                    <input type="text" name="cuidad" id="" value="<%=user.cuidad%>">
+                </div>
+                <div class="fv">
+                    <p>Fecha de nacimiento</p>
+                    <div class="div_fecha">
+                        <input type="number" placeholder="Dia" name="dia" id="" value="<%=user.dia%>">
+                        <select name="mes" id="" >
+                            <%if(user.mes){%>
+                                <option value="<%=user.mes%>"><%=user.mes%></option>
+                            <%}else {%>
+                                <option value="">Mes</option>
+                            <%}%>
+                            <option value="Enero">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agusto">Agusto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
+                        </select>
+                        <input type="number" name="ano" placeholder="Año" id="" value="<%=user.ano%>">
+                    </div>
+                </div>
+                <div class="fv">
+                    <input class="btn" type="submit" value="Enviar">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

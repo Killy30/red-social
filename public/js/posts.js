@@ -1,11 +1,10 @@
 const div = document.getElementById('div');
 const btnSbmit = document.getElementById('btnSbmit');
 const divComments = document.createElement('div');
-
 const idUser = div.dataset.id; 
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    // postData.getPost()
     uiAddPost.addPost()
 })
 
@@ -14,7 +13,17 @@ btnSbmit.addEventListener('click', async(e)=> {
     const descripcion = document.getElementById('descripcion').value;
     const image = document.getElementById('image').files;
     
+    //validar si los campos estan vacios 
     if(descripcion.trim() ==="" && image.length === 0) return false;
+
+    //validar si la extencion del archivo es permitida
+    if(image.length !== 0){
+        let ext_ = image[0].name.split('.', 2)[1].toLowerCase()
+        if(ext_ !== 'jpg' && ext_ !== 'jpeg' && ext_ !== 'png' && ext_ !== 'mp4' && ext_ !== 'jfif' && ext_ !== 'gif'){
+            alert('Este tipo de formato no es permitido en la aplicacion, por favor vuelve a intentar con otro tipo de extencion')
+            return false
+        }
+    }
 
     const formData = new FormData();
     formData.append('descripcion', descripcion)
@@ -40,15 +49,6 @@ class DataPost {
         let res = await response.json()
         return res
     }
-
-    //fetch get comment
-    getComments(){
-        fetch('/comments')
-        .then(res => res.json())
-        .then(comments => {
-            
-        })
-    }
 }
 
 
@@ -66,15 +66,11 @@ class UiAddPost{
 
             let saved = datos.user.postsSaved.includes(datos.publicacion[i]._id);
             let likes = datos.publicacion[i].like.includes(idUser)
-
-            if(datos.publicacion[i].fotoPost){
-                
-                datos.publicacion[i].fotoPost.split('.',2)
-                console.log(datos.publicacion[i].fotoPost.split('.',2)[1]);
-                
-            }
             
+            moment.locale('es');
             const times = new Date(datos.publicacion[i].timesAgo);
+            let timeago = moment(times, 'YYYYMMDD','es').fromNow()
+            
             div.innerHTML += `<div class="publicacion">
                 <div class="headerPost">
                     <div class="conF">
@@ -94,7 +90,7 @@ class UiAddPost{
                             Eliminar
                             </a>
                         `: ''}
-                        <p>${times.toLocaleDateString()}--${times.toLocaleTimeString()}</p>
+                        <p>${timeago}</p>
                     </div>
                 </div>
                 <div class="postTitulo">
@@ -107,7 +103,6 @@ class UiAddPost{
                         ${ 
                             (datos.publicacion[i].fotoPost != undefined && datos.publicacion[i].fotoPost.split('.',2)[1] === "mp4")
                             ? `<video controls 
-                                    
                                     class="img_p" 
                                     src="${datos.publicacion[i].fotoPost}"
                                 </video>`

@@ -14,7 +14,7 @@
     <header>
         <a href="/inicio" class="p">
             <div class="h1">
-                <img src="../logop.png" alt="">
+                <img src="../img/logop.png" alt="">
             </div>
         </a>
         <nav>
@@ -40,8 +40,32 @@
                 <h3 class=""><%=user.email%></h3>
             </div>
         </div>
-
-        <div class="ceparacion"></div>
+        
+        <div class="info">
+            <p class="in">Informacion Personal</p>
+            <div class="datos">
+                <%if(user.estudio){%>
+                    <div class="gh">
+                        <p class="fhk">Estudios o Carera:</p> <p><%=user.estudio%></p>
+                    </div>
+                <%}%>
+                <%if(user.pais){%>
+                    <div class="gh">
+                        <p class="fhk">Pais:</p> <p><%=user.pais%></p>
+                    </div>
+                <%}%>
+                <%if(user.cuidad){%>
+                    <div class="gh">
+                        <p class="fhk">Cuidad:</p> <p><%=user.cuidad%></p>
+                    </div>
+                <%}%>
+                <%if(user.dia && user.mes && user.ano){%>
+                    <div class="gh">
+                        <p class="fhk">Fecha de nacimiento:</p> <p><%=user.dia%></p><p><%=user.mes%></p><p><%=user.ano%></p>
+                    </div>
+                <%}%>
+            </div>
+        </div>
 
         <div class="publicaciones">
             <div class="box">

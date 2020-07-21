@@ -27,11 +27,37 @@
                     <a href="/message">Message</a>
                 </div>
                 <div class="nav_p">
-                    <a  href="/usuario">Configuraciones</a>
+                    <a  href="/config">Configuraciones</a>
                 </div>
                 <div class="nav_p">
                     <a class="a_cam" href="cambiar_foto_perfil/<%=user._id%>">Cambiar foto perfil</a>
                 </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <p class="in">Informacion Personal</p>
+            <div class="datos">
+                <%if(user.estudio){%>
+                    <div class="gh">
+                        <p class="fhk">Estudios o Carera:</p> <p><%=user.estudio%></p>
+                    </div>
+                <%}%>
+                <%if(user.pais){%>
+                    <div class="gh">
+                        <p class="fhk">Pais:</p> <p><%=user.pais%></p>
+                    </div>
+                <%}%>
+                <%if(user.cuidad){%>
+                    <div class="gh">
+                        <p class="fhk">Cuidad:</p> <p><%=user.cuidad%></p>
+                    </div>
+                <%}%>
+                <%if(user.dia && user.mes && user.ano){%>
+                    <div class="gh">
+                        <p class="fhk">Fecha de nacimiento:</p> <p><%=user.dia%></p><p><%=user.mes%></p><p><%=user.ano%></p>
+                    </div>
+                <%}%>
             </div>
         </div>
    
@@ -42,7 +68,7 @@
                         <div class="box_publicacion">
                             <div class="box_img">
                                 <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
-                                    <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"</video>
+                                    <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"></video>
                                 <%}%>
                                 <img class="imgPost" src="<%=user.posts[c].fotoPost%>" alt="">
                             </div>

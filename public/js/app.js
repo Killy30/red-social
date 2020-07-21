@@ -25,7 +25,6 @@ function buscando(e){
                                 <p>${u.nombre}</p>
                             </a>
                         </div>`
-                        
                     }
                 }
             }
