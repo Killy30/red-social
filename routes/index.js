@@ -313,7 +313,7 @@ router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
             file.path = path.join(__dirname, '../public/imagePerfil/' + file.name);
         })
         .on('file', async(name,file)=>{
-            const userfoto = await User.update({_id: req.params.id}, {userFoto: '/imagePerfil/' + file.name})
+            await User.updateOne({_id: req.params.id}, {$set: {userFoto: '/imagePerfil/' + file.name}})
         })
     
     res.redirect('/cambiar_foto_perfil/'+ usuario.id)
@@ -340,13 +340,13 @@ router.get('/config', estaAutenticado, (req, res) =>{
 router.post('/config', async(req, res) =>{
     let _user = req.user;
     let data = req.body;
-    await User.update({_id: _user._id},{$set: {nombre: data.c_nombre}})
-    await User.update({_id: _user._id},{$set: {estudio: data.estudios}})
-    await User.update({_id: _user._id},{$set: {pais: data.pais}})
-    await User.update({_id: _user._id},{$set: {cuidad: data.cuidad}})
-    await User.update({_id: _user._id},{$set: {dia: data.dia}})
-    await User.update({_id: _user._id},{$set: {mes: data.mes}})
-    await User.update({_id: _user._id},{$set: {ano: data.ano}})
+    await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
+    await User.updateOne({_id: _user._id},{$set: {estudio: data.estudios}})
+    await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
+    await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
+    await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
+    await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
+    await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
 
     res.redirect('/config')
 })
