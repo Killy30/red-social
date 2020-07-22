@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage}).single('image');
 
 router.get('/', (req, res) =>{
-    res.send('Hello world Jesus saved')
+    res.render('index')
 })
 
 router.get('/registrar-usuario', async (req, res, next) => {
@@ -273,7 +273,6 @@ router.post('/messageSend/:msg', async(req, res) => {
 
     if(data.roomId != undefined){
         const room = await Rooms.findById({_id: data.roomId})
-    
         let = mssg = {myIdMsg: myUser.id, message: data.text}
     
         room.messages.push(mssg)

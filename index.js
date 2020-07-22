@@ -63,7 +63,6 @@ io.on('connection', async(socket) => {
     })
 
     socket.on('user_is_typping', (data) => {
-        console.log(data);
         socket.to(data.roomId).broadcast.emit('user_is_typping', {type:'Esta escribiendo'})
     })
 

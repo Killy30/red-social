@@ -7,7 +7,6 @@ const btn_search = document.getElementById('btn_search')
 
 var roomId;
 var theUserId;
-console.log(innerHeight);
 
 document.addEventListener('DOMContentLoaded', () => {
     uiChat.showUsers()
@@ -31,8 +30,8 @@ class DataUsers{
             method: 'POST',
             body: id
         })
+
         const data = await res.json()
-        console.log(data);
         roomId = data.room._id;
         dataSocket.joinUserToSocket()
         uiChat.showUserToChat(data)
@@ -45,13 +44,11 @@ class DataUsers{
             body: text
         })   
         const data = await res.json()
-        console.log(data);
     }
 }
 
 class DataSocket{
     sendMessage(message){
-        console.log(theUserId);
         socket.emit('send_message',{
             roomId:roomId,
             message:message,
@@ -85,7 +82,6 @@ class UiChat{
         const data =  await dataUsers.getUsers()
         let users = data.users;
         var textS = text_search.value.toLowerCase()
-        console.log(users);
         userstochat.innerHTML = '';
         
         for(let user of users){
@@ -117,9 +113,8 @@ class UiChat{
         const users = await dataUsers.getUsers()
         var user = users.users;
         userstochat.innerHTML = '';
+
         for(var i = 0; i < user.length; i++){
-            console.log(user[i]);
-            
             if (myId != user[i]._id) {
                 for(var c = 0; c < user[i].rooms.length; c++){
                     if(user[i].rooms[c].messages.length > 0){
@@ -146,7 +141,6 @@ class UiChat{
                 }
             }
         }
-        
     }
 
     selectUserToChat(e) {
@@ -157,7 +151,7 @@ class UiChat{
 
     async showUserToChat(data){
         document.querySelector('.box_form').style.display = 'flex'
-        console.log(data);
+
         if (innerWidth <= 500) {
             document.querySelector('.box_user').style.display = "none"
             document.querySelector('.box_contain_chat').style.display = "block"
@@ -190,7 +184,6 @@ class UiChat{
 
     showMessage(messages){
         let divMessage = document.getElementById('message')
-        console.log(messages);
 
         for(let message of messages){
             if(message.myIdMsg == myId){
@@ -219,7 +212,6 @@ class UiChat{
 
     showMessageTwo(message){
         let divMessage = document.getElementById('message')
-        console.log(message);
         
         if(message.roomId == roomId){
             divMessage.innerHTML += `
@@ -300,7 +292,6 @@ socket.on('send_message', (data) => {
 socket.on('user_is_typping', (data)=> {
     let user_typping = document.getElementById('user_typping')
     user_typping.innerText = "Esta escribiendo"
-    console.log(data);
 })
 
 let form = document.getElementById('form')

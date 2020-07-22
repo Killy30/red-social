@@ -3,7 +3,6 @@ const btnSbmit = document.getElementById('btnSbmit');
 const divComments = document.createElement('div');
 const idUser = div.dataset.id; 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     uiAddPost.addPost()
 })
@@ -19,6 +18,7 @@ btnSbmit.addEventListener('click', async(e)=> {
     //validar si la extencion del archivo es permitida
     if(image.length !== 0){
         let ext_ = image[0].name.split('.', 2)[1].toLowerCase()
+
         if(ext_ !== 'jpg' && ext_ !== 'jpeg' && ext_ !== 'png' && ext_ !== 'mp4' && ext_ !== 'jfif' && ext_ !== 'gif'){
             alert('Este tipo de formato no es permitido en la aplicacion, por favor vuelve a intentar con otro tipo de extencion')
             return false
@@ -66,11 +66,13 @@ class UiAddPost{
 
             let saved = datos.user.postsSaved.includes(datos.publicacion[i]._id);
             let likes = datos.publicacion[i].like.includes(idUser)
-            
-            moment.locale('es');
             const times = new Date(datos.publicacion[i].timesAgo);
             let timeago = moment(times, 'YYYYMMDD','es').fromNow()
-            
+
+            if(datos.publicacion[i].fotoPost != undefined){
+                var ext = datos.publicacion[i].fotoPost.split('.',2)[1].toLowerCase()
+            }
+    
             div.innerHTML += `<div class="publicacion">
                 <div class="headerPost">
                     <div class="conF">
@@ -99,9 +101,9 @@ class UiAddPost{
                             <p class="m">${datos.publicacion[i].descripcion}</p>
                         </div>  
                     </div>
-                    <div class="images">
+                    <div class="images" ${datos.publicacion[i].fotoPost == undefined ? ' style="display: none"' : ''}>
                         ${ 
-                            (datos.publicacion[i].fotoPost != undefined && datos.publicacion[i].fotoPost.split('.',2)[1] === "mp4")
+                            ( ext === "mp4")
                             ? `<video controls 
                                     class="img_p" 
                                     src="${datos.publicacion[i].fotoPost}"
@@ -153,7 +155,6 @@ class UiAddPost{
 
     // funcion para cambiar el color del boton 'Guardar' cuando un post esta guardado
     changeColor(data, e){
-        console.log(data);
         if(data==false){
             e.target.style.color='rgb(2, 170, 2)'
         }else{
@@ -163,7 +164,6 @@ class UiAddPost{
 
     //funcion para cambiar el estilo del boton 'Like'
     changeColorLike(data, e){
-        console.log(data);
         if(data.v_f == false){
             e.target.style.color='rgb(2, 170, 2)'
         }else{
@@ -178,7 +178,6 @@ div.addEventListener('click', (e) => {
     if(e.target.classList.contains('eliminar')){
         e.preventDefault()
         if(confirm('Deseas eliminar esa publicacion')){
-            console.log(e.target.dataset.eli);
             const id = e.target.dataset.eli;
 
             fetch('/eliminar/'+id, {
@@ -186,7 +185,6 @@ div.addEventListener('click', (e) => {
             }) 
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 uiAddPost.addPost()
             })
         }
@@ -198,7 +196,6 @@ div.addEventListener('click', (e) => {
         const id = e.target.dataset.id;
         const my_id = e.target.dataset.my_id;
 
-        console.log(my_id, id);
         const _ids = {
             my_id: my_id,
             post_id: id
@@ -236,8 +233,4 @@ div.addEventListener('click', (e) => {
 
 const postData = new DataPost();
 const uiAddPost = new UiAddPost();
-
-
-
-
 

@@ -5,24 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Iniciar sesion</title>
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/iniciarSesion.css">
 </head>
 <body>
-<h1>PostGram</h1>
+    <header>
+        <a href="/">
+            <div class="logo">
+                <img src="../img/logo_postLine.png" alt="">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="/registrar-usuario">Registrar</a></li>
+                <li><a href="/iniciar-sesion">Iniciar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="contenido">
         <div class="p_c">
             <p>Iniciar sesion</p>
         </div>
-        <% if(iniciarMessage) { %>
-            <div class="iniciarMessage"><%=iniciarMessage%></div>
-        <% } %>
+        <% if(iniciarMessage){%>
+            <div class="iniciarMessage">
+                <p ><%=iniciarMessage%></p>
+            </div>
+        <%}%>
         <div class="form">
             <form action="/iniciar-sesion" method="post">
                 <div class="box_input">
-                    <input type="email" autofocus name="email" placeholder="Ingresa tu email">
+                    <input type="email" autofocus name="email" required placeholder="Ingresa tu email">
                 </div>
                 <div class="box_input">
-                    <input type="password" name="password" placeholder="Ingrese tu contraseña">
+                    <input type="password" name="password" required placeholder="Ingrese tu contraseña">
                 </div>
                 <button type="submit">Iniciar sesion</button>
             </form>

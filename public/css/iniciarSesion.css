@@ -7,7 +7,7 @@ body{
 }
 .contenido{
     width: 330px;
-    height: 180px;
+    height: 240px;
     border: 1px solid rgb(71, 71, 71);
     margin-top: 170px;
     display: flex;
@@ -18,8 +18,8 @@ body{
 }
 .p_c{
     width: 100%;
-    background-color: rgb(71, 71, 71);
-    height: 30px;
+    background-color: rgb(46, 46, 46);
+    height: 40px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: flex;
@@ -36,10 +36,14 @@ body{
 .iniciarMessage{
     font-family: sans-serif;
     width: 90%;
-    background-color: rgba(255, 0, 0, 0.301);
+    background-color: rgba(255, 0, 0, 0.863);
     display: flex;
     justify-content: center;
     border-radius: 6px;
+}
+.iniciarMessage p{
+    margin: 0;
+    color: white;
 }
 .form{
     width: 90%
@@ -48,7 +52,7 @@ input{
     width: 100%;
     border: 0;
     outline-style: none;
-    height: 25px;
+    height: 30px;
     border-radius: 8px;
     padding-left: 5px;
     box-sizing: border-box;
@@ -68,7 +72,8 @@ button{
     border-radius: 6px;
     font-size: 15px;
     margin-top: 7px;
-    height: 20px;
+    height: 30px;
+    font-size: 20px;
 }
 a{
     font-family: sans-serif;

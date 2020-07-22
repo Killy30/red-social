@@ -8,22 +8,18 @@ class Datas {
         let response = await fetch('/postComment/'+id)
         let res = await response.json()
         return res
-            // .then(res => res.json())
-            // .then(data => {
-            //     console.log(data, id);
-            //     add.addPost(data)
-            // })
     }
 }
 
 class UiPost {
     async addPost(){
         let data = await getPost.getData()
-
-        console.log(data.post.user.userFoto);
         let likes = data.post.like.includes(data.user._id)
         let saved = data.user.postsSaved.includes(data.post._id);
 
+        if(data.post.fotoPost !== undefined){
+            var ext = data.post.fotoPost.split('.',2)[1].toLowerCase()
+        }
         container.innerHTML = `<div class="post">
             <div class="headerPost">
                 <div class="img_user">
@@ -38,8 +34,15 @@ class UiPost {
                     <p>${data.post.descripcion}</p>
                 </div>
             </div> 
-            <div class="divImg">
-                <img class="view" data-img_="${data.post.fotoPost}" src="${data.post.fotoPost}" alt="">
+            <div class="divImg" ${(data.post.fotoPost == undefined)? ' style="display: none"' : ''}>
+                ${
+                    ( ext === "mp4")
+                    ? `<video controls 
+                            class="view_v" 
+                            src="${data.post.fotoPost}"
+                        </video>`
+                    : `<img class="view" data-img_="${data.post.fotoPost}" src="${data.post.fotoPost}" alt="">`
+                }
             </div>
             <div class="info">
                 <div class="like">
@@ -76,7 +79,6 @@ class UiPost {
     addComments(data){
         divComments.innerHTML = '';
         for(var i = data.post.coment.length-1; i >=0; i--) {
-            console.log(data.post.coment[i]);
             for(var c = data.comments.length-1; c >=0; c--) {
                 if(data.post.coment[i]._id === data.comments[c]._id){
                     divComments.innerHTML += `<div class="comentarios">
@@ -91,7 +93,6 @@ class UiPost {
 
     // funcion para cambiar el color del boton 'Guardar' cuando un post esta guardado
     changeColor(data, e){
-        console.log(data);
         if(data==false){
             e.target.style.color='rgb(2, 170, 2)'
         }else{
@@ -101,7 +102,6 @@ class UiPost {
 
     //funcion para cambiar el estilo del boton 'Like'
     changeColorLike(data, e){
-        console.log(data.v_f);
         if(data.v_f == false){
             e.target.style.color='rgb(2, 170, 2)'
         }else{
@@ -128,14 +128,12 @@ formComment.addEventListener('submit', (e) => {
         comment: comentario
     }
 
-    console.log(formData);
     fetch('/coment/'+JSON.stringify(data), {
         method:'POST',
         body: formData
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         add.addPost()
     })
 
@@ -144,23 +142,6 @@ formComment.addEventListener('submit', (e) => {
 
 //DOM
 container.addEventListener('click', (e) => {
-    //eliminar
-    if(e.target.classList.contains('eliminar')){
-        e.preventDefault()
-        if(confirm('Deseas eliminar esa publicacion')){
-            console.log(e.target.dataset.eli);
-            const id = e.target.dataset.eli;
-
-            fetch('/eliminar/'+id, {
-                method:'GET'
-            }) 
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                
-            })
-        }
-    }
 
     //like
    if(e.target.classList.contains('like') ){  
@@ -168,7 +149,6 @@ container.addEventListener('click', (e) => {
         const id = e.target.dataset.id;
         const my_id = e.target.dataset.my_id;
 
-        console.log(my_id, id);
         const _ids = {
             my_id: my_id,
             post_id: id
@@ -196,7 +176,6 @@ container.addEventListener('click', (e) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data, id);
             add.changeColor(data, e)
             add.addPost()
         })

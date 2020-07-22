@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Guardados</title>
     <link rel="stylesheet" href="../css/guardados.css">
 </head>
 <body>
@@ -17,6 +17,9 @@
             <%for(var c = p_s.length-1; c >=0; c--){%>
                 <div class="publicacion">
                     <div class="images">
+                        <%if(p_s[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                            <video controls class="img_v" src="<%=p_s[c].fotoPost%>"></video>
+                        <%}%>
                         <img class="img_p" src="<%=p_s[c].fotoPost%>" alt="">
                     </div>
                 </div>
