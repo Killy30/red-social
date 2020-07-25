@@ -6,15 +6,15 @@ body{
     flex-wrap: wrap;
 }
 .contenido{
-    width: 330px;
-    height: 240px;
-    border: 1px solid rgb(71, 71, 71);
+    width: 400px;
+    height: 250px;
     margin-top: 170px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     border-radius: 10px;
+    background-color: white;
 }
 .p_c{
     width: 100%;
@@ -56,6 +56,7 @@ input{
     border-radius: 8px;
     padding-left: 5px;
     box-sizing: border-box;
+    font-size: 17px;
 }
 .box_input{
     width: 100%;
@@ -92,4 +93,14 @@ h1{
     color: #fff;
     padding: 10px;
     margin-top: 0;
+}
+
+
+
+@media only screen and (max-width: 500px){
+    .contenido{
+        width: 95%;
+        height: 240px;
+        margin-top: 120px;
+    }
 }

@@ -21,7 +21,6 @@ body{
     height: 48%;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 .content_user{
     display: flex;
@@ -134,7 +133,6 @@ body{
     width: 600px;
     min-height: 160px;
     background-color: #fff;
-    
     margin-bottom: 15px;
     border-radius: 10px;
 }
@@ -241,7 +239,6 @@ button{
 
 .publicacion{
     width: 600px;
-    /* border: 0.5px solid #000; */
     margin-bottom: 10px;
     background-color: #fff;
     box-sizing: border-box;
@@ -411,27 +408,23 @@ b{
         margin-bottom: 15px;
         border-radius: 10px;
     }
+    .box_input_file label{
+        font-size: 15px;
+    }
+    button{
+        font-size: 15px;
+    }
     .contenido{
         width: 98%;
     }
     .publicacion{
         width: 100%;
-        margin-bottom: 10px;
-        background-color: #fff;
-        box-sizing: border-box;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        border-radius: 10px;
     }
     .form{
-        width: 500px;
-        min-height: 160px;
+        width: 98%;
         max-height: 760px;
         background-color: #fff;
         margin-top: 60px;
-        margin-bottom: 15px;
-        border-radius: 10px;
     }
     .preView-img{
         width: 80%;
@@ -444,6 +437,9 @@ b{
         display: inline-block;
         vertical-align: middle;
         background-size: cover;
+    }
+    .l_c{
+        width: 90%;
     }
     
 }

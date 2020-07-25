@@ -113,11 +113,6 @@ h3{
   padding: 10px;
   box-sizing: border-box;
 }
-.in{
-  font-weight: bold;
-  font-size: 20px;
-  margin: 10px 0 20px 0;
-}
 .datos{
   display: flex;
   flex-wrap: wrap;
@@ -144,11 +139,15 @@ h3{
   background-color: #fff;
   margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 50px;
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
+}
+.publicaciones h3{
+  width: 100%;
 }
 .box_publicacion{
   width: 24%;
@@ -199,21 +198,26 @@ h3{
     flex-wrap: wrap;
     margin-bottom: 50px;
   }
+  .cabecera{
+    height: 420px;
+  }
   .foto{
-    width: 250px;
-    height: 250px;
-    margin-top: -180px;
-    background-color: #fff;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid #7F25D9;
-    border-radius: 10px;
-    overflow: hidden;
+    width: 200px;
+    height: 200px;
   }
   .imgPerfil{
     width: 100%;
     object-fit: cover;
+  }
+  .name{
+   margin-bottom: 25px;
+  }
+  .more{
+    display: none;
+  }
+  .box_publicacion{
+    width: 31%;
+    height: 130px;
+    
   }
 }

@@ -316,7 +316,7 @@ router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
             await User.updateOne({_id: req.params.id}, {$set: {userFoto: '/imagePerfil/' + file.name}})
         })
     
-    res.redirect('/cambiar_foto_perfil/'+ usuario.id)
+    res.redirect('/inicio')
 })
 
 //vista de perfil de los usuarios

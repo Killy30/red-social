@@ -5,14 +5,22 @@ body{
     flex-wrap: wrap;
     font-family: sans-serif;
     justify-content: center;
+    background-color: rgb(231, 229, 229);
 }
 header{
-    background-color: rgb(46, 46, 46);
     width: 100%;
     height: 200px;
+    background-color: rgb(46, 46, 46);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+}
+.lg{
+    width: 20%;
+}
+.lg img{
+    width: 100%;
 }
 nav{
     display: flex;
@@ -38,30 +46,87 @@ li a:hover{
 
 
 .container_{
-    width: 80%;
-    height: 650px;
+    width: 100%;
     margin-top: 70px;
     display: flex;
     justify-content: center;
 }
 .descripcion{
-    width: 60%;
-}
-h1{
-    font-size: 60px;
-    font-weight: unset;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .text{
-    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 80px;
 }
-.text h2{
-    margin: 0 0 5px 0;
+
+h1{
+    width: 100%;
+    font-size: 60px;
     font-weight: unset;
+    margin: 0;
 }
-.desc p{
+.text p{
+    font-size: 30px;
+    margin: 5px;
+}
+.con_uno{
+    width: 30%;
+    display: flex;
+    background-color: #ffff;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.con_uno p{
+    width: 90%;
     font-size: 20px;
 }
-p li{
+.img_in{
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffff;
+}
+.img_in img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.desc{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffff;
+    margin-top: 30px;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.de{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.de p{
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.ing li{
     font-size: 20px;
 }
 
@@ -73,6 +138,7 @@ footer{
     align-self: flex-end;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
 }
 .logo1{
     width: 60px;
@@ -83,4 +149,27 @@ footer{
 }
 footer p{
     color: white;
+}
+
+
+
+@media only screen and (max-width: 500px){
+    header{
+        background-color: rgb(46, 46, 46);
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .lg{
+        width: 50%;
+        margin-top: 15px;
+    }
+    li a{
+        font-size: 13px;
+    }
+    ul{
+        padding: 0;
+    }
 }

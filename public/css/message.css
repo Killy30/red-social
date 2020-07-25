@@ -4,6 +4,7 @@ body{
     background-color: #ddd;
     display: flex;
     justify-content: center;
+    font-family: sans-serif;
 }
 
 .container{
@@ -53,7 +54,7 @@ body{
     justify-content: space-between;
 }
 .box_form form button{
-    background-color: #01c52b;
+    background-color: rgb(2, 170, 2);
     border: 0;
     outline: none;
     height: 30px;
@@ -84,10 +85,9 @@ textarea{
 }
 .myUserName{
     width: 100%;
-    height: 57%;
+    height: 55%;
     display: flex;
     padding-left: 10px;
-    padding-top: 10px;
     box-sizing: border-box;
     background-color: #ffffff;
     border-top-left-radius:10px;
@@ -100,7 +100,7 @@ textarea{
     height: 50px;
     border-radius: 50px;
     overflow: hidden;
-    /* border: 3px solid rgb(255, 0, 0); */
+    background-color: rgb(172, 170, 170);
 }
 .imgU{
     width: 100%;
@@ -127,34 +127,30 @@ textarea{
 .formSearch{
     width: 100%;
     height: 43%;
+}
+.formSearch form{
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(46, 46, 46);
 }
 .formSearch input{
-    width: 75%;
-    border-bottom-left-radius: 9px;
-    border-top-left-radius: 9px;
+    width: 95%;
+    height: 32px;
+    border-radius: 9px;
     outline: none;
     padding: 5px;
     border: 0;
     box-sizing: border-box;
-}
-.formSearch button{
-    background-color: #01c52b;
-    width: 20%;
-    border-bottom-right-radius: 9px;
-    border-top-right-radius: 9px;
-    outline: none;
-    padding: 5px;
-    border: 0;
-    box-sizing: border-box;
+    font-size: 16px;
 }
 .users_to_chat{
     width: 100%;
     height: 80%;
     overflow-y: scroll;
+    padding-top: 10px;
 }
 
 .ubs{
@@ -181,7 +177,7 @@ textarea{
     width: 45px;
     height: 45px;
     border-radius: 50px;
-    /* border: 2px solid #85E7F2; */
+    background-color: rgb(172, 170, 170);
     overflow: hidden;
 }
 .userFotoSelect img{
@@ -255,7 +251,7 @@ textarea{
     display: flex;
     align-self: flex-start;
     font-weight: bold;
-    color: rgb(70, 70, 70);
+    color: rgb(2, 170, 2);
     font-size: 18px;
 }
 .fn p{
@@ -267,6 +263,7 @@ textarea{
     border-radius: 50px;
     overflow: hidden;
     margin-right: 5px;
+    background-color: rgb(172, 170, 170);
 }
 .fotoUser img{
     width: 100%;
@@ -334,23 +331,21 @@ textarea{
 
 @media only screen and (max-width: 500px){
     .container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        width: 98%;
     }
     .box_chat{
-        width: 98%;
-        height: 550px;
-        margin-top: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        width: 100%;
     }
     .box_user{
         width: 100%;
         height: 100%;
-        background-color: #fff;
-        border-radius: 10px;
+    }
+    .myUserName{
+        width: 100%;
+        height: 55%;
+    }
+    textarea{
+        width: 78%;
     }
     .box_contain_chat{
         width: 100%;
@@ -367,13 +362,13 @@ textarea{
     .ue{
         display: none;
     }
+    .box_form form{
+        width: 95%;
+    }
     .box_form form button{
-        background-color: #05F29B;
-        border: 0;
-        outline: none;
         height: 30px;
-        width: 19%;
-        border-radius: 7px;
+        width: 20%;
         font-size: 15px;
     }
+
 }

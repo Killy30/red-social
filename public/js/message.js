@@ -247,6 +247,9 @@ const dataUsers = new DataUsers();
 const dataSocket = new DataSocket();
 
 text_search.addEventListener('keyup', uiChat.searchUser)
+document.getElementById('formSearch').addEventListener('keyup', e =>{
+    e.preventDefault()
+})
 
 userstochat.addEventListener('click' , (e) => {
     e.preventDefault()

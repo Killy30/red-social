@@ -5,6 +5,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     background-color: rgb(240, 240, 240);
+    font-family: sans-serif;
 }
 .users{
     width: 23%;
@@ -91,6 +92,32 @@ button{
 .text h4{
     margin: 0;
 }
-p{
-    font-family: sans-serif;
+
+
+
+
+
+@media only screen and (max-width: 500px){
+    .content{
+        width: 98%;
+        margin-top: 100px;
+    }
+    .text h4{
+        font-size: 18px;
+    }
+    .formB{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    input{
+        width: 100%;
+    }
+    button{
+        display: none;
+    }
+    .users{
+        width: 100%;
+    }
 }

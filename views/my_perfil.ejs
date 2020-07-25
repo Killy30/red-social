@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,32 +36,33 @@
         </div>
         
         <div class="info">
-            <p class="in">Informacion Personal</p>
+            <h3 class="">Informacion Personal</h3>
             <div class="datos">
                 <%if(user.estudio){%>
                     <div class="gh">
-                        <p class="fhk">Estudios o Carera:</p> <p><%=user.estudio%></p>
+                        <p><strong>Estudios o Carera:</strong> <%=user.estudio%></p>
                     </div>
                 <%}%>
                 <%if(user.pais){%>
                     <div class="gh">
-                        <p class="fhk">Pais:</p> <p><%=user.pais%></p>
+                        <p><strong>Pais:</strong> <%=user.pais%></p>
                     </div>
                 <%}%>
                 <%if(user.cuidad){%>
                     <div class="gh">
-                        <p class="fhk">Cuidad:</p> <p><%=user.cuidad%></p>
+                        <p><strong>Cuidad:</strong> <%=user.cuidad%></p>
                     </div>
                 <%}%>
                 <%if(user.dia && user.mes && user.ano){%>
                     <div class="gh">
-                        <p class="fhk">Fecha de nacimiento:</p> <p><%=user.dia%></p><p><%=user.mes%></p><p><%=user.ano%></p>
+                        <p><strong>Fecha de nacimiento:</strong> <%=user.dia%></p><p><%=user.mes%></p><p><%=user.ano%></p>
                     </div>
                 <%}%>
             </div>
         </div>
    
         <div class="publicaciones">
+            <h3>Posts</h3>
             <div class="box">
                 <%for(var c = user.posts.length-1; c >=0; c--){%>
                     <%if(!user.posts[c].descripcion) {%>
