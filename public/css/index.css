@@ -59,8 +59,6 @@ li a:hover{
 }
 .text{
     width: 100%;
-    margin-bottom: 20px;
-    padding-left: 80px;
 }
 
 h1{
@@ -68,24 +66,24 @@ h1{
     font-size: 60px;
     font-weight: unset;
     margin: 0;
-}
-.text p{
-    font-size: 30px;
-    margin: 5px;
+    color: rgb(0, 162, 255);
 }
 .con_uno{
-    width: 30%;
+    width: 35%;
     display: flex;
     background-color: #ffff;
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding-bottom: 10px;
+    box-sizing: border-box;
 }
 .con_uno p{
     width: 90%;
-    font-size: 20px;
+    font-size: 30px;
+    margin: 0;
 }
 .img_in{
     width: 600px;
@@ -101,33 +99,50 @@ h1{
     width: 100%;
     object-fit: contain;
 }
+.fgh{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.fgh h2{
+    font-size: 40px;
+    font-weight: unset;
+    color: rgb(50, 1, 165);
+}
 
 .desc{
     width: 100%;
-    height: 400px;
+    height: 500px;
+    overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    background-color: #ffff;
-    margin-top: 30px;
-    justify-content: center;
-    padding: 10px;
-    box-sizing: border-box;
+    align-items: flex-end;
+}
+.desc img{
+    width: 100%;
 }
 .de{
-    width: 40%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 .de p{
     width: 100%;
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    text-align: left;
+}
+.ing{
+    margin-top: 15px;
+    width: 100%;
 }
 .ing li{
-    font-size: 20px;
+    font-size: 22px;
+    text-align: left;
+    color: rgb(90, 90, 90);
 }
 
 footer{
@@ -138,7 +153,7 @@ footer{
     align-self: flex-end;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 70px;
 }
 .logo1{
     width: 60px;
@@ -171,5 +186,61 @@ footer p{
     }
     ul{
         padding: 0;
+    }
+
+
+    .img_in{
+        width: 100%;
+        height: 500px;
+        border-radius: 0%;
+        background-color: rgb(231, 229, 229);
+        display: flex;
+        align-items: flex-start;
+    }
+    .con_uno{
+        width: 100%;
+        border-radius: 0px;
+    }
+    .con_uno p{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .text{
+        margin: 15px 0 15px 0;
+    }
+    h1{
+        font-size: 40px;
+        
+    }
+
+   
+    .de p{
+        font-size: 19px;
+        margin: 0;
+    }
+    .ing{
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .ing li{
+        font-size: 17px;
+    }
+
+    .fgh{
+        margin-top: 40px;
+    }
+    .fgh h2{
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .desc{
+        height: 200px;
+        align-items: flex-start;
+    }
+    .desc img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }

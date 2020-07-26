@@ -128,7 +128,7 @@ formComment.addEventListener('submit', (e) => {
         comment: comentario
     }
 
-    fetch('/coment/'+JSON.stringify(data), {
+    fetch('/comment/'+JSON.stringify(data), {
         method:'POST',
         body: formData
     })

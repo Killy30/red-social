@@ -78,6 +78,7 @@ class DataSocket{
 }
 
 class UiChat{
+    //buscar usuarios para el chat
     async searchUser(){
         const data =  await dataUsers.getUsers()
         let users = data.users;
@@ -109,6 +110,7 @@ class UiChat{
         }
     }
 
+    //monstrar la lista de usuarios
     async showUsers(){
         const users = await dataUsers.getUsers()
         var user = users.users;
@@ -152,12 +154,15 @@ class UiChat{
     async showUserToChat(data){
         document.querySelector('.box_form').style.display = 'flex'
 
+        //para dispocitivos mobiles
         if (innerWidth <= 500) {
             document.querySelector('.box_user').style.display = "none"
             document.querySelector('.box_contain_chat').style.display = "block"
         }
+
         let contain_chat = document.getElementById('contain_chat')
 
+        //monstrar el usuario que le ayas cliquiado para el chat
         contain_chat.innerHTML =`
         <div class="box">
             <div class="header">
@@ -184,14 +189,23 @@ class UiChat{
 
     showMessage(messages){
         let divMessage = document.getElementById('message')
-
+        //monstrar los mensajes
         for(let message of messages){
+            moment.locale('es-do')
+            let toDay = new Date()
+            let time = new Date(message.dateMsg)
+            let timeAgo = moment(time).calendar();
+            let timeToDay = moment(time).format('LT')
+
             if(message.myIdMsg == myId){
                 divMessage.innerHTML += `
                 <div class="box_message">
                     <div class="opklo">
                         <span>
                             ${message.message}
+                            <samp class="horas">
+                                ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo}
+                            </samp>
                         </span>
                     </div>
                 </div>`;
@@ -201,6 +215,9 @@ class UiChat{
                     <div class="opkl">
                         <span>
                             ${message.message}
+                            <samp class="horas_u">
+                                ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo}
+                            </samp>
                         </span>
                     </div>
                 </div>`
@@ -228,12 +245,16 @@ class UiChat{
     }
 
     showMessagethree(message){
+        let time = new Date()
         let divMessage = document.getElementById('message')
         divMessage.innerHTML += `
         <div class="box_message">
             <div class="opklo">
                 <span>
                     ${message}
+                    <samp class="horas">
+                        ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                    </samp>
                 </span>
             </div>
         </div>`

@@ -53,14 +53,14 @@ router.get('/inicio', estaAutenticado, async (req, res, next) => {
 
 router.get('/usuarios',estaAutenticado, async(req, res)=> {
     let user = req.user;
-    var users = await User.find({});
+    var users = await User.find();
     res.json({users, user})
 })
 
 
 router.get('/data', estaAutenticado, async (req, res, next) => {
     const user = req.user;
-    const publicacion = await Posts.find({}).populate('user').populate('coment');
+    const publicacion = await Posts.find().populate('user').populate('coment');
     let comenta = await Coment.find().populate('user').sort({timesAgo: -1})
     
     res.json({
@@ -106,27 +106,25 @@ router.post('/data', async(req, res) =>{
     })
 })
 
-//comentario
-router.get('/coment/:id', estaAutenticado, async(req, res) => {
-    const id = req.params.id;
-    const posts = await Posts.findById(id).populate('user').populate('coment');
-    const comenta = await Coment.find().populate('user');
-    
-    res.render('commets', {posts, comenta})
+//comentario vista
+router.get('/comentar/:id', estaAutenticado, async(req, res) => {
+    let id = req.params.id;
+    const posts = await Posts.findOne({_id: id})
+    res.render('commets', {posts})
 })
 
 router.get('/postComment/:id', estaAutenticado, async (req, res) => {
     const id = req.params.id;
     const user = req.user;
-    const post = await Posts.findById(id).populate('user').populate('coment');
+    const post = await Posts.findById({_id: id}).populate('user').populate('coment');
     const comments = await Coment.find().populate('user');
     res.json({post,comments,user})
 })
 
 //comentario
-router.post('/coment/:id',async (req, res) =>{
+router.post('/comment/:id',async (req, res) =>{
     const data = JSON.parse(req.params.id);
-    const posts = await Posts.findById(data.id);
+    const posts = await Posts.findById({_id: data.id});
     var userc = req.user;
     var coment = new Coment();
     coment.comentario = data.comment;
@@ -139,13 +137,13 @@ router.post('/coment/:id',async (req, res) =>{
     posts.coment.push(coment);
     await posts.save();
     
-    res.json({resp:'hey'})
+    res.json({resp:'Satisfactorio'})
 });
 
 //eliminar post
 router.get('/eliminar/:id',estaAutenticado, async(req, res) => {
     let id = req.params.id;
-    const post = await Posts.findByIdAndDelete(id)
+    const post = await Posts.findByIdAndDelete({_id: id})
     const allUser = await User.find()
     const user = req.user;
 
@@ -180,7 +178,7 @@ router.get('/eliminar/:id',estaAutenticado, async(req, res) => {
 //like
 router.post('/like/:id', async(req, res) => {
     const _ids = JSON.parse(req.params.id)
-    var post = await Posts.findById(_ids.post_id)
+    var post = await Posts.findById({_id: _ids.post_id})
 
     let v_f = post.like.includes(req.user._id)
 
@@ -203,7 +201,7 @@ router.get('/guardados',estaAutenticado, async(req, res) => {
     let p_s = [];
     for(var i  = 0; i <= user.postsSaved.length; i++){
         if(user.postsSaved[i] !== undefined){
-            let post = await Posts.findById(user.postsSaved[i])
+            let post = await Posts.findById({_id: user.postsSaved[i]})
             p_s.push(post)
         }
     }
@@ -304,7 +302,7 @@ router.get('/cambiar_foto_perfil/:id', estaAutenticado,async(req,res) => {
 //cambiar foto de perfil
 router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
     let form = formidable.IncomingForm()
-    const usuario = await User.findById(req.params.id)
+    const usuario = await User.findById({_id: req.params.id})
     form
         .parse(req, (err,fields,file)=>{
 
@@ -316,12 +314,12 @@ router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
             await User.updateOne({_id: req.params.id}, {$set: {userFoto: '/imagePerfil/' + file.name}})
         })
     
-    res.redirect('/inicio')
+    res.redirect('/cambiar_foto_perfil/'+usuario._id)
 })
 
 //vista de perfil de los usuarios
 router.get('/perfil/:id', estaAutenticado,async(req,res) => {
-    const user = await User.findById(req.params.id).populate('posts');
+    const user = await User.findById({_id: req.params.id}).populate('posts');
     res.render('perfil', {user})
 })
 

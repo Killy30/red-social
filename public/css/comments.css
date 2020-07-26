@@ -133,6 +133,8 @@ img{
     position: relative;
 }
 .dg_img button{
+    width: 40px;
+    height: 40px;
     font-size: 25px;
     border: 0;
     color: #fff;
@@ -144,6 +146,7 @@ img{
     position: absolute;
     top: 60px;
     left: 60px;
+    border-radius: 50%;
 }
 
 

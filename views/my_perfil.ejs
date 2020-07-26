@@ -65,7 +65,7 @@
             <h3>Posts</h3>
             <div class="box">
                 <%for(var c = user.posts.length-1; c >=0; c--){%>
-                    <%if(!user.posts[c].descripcion) {%>
+                    <%if(user.posts[c].fotoPost) {%>
                         <div class="box_publicacion">
                             <div class="box_img">
                                 <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>

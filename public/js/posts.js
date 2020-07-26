@@ -64,10 +64,11 @@ class UiAddPost{
                 return element.post === datos.publicacion[i]._id
             })
 
+            moment.locale('es-do')
             let saved = datos.user.postsSaved.includes(datos.publicacion[i]._id);
             let likes = datos.publicacion[i].like.includes(idUser)
             const times = new Date(datos.publicacion[i].timesAgo);
-            // let timeago = moment(times, 'YYYYMMDD','es').fromNow()
+            let timeago = moment(times, 'YYYYMMDD','es').fromNow()
 
             if(datos.publicacion[i].fotoPost != undefined){
                 var ext = datos.publicacion[i].fotoPost.split('.',2)[1].toLowerCase()
@@ -92,7 +93,7 @@ class UiAddPost{
                             Eliminar
                             </a>
                         `: ''}
-                        <p>${times.toLocaleDateString()}</p>
+                        <p>${timeago}</p>
                     </div>
                 </div>
                 <div class="postTitulo">
@@ -124,7 +125,7 @@ class UiAddPost{
                         }
                     </div>
                     <div>
-                        <a class="a_l_c" href="/coment/${datos.publicacion[i]._id}">
+                        <a href="/comentar/${datos.publicacion[i]._id}" class="a_l_c">
                             Comentar: ${datos.publicacion[i].coment.length}
                         </a>
                     </div>
