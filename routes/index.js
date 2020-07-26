@@ -308,10 +308,10 @@ router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
 
         })
         .on('fileBegin',(name,file)=>{
-            file.path = path.join(__dirname, '../public/imagePerfil/' + file.name);
+            file.path = path.join(__dirname, '../public/imagePost/' + file.name);
         })
         .on('file', async(name,file)=>{
-            await User.updateOne({_id: req.params.id}, {$set: {userFoto: '/imagePerfil/' + file.name}})
+            await User.updateOne({_id: req.params.id}, {$set: {userFoto: '/imagePost/' + file.name}})
         })
     
     res.redirect('/cambiar_foto_perfil/'+usuario._id)
