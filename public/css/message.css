@@ -331,12 +331,10 @@ textarea{
     color: rgb(255, 255, 255);
 }
 .horas{
-    /* font-family: monospace; */
     color: rgb(97, 97, 97);
 }
 .horas_u{
     color: rgb(214, 214, 214);
-
 }
 
 
@@ -348,12 +346,15 @@ textarea{
     }
     .box_chat{
         width: 100%;
+        margin-top: 60px;
     }
     .box_user{
         width: 100%;
         height: 100%;
-        border-top-left-radius:0px;
-        border-top-right-radius: 0px;
+        border-radius: 0;
+    }
+    #message{
+        height: 86%;
     }
     .box_form{
         border-bottom-left-radius: 0px;
@@ -362,6 +363,9 @@ textarea{
     .myUserName{
         width: 100%;
         height: 55%;
+    }
+    .myName p{
+        font-size: 17px;
     }
     textarea{
         width: 78%;
@@ -394,6 +398,13 @@ textarea{
         height: 13%;
         border-top-left-radius:0px;
         border-top-right-radius: 0px;
+    }
+    .horas{
+        color: rgb(97, 97, 97);
+        width: 100%;
+    }
+    .horas_u{
+        color: rgb(214, 214, 214);
     }
 
 }

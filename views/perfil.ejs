@@ -33,6 +33,9 @@
         <div class="cabecera">
             <div class="portada"></div>
             <div class="foto">
+                <%if(!user.userFoto){%>
+                    <img class="imgPerfil" src="../userIcon.jpg" >
+                <%}%>
                 <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
             </div>
             <div class="name">

@@ -77,14 +77,16 @@ router.get('/comments', estaAutenticado, async (req, res, next) => {
 
 //users
 router.get('/users', estaAutenticado, async (req, res) => {
+    let myUser = req.user
     const users = await User.find().populate('rooms').sort({dateMessage: -1})
-    res.json({users})
+    res.json({users, myUser})
 })
 
 router.post('/data', async(req, res) =>{
     
     var userd = req.user;
     upload(req, res, async(err) =>{
+        console.log(req.file);
         if(err){
             console.log(err);
         }else{
@@ -101,7 +103,7 @@ router.post('/data', async(req, res) =>{
             await publi.save();
             userd.posts.push(publi);
             await userd.save();
-            res.json({re:'resivido'})
+            res.json({resp:'resivido'})
         }
     })
 })
@@ -290,19 +292,18 @@ router.get('/my_perfil', estaAutenticado,async(req,res) => {
 })
 
 //vista de para cambiar foto de perfil
-router.get('/cambiar_foto_perfil/:id', estaAutenticado,async(req,res) => {
+router.get('/cambiar_foto_perfil', estaAutenticado,async(req,res) => {
     var usuario = req.user;
-    const userfoto = await User.findById({_id:req.params.id})
-    
     res.render('cambiarFoto', {
-        user :  userfoto
+        user :  usuario
     })
 })
 
 //cambiar foto de perfil
-router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
+router.post('/cambiar_foto_perfil', async(req, res) =>{
     let form = formidable.IncomingForm()
-    const usuario = await User.findById({_id: req.params.id})
+    var usuario = req.user;
+    
     form
         .parse(req, (err,fields,file)=>{
 
@@ -311,10 +312,10 @@ router.post('/cambiar_foto_perfil/:id', async(req, res) =>{
             file.path = path.join(__dirname, '../public/imagePost/' + file.name);
         })
         .on('file', async(name,file)=>{
-            await User.updateOne({_id: req.params.id}, {$set: {userFoto: '/imagePost/' + file.name}})
+            await User.updateOne({_id: usuario._id}, {$set: {userFoto: '/imagePost/' + file.name}})
         })
     
-    res.redirect('/cambiar_foto_perfil/'+usuario._id)
+    res.json({data:usuario})
 })
 
 //vista de perfil de los usuarios

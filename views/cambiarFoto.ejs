@@ -4,58 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cambiar foto</title>
-    <link rel="stylesheet" href="../css/header.css">
+    <title>Cambiar foto de perfil</title>
     <link rel="stylesheet" href="../css/cambiarFoto.css">
 </head>
 <body>
-    <header>
-        <a href="/inicio" class="p">
-            <div class="h1">
-                <img src="../img/logop.png" alt="">
-            </div>
-        </a>
-        <nav>
-            <ul>
-                <li class="li"> <a class="la" href="/inicio">Inicio</a></li>
-                <li class="li"> <a class="la" href="/my_perfil">Perfil</a></li>
-                <li lass="li"><a class="la" href="/message">Message</a></li>
-                <li lass="li"><a class="la" href="/logout">Salir</a></li>
-            </ul>
-    
-        </nav>
-    </header>
+  
+    <%include header%>
 
     <div class="content">
         <div class="box_div">
             <div class="foto">
-                <div class="boxF">
-                    <%if(!user.userFoto){%>
-                        <img class="imgU" src="../userIcon.jpg" >
-                    <%}%>
-                    <img class="imgU" src="<%=user.userFoto%>" alt="">
-                </div>
+                <div id="boxF" data-id="<%=user._id%>" class="boxF"></div>
             </div>
             <div class="formulario">
-                <form action="/cambiar_foto_perfil/<%=user._id%>" method="post" enctype="multipart/form-data">
+                <form id="form" enctype="multipart/form-data">
                     <div class="in_file">
-                        <input class="input" type="file" id="image" required name="file" id="">
+                        <input class="input" type="file" id="image" name="file">
                         <p>Subir foto</p>
                     </div>
                     <div class="preView-img" id="preView-img"></div>
                     
-                    <button type="submit">Cambiar</button>
+                    <button type="submit" id="btn">Cambiar</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-        let h = innerHeight;
-        document.querySelector('.content').style.height = h+'px'
-        console.log(innerHeight);
+        
     </script>
 
     <script src="../js/showFiles.js"></script>
+    <script src="../js/change_img_profile.js"></script>
 </body>
 </html>

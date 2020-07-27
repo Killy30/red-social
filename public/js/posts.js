@@ -51,7 +51,6 @@ class DataPost {
     }
 }
 
-
 class UiAddPost{
     //recorer el arreglo de los posts
     async addPost(){
