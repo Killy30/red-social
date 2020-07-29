@@ -4,7 +4,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #ddd;
+    background-color: rgb(240, 240, 240);
 
 }
 .content{

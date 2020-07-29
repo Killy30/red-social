@@ -41,7 +41,10 @@ class DataUsers{
         let dataSended = { text:text, roomId:roomId }
         const res = await fetch('/messageSend/'+JSON.stringify(dataSended),{
             method: 'POST',
-            body: text
+            body: JSON.stringify(dataSended),
+            headers: {
+                'Content-Type':'application/json'
+            }
         })   
         const data = await res.json()
     }
@@ -93,7 +96,7 @@ class UiChat{
                     <div  class="ubs">
                         <a class="chat_name" id="a" data-users="${user._id}" href="/chat/${user.nombre}">
                             <div class="userFotoSelect" id="a" data-users="${user._id}">
-                                <img src="${user.userFoto}" alt="">
+                                <img src="${user.userFoto? user.userFoto : '../userIcon.jpg'}" alt="">
                             </div>
                             <div class="contentUserSelect" id="a" data-users="${user._id}">
                                 <p class="userNameSelect" id="a" data-users="${user._id}">
@@ -126,7 +129,7 @@ class UiChat{
                             <div  class="ubs">
                                 <a class="chat_name" id="a" data-users="${user[i]._id}" href="/chat/${user[i].nombre}">
                                     <div class="userFotoSelect" id="a" data-users="${user[i]._id}">
-                                        <img src="${user[i].userFoto}" alt="">
+                                        <img src="${user[i].userFoto? user[i].userFoto : '../userIcon.jpg'}" alt="">
                                     </div>
                                     <div class="contentUserSelect" id="a" data-users="${user[i]._id}">
                                         <p class="userNameSelect" id="a" data-users="${user[i]._id}">
@@ -152,6 +155,7 @@ class UiChat{
     }
 
     async showUserToChat(data){
+        document.querySelector('.img_message').style.display = 'none'
         document.querySelector('.box_form').style.display = 'flex'
 
         //para dispocitivos mobiles
@@ -168,7 +172,7 @@ class UiChat{
             <div class="header">
                 <div class="fn">
                     <div class="fotoUser">
-                        <img src="${data.user.userFoto}" alt="">
+                        <img src="${data.user.userFoto? data.user.userFoto : '../userIcon.jpg'}" alt="">
                     </div>
                     <div class="t_n">
                         <a href="/perfil/${data.user._id}">
@@ -179,11 +183,15 @@ class UiChat{
                 </div>
                 <div class="ue">
                     <samp>${data.user.email}</samp>
+                    <a href="#" class="atras" style="display: none">Atras</a>
                 </div>
             </div>
             <div id="message" class=""> </div>
         </div>
         `
+        if (innerWidth <= 500) {
+            document.querySelector('.atras').style.display = "block"
+        }
         this.showMessage(data.room.messages)
     }
 
@@ -194,9 +202,9 @@ class UiChat{
             moment.locale('es-do')
             let toDay = new Date()
             let time = new Date(message.dateMsg)
-            let timeAgo = moment(time).calendar();
+            let timeAgo = moment(time).format('dddd');
             let timeToDay = moment(time).format('LT')
-
+    
             if(message.myIdMsg == myId){
                 divMessage.innerHTML += `
                 <div class="box_message">
@@ -204,7 +212,7 @@ class UiChat{
                         <span>
                             ${message.message}
                             <samp class="horas">
-                                ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo}
+                                ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
                         </span>
                     </div>
@@ -216,7 +224,7 @@ class UiChat{
                         <span>
                             ${message.message}
                             <samp class="horas_u">
-                                ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo}
+                                ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
                         </span>
                     </div>
@@ -268,8 +276,14 @@ const dataUsers = new DataUsers();
 const dataSocket = new DataSocket();
 
 text_search.addEventListener('keyup', uiChat.searchUser)
-document.getElementById('formSearch').addEventListener('keyup', e =>{
-    e.preventDefault()
+
+document.querySelector('.box_contain_chat').addEventListener('click', e =>{
+    if(e.target.classList.contains('atras')){
+        e.preventDefault()
+        console.log('cl');
+        document.querySelector('.box_user').style.display = "block"
+        document.querySelector('.box_contain_chat').style.display = "none"
+    }
 })
 
 userstochat.addEventListener('click' , (e) => {

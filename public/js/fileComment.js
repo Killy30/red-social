@@ -1,7 +1,9 @@
 const container = document.getElementById('container')
 const divComments = document.getElementById('comments')
 const formComment = document.getElementById('formComment')
+
 const id = container.dataset.id;
+const my_id = container.dataset.id_m;
 
 class Datas {
     async getData(){
@@ -23,7 +25,7 @@ class UiPost {
         container.innerHTML = `<div class="post">
             <div class="headerPost">
                 <div class="img_user">
-                    <img src="${data.post.user.userFoto}" alt="">
+                    <img src="${data.post.user.userFoto? data.post.user.userFoto : '../userIcon.jpg'}" alt="">
                 </div>
                 <a href="${(data.post.user._id == data.user._id)?'/my_perfil':`/perfil/${data.post.user._id}`}"> 
                     <h2>${data.post.user.nombre}</h2>
@@ -81,9 +83,20 @@ class UiPost {
         for(var i = data.post.coment.length-1; i >=0; i--) {
             for(var c = data.comments.length-1; c >=0; c--) {
                 if(data.post.coment[i]._id === data.comments[c]._id){
-                    divComments.innerHTML += `<div class="comentarios">
-                        <b>${data.comments[c].user.nombre}</b>
-                        <span>${data.post.coment[i].comentario}</span>
+                    divComments.innerHTML += `<div class="box_cmt">
+                        <div class="comentarios">
+                            <div class="hjk">
+                                <div class="c_user_foto">
+                                    <img src="${data.comments[c].user.userFoto? data.comments[c].user.userFoto : '../userIcon.jpg'}" alt="">
+                                </div> 
+                            </div>
+                            <span>
+                                <a class="c_a_user" href="${(data.comments[c].user._id == my_id)? '/my_perfil' : `/perfil/${data.comments[c].user._id}`}">
+                                    <b>${data.comments[c].user.nombre}</b> 
+                                </a>
+                                ${data.post.coment[i].comentario}
+                            </span>
+                        </div>
                     </div>`
                 } 
             }
@@ -99,6 +112,9 @@ class UiPost {
             e.target.style.color='rgb(13, 13, 245)'
         }
     }
+
+    // <b>${data.comments[c].user.nombre}</b>
+    // <span>${data.post.coment[i].comentario}</span>
 
     //funcion para cambiar el estilo del boton 'Like'
     changeColorLike(data, e){
@@ -116,26 +132,24 @@ const add = new UiPost()
 add.addPost()
 
 // evento para enviar los comentarios
-formComment.addEventListener('submit', (e) => {
+formComment.addEventListener('submit', async(e) => {
     e.preventDefault()
     const comentario = document.getElementById('comentario').value;
-
-    const formData = new FormData()
-    formData.append('comment', comentario)
 
     const data = {
         id: id,
         comment: comentario
     }
-
-    fetch('/comment/'+JSON.stringify(data), {
-        method:'POST',
-        body: formData
+    let response = await fetch('/comment',{
+        method: 'post',
+        body: JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json'
+        },
     })
-    .then(res => res.json())
-    .then(data => {
-        add.addPost()
-    })
+    let res = await response.json()
+    console.log(res);
+    add.addPost()
 
     formComment.reset();
 })
@@ -180,32 +194,4 @@ container.addEventListener('click', (e) => {
             add.addPost()
         })
     }
-
-    // view img
-    if(e.target.classList.contains('view') ){  
-        e.preventDefault()
-        let img = e.target.dataset.img_
-        let h = innerHeight;
-        let w = innerWidth;
-        document.getElementById('off').style.display = 'none'
-        const view_img = document.getElementById('view_img')
-        view_img.style.display = "flex"
-        view_img.style.width = w+'px'
-        view_img.style.height = h+'px'
-    
-        view_img.innerHTML = `
-            <div class="dg_img">
-                <img class="view" src="${img}" alt="">
-                <button class="btn_x" id="btn_x">X</button>
-            </div>
-        `
-    }
-})
-
-window.addEventListener('click', e => {
-    if(e.target.classList.contains('btn_x') ){
-        e.preventDefault()
-        view_img.style.display = "none"
-        document.getElementById('off').style.display = 'flex'
-    } 
 })

@@ -77,7 +77,7 @@ class UiAddPost{
                 <div class="headerPost">
                     <div class="conF">
                         <div class="foto_u_p">
-                            <img class="imgP" src="${datos.publicacion[i].user.userFoto}" alt="">
+                            <img class="imgP" src="${datos.publicacion[i].user.userFoto? datos.publicacion[i].user.userFoto : '../userIcon.jpg'}" alt="">
                         </div>
                         <div class="">
                             ${(datos.publicacion[i].user._id == idUser)?
@@ -143,9 +143,22 @@ class UiAddPost{
                 <div class="coment" id="com">
                     ${array.map(element => {
                         return `
-                            <div class="cm">
-                                <b>${element.user.nombre}</b> 
-                                <span>${element.comentario}</span>
+                            <div class="box_cmt">
+                                <div class="cm">
+                                    <div class="cm_">
+                                        <div class="hjk">
+                                            <div class="c_user_foto">
+                                                <img src="${element.user.userFoto? element.user.userFoto : '../userIcon.jpg'}" alt="">
+                                            </div> 
+                                        </div>
+                                        <span>
+                                            <a class="c_a_user" href="${(element.user._id == idUser)? '/my_perfil' : `/perfil/${element.user._id}`}">
+                                                <b>${element.user.nombre}</b> 
+                                            </a>
+                                            ${element.comentario}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>`
                     })}
                 </div>

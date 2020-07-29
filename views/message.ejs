@@ -17,6 +17,9 @@
                     <div class="myUserName">
                         <div class="myUserPic">
                             <div class="imgU">
+                                <%if(!user.userFoto){%>
+                                    <img src="../userIcon.jpg" >
+                                <%}%>
                                 <img src="<%=user.userFoto%>" alt="">
                             </div>
                         </div>
@@ -35,6 +38,7 @@
                 </div>
             </div>
             <div class="box_contain_chat">
+                <img class="img_message" src="../img/img_mesg.jpg" alt="">
                 <div id="contain_chat" class="contain_chat"></div>
                 <div class="box_form" style="display: none">
                     <form id="form">

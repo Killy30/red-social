@@ -75,14 +75,11 @@ h2,h4,p{
 }
 .view{
     width: 100%;
+    object-fit: contain;
+    cursor: pointer;
 }
 .view_v{
     width: 100%;
-}
-img{
-    width: 100%;
-    object-fit: contain;
-    cursor: pointer;
 }
 .info{
     width: 100%;
@@ -110,43 +107,6 @@ img{
     color: rgb(88, 88, 88);
     font-family: sans-serif;
     font-size: 16px;
-}
-
-
-.view_img{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.dg_img{
-    width: 95%;
-    height: 90%;
-    background-color: rgb(46, 46, 46);
-    margin-top: 15px;
-    display: flex;
-    align-items: flex-start;
-}
-.dg_img img{
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-.dg_img button{
-    width: 40px;
-    height: 40px;
-    font-size: 25px;
-    border: 0;
-    color: #fff;
-    font-family: sans-serif;
-    background-color: rgb(46, 46, 46);
-    margin-top: 10px;
-    outline: none;
-    cursor: pointer;
-    position: absolute;
-    top: 60px;
-    left: 60px;
-    border-radius: 50%;
 }
 
 
@@ -200,18 +160,46 @@ form button{
     width: 100%;
 }
 .comentarios{
-    width: 100%;
-    background-color: #eee;
-    margin-bottom: 3px;
-    border-radius: 8px;
-    padding: 5px 8px;
     font-family:sans-serif;
     font-size: 15px;
     box-sizing: border-box;
+    display: flex;
+}
+.box_cmt{
+    width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 7px;
+}
+.hjk{
+    height: 100%;
+    margin-right: 7px;
+}
+.c_a_user{
+    text-decoration: none;
+    margin-right: 7px;
+}
+.c_user_foto{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ccc;
+}
+.c_user_foto img{
+    width: 100%;
+}
+.comentarios span{
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 5px 13px;
 }
 b{
     color: rgb(2, 170, 2);
 }
+
+
+
 
 @media only screen and (max-width: 500px){
     .container{
@@ -232,6 +220,10 @@ b{
     }
     .dg_img button{
         left: 30px;
+    }
+    .postTitulo{
+       padding-left: 5px;
+       box-sizing: border-box;
     }
     
 }

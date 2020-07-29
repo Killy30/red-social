@@ -86,7 +86,6 @@ router.post('/data', async(req, res) =>{
     
     var userd = req.user;
     upload(req, res, async(err) =>{
-        console.log(req.file);
         if(err){
             console.log(err);
         }else{
@@ -111,8 +110,9 @@ router.post('/data', async(req, res) =>{
 //comentario vista
 router.get('/comentar/:id', estaAutenticado, async(req, res) => {
     let id = req.params.id;
+    let user = req.user
     const posts = await Posts.findOne({_id: id})
-    res.render('commets', {posts})
+    res.render('commets', {posts, user})
 })
 
 router.get('/postComment/:id', estaAutenticado, async (req, res) => {
@@ -124,12 +124,12 @@ router.get('/postComment/:id', estaAutenticado, async (req, res) => {
 })
 
 //comentario
-router.post('/comment/:id',async (req, res) =>{
-    const data = JSON.parse(req.params.id);
-    const posts = await Posts.findById({_id: data.id});
+router.post('/comment',async (req, res) =>{
+    const posts = await Posts.findById({_id: req.body.id});
+
     var userc = req.user;
     var coment = new Coment();
-    coment.comentario = data.comment;
+    coment.comentario = req.body.comment;
     coment.user = userc;
     coment.post = posts;
 
@@ -239,16 +239,19 @@ router.get('/message', estaAutenticado, async (req, res) => {
 })
 
 //funcion para crear un nuevo room para el chat
+//este room se creara cuando le das click a un usuario 
 router.post('/userToChat/:id', async(req, res) => {
     const idUser = req.params.id
     const myUser = req.user
     const user = await User.findById({_id: idUser})
-    
+
+    //verificar si existe un room con los ids de los usuarios
     const room = await Rooms.findOne({$and:[
         {myId: {$in:[user.id, myUser.id]}},
         {youId: {$in:[user.id, myUser.id]}}
     ]})
-
+    
+    //si no existe crealo
     if(room == null){
         const newRoom = new Rooms()
         newRoom.myId = myUser;
@@ -260,7 +263,7 @@ router.post('/userToChat/:id', async(req, res) => {
         await myUser.save();
         await user.save()
 
-        res.json({user,newRoom})
+        return res.json({user, room:newRoom})
     }
     
     res.json({user,room})
@@ -270,7 +273,7 @@ router.post('/userToChat/:id', async(req, res) => {
 router.post('/messageSend/:msg', async(req, res) => {
     const data = JSON.parse(req.params.msg)
     const myUser = req.user;
-
+    console.log(req.body);
     if(data.roomId != undefined){
         const room = await Rooms.findById({_id: data.roomId})
         let = mssg = {myIdMsg: myUser.id, message: data.text}
@@ -280,6 +283,7 @@ router.post('/messageSend/:msg', async(req, res) => {
         res.json({room})
     }
 })
+//------------------------------------------------------------------------------------------------//
 
 //vista de mi perfil
 router.get('/my_perfil', estaAutenticado,async(req,res) => {

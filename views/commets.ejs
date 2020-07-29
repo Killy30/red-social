@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Comentarios</title>
     
-    <link rel="stylesheet" href="../css/comments.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/comments.css">
+    <link rel="stylesheet" href="../css/view_img.css">
 </head>
 
 <body>
@@ -32,11 +33,11 @@
     <div class="view_img" id="view_img" style="display: none"></div>
 
     <div id="off" class="container">
-        <div data-id="<%=posts.id%>" class="publicacion" id="container"></div>
+        <div data-id="<%=posts.id%>" data-id_m="<%=user.id%>" class="postSave"  id="container"></div>
     
         <div class="coment">
             <div class="divForm">
-                <form id="formComment" >
+                <form id="formComment" enctype="multipart/form-data">
                     <textarea id="comentario" required placeholder="Comentar" name="comentario" ></textarea>
                     <button type="submit">Comentar</button>
                 </form>
@@ -46,5 +47,6 @@
     </div >
     
     <script src="../js/fileComment.js"></script>
+    <script src="../js/view_img.js"></script>
 </body>
 </html>

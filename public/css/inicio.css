@@ -3,7 +3,7 @@ body{
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    background-color: #ddd;
+    background-color: rgb(240, 240, 240);
 }
 
 .user_p{
@@ -23,6 +23,7 @@ body{
     justify-content: center;
 }
 .content_user{
+    box-shadow: 1px 1px 10px -5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -36,7 +37,6 @@ body{
     height: 200px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #eee;
     position: absolute;
     overflow: hidden;
     margin-top: 20px;
@@ -44,7 +44,6 @@ body{
 }
 .img_user{
     width: 100%;
-    height: 100%;
     position: absolute;
     object-fit:cover;
 }
@@ -64,7 +63,7 @@ body{
     display: flex;
     justify-content:center; 
     align-self: center;
-    background-color: rgb(85, 85, 85);
+    background-color: rgb(39, 39, 39);
     transition:0.5s ;
     align-items: center;
 }
@@ -135,6 +134,7 @@ body{
     background-color: #fff;
     margin-bottom: 15px;
     border-radius: 10px;
+    box-shadow: 1px 1px 10px -5px;
 }
 .post{
     width: 100%;
@@ -210,6 +210,7 @@ input{
     font-family: sans-serif;
     border-radius: 7px;
     color: #fff;
+    cursor: pointer;
 }
 
 button{
@@ -224,6 +225,8 @@ button{
     height: 30px;
     margin-bottom: 10px;
     font-weight: bolder;
+    cursor: pointer;
+    outline: none;
 }
 .preView-img{
     width: 80%;
@@ -237,6 +240,10 @@ button{
     background-size: cover;
 }
 
+
+
+
+
 .publicacion{
     width: 600px;
     margin-bottom: 10px;
@@ -246,6 +253,7 @@ button{
     flex-wrap: wrap;
     justify-content: center;
     border-radius: 10px;
+    box-shadow: 1px 1px 10px -5px;
 }
 .headerPost{
     width: 100%;
@@ -265,8 +273,8 @@ button{
 }
 
 .foto_u_p{
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     background-color:#dddd;
     border-radius: 50px;
     margin-right: 5px;
@@ -349,6 +357,8 @@ button{
     color: rgb(13, 13, 245);
     
 }
+
+/* comentarios */
 .coment{
     width: 100%;
     background-color: #fff;
@@ -357,20 +367,51 @@ button{
     display: flex;
     flex-wrap: wrap;
 }
-.cm{
+.box_cmt{
     width: 99%;
-    background-color: #eee;
-    margin-bottom: 3px;
-    border-radius: 8px;
-    padding: 5px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 7px;
+}
+.cm{
     font-family:sans-serif;
     font-size: 15px;
     box-sizing: border-box;
+}
+.cm_{
+    display: flex;
+}
+.hjk{
+    height: 100%;
+    margin-right: 5px;
+}
+.c_a_user{
+    text-decoration: none;
+    margin-right: 7px;
+}
+.c_user_foto{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ccc;
+}
+.c_user_foto img{
+    width: 100%;
+}
+.cm_ span {
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 5px 13px;
 }
 b{
     color: rgb(2, 170, 2);
     
 }
+
+
+
+
 .aNameUser{
     text-decoration: none;
 }
@@ -441,5 +482,7 @@ b{
     .l_c{
         width: 90%;
     }
-    
+    .box_cmt{
+        width: 98%;
+    }
 }

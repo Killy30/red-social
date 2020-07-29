@@ -4,7 +4,7 @@ body{
     display: flex;
     flex-wrap:wrap;
     justify-content: center;
-    background-color: #ddd; 
+    background-color: rgb(240, 240, 240);
     font-family: sans-serif;
 }
 
@@ -14,7 +14,6 @@ h1{
 }
 .content{
   width: 70%;
-  background-color: rgb(218, 218, 218);
   margin-top: 80px;
   display: flex;
   justify-content: center;
@@ -29,6 +28,7 @@ h1{
   flex-wrap: wrap;
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 10px -5px;
 }
 .portada{
   width: 100%;
@@ -51,7 +51,7 @@ h1{
   overflow: hidden;
 }
 .imgPerfil{
-  width: 450px;
+  width: 100%;
   object-fit: cover;
 }
 .name{
@@ -67,6 +67,9 @@ h1{
   margin: 0;
   font-family: sans-serif;
 
+}
+.name h3{
+  font-weight: unset;
 }
 h3{
   margin: 0;
@@ -112,6 +115,7 @@ h3{
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
+  box-shadow: 1px 1px 10px -5px;
 }
 .datos{
   display: flex;
@@ -145,6 +149,7 @@ h3{
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
+  box-shadow: 1px 1px 10px -5px;
 }
 .publicaciones h3{
   width: 100%;
@@ -166,6 +171,10 @@ h3{
 .imgPost{
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
+}
+view{
+  cursor: pointer;
 }
 .t_d{
   width: 100%;
@@ -191,19 +200,19 @@ h3{
 @media only screen and (max-width: 500px){
   .content{
     width: 98%;
-    background-color: rgb(218, 218, 218);
     margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   .cabecera{
-    height: 420px;
+    height: 370px;
+  }
+  .portada{
+    height: 200px;
   }
   .foto{
     width: 200px;
     height: 200px;
+    margin-top: -130px;
   }
   .imgPerfil{
     width: 100%;

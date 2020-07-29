@@ -7,6 +7,7 @@
     <title><%=user.nombre%></title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/mi_perfil.css">
+    <link rel="stylesheet" href="../css/view_img.css">
 </head>
 <body>
 
@@ -28,8 +29,9 @@
         </nav>
     </header>
     
-    <div class="content">
+    <div class="view_img" id="view_img" style="display: none"></div>
 
+    <div id="off" class="content">
         <div class="cabecera">
             <div class="portada"></div>
             <div class="foto">
@@ -72,7 +74,7 @@
 
         <div class="publicaciones">
             <h3>Posts</h3>
-            <div class="box">
+            <div class="box postSave">
                 <%for(var c = user.posts.length-1; c >=0; c--){%>
                     <%if(!user.posts[c].descripcion) {%>
                         <div class="box_publicacion">
@@ -80,7 +82,7 @@
                                 <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
                                     <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"</video>
                                 <%}%>
-                                <img class="imgPost" src="<%=user.posts[c].fotoPost%>" alt="">
+                                <img class="imgPost view" data-img_="<%=user.posts[c].fotoPost%>" src="<%=user.posts[c].fotoPost%>" alt="">
                             </div>
                         </div>
                     <%}%>
@@ -88,6 +90,7 @@
             </div>
         </div>
     </div>
-    
+
+    <script src="../js/view_img.js"></script>
 </body>
 </html>
