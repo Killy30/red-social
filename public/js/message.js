@@ -25,6 +25,8 @@ class DataUsers{
         }
     }
 
+    //al dar click a un usuario esta funcion envia el id del usuario para verificar si tienen un room 
+    //si tiene un room lo manda y si no crea uno nuevo
     async postIdUser(id){
         const res = await fetch('/userToChat/'+id,{
             method: 'POST',
@@ -35,10 +37,15 @@ class DataUsers{
         roomId = data.room._id;
         dataSocket.joinUserToSocket()
         uiChat.showUserToChat(data)
+        console.log(data);
     }
 
     async sendMessage(text){
-        let dataSended = { text:text, roomId:roomId }
+        let dataSended = { 
+            text:text, 
+            roomId:roomId 
+        }
+
         const res = await fetch('/messageSend/'+JSON.stringify(dataSended),{
             method: 'POST',
             body: JSON.stringify(dataSended),
@@ -55,6 +62,14 @@ class DataSocket{
         socket.emit('send_message',{
             roomId:roomId,
             message:message,
+            myId:myId,
+            theUserId:theUserId
+        })
+    }
+
+    notificar_msj(){
+        socket.emit('notificacion_msj',{
+            roomId:roomId,
             myId:myId,
             theUserId:theUserId
         })
@@ -93,13 +108,13 @@ class UiChat{
             if (myId != user._id) {
                 if (nombre.indexOf(textS) !== -1) {
                     userstochat.innerHTML += `
-                    <div  class="ubs">
-                        <a class="chat_name" id="a" data-users="${user._id}" href="/chat/${user.nombre}">
-                            <div class="userFotoSelect" id="a" data-users="${user._id}">
-                                <img src="${user.userFoto? user.userFoto : '../userIcon.jpg'}" alt="">
+                    <div  class="ubs seleccionar">
+                        <a class="chat_name seleccionar" id="a" data-users="${user._id}" href="/chat/${user.nombre}">
+                            <div class="userFotoSelect seleccionar" id="a" data-users="${user._id}">
+                                <img class="seleccionar" src="${user.userFoto? user.userFoto : '../userIcon.jpg'}" alt="">
                             </div>
-                            <div class="contentUserSelect" id="a" data-users="${user._id}">
-                                <p class="userNameSelect" id="a" data-users="${user._id}">
+                            <div class="contentUserSelect seleccionar" id="a" data-users="${user._id}">
+                                <p class="userNameSelect seleccionar" id="a" data-users="${user._id}">
                                     ${user.nombre}
                                 </p>
                             </div>
@@ -116,28 +131,47 @@ class UiChat{
     //monstrar la lista de usuarios
     async showUsers(){
         const users = await dataUsers.getUsers()
-        var user = users.users;
+        var user_ = users.users;
         userstochat.innerHTML = '';
+        function compare(a, b){
+            a.rooms.forEach(an => {
+                b.rooms.forEach(bn => {
+                    return bn.dateMessage - an.dateMessage
+                })
+            })
+        }
+        let user = user_.sort(compare)
+        console.log(user);
 
         for(var i = 0; i < user.length; i++){
             if (myId != user[i]._id) {
+                
                 for(var c = 0; c < user[i].rooms.length; c++){
                     if(user[i].rooms[c].messages.length > 0){
                         if(user[i].rooms[c].myId === myId || user[i].rooms[c].youId === myId){
+                            let s = user[i].rooms[c].messages.sort()
                             let oldMessage = user[i].rooms[c].messages.pop()
+                            // console.log(s.pop());
+                            // console.log(oldMessage);
+                            let time = new Date(oldMessage.dateMsg)
+                            let timeToDay = moment(time).format('LT')
+                            // console.log(user[i].rooms);
                             userstochat.innerHTML += `
                             <div  class="ubs">
-                                <a class="chat_name" id="a" data-users="${user[i]._id}" href="/chat/${user[i].nombre}">
-                                    <div class="userFotoSelect" id="a" data-users="${user[i]._id}">
+                                <a class="chat_name seleccionar" id="a" data-users="${user[i]._id}" href="/chat/${user[i].nombre}">
+                                    <div class="userFotoSelect seleccionar" id="a" data-users="${user[i]._id}">
                                         <img src="${user[i].userFoto? user[i].userFoto : '../userIcon.jpg'}" alt="">
                                     </div>
-                                    <div class="contentUserSelect" id="a" data-users="${user[i]._id}">
-                                        <p class="userNameSelect" id="a" data-users="${user[i]._id}">
+                                    <div class="contentUserSelect seleccionar" id="a" data-users="${user[i]._id}">
+                                        <p class="userNameSelect seleccionar" id="a" data-users="${user[i]._id}">
                                             ${user[i].nombre}
                                         </p>
-                                        <p class="oldMessage" data-users="${user[i]._id}">
-                                            ${oldMessage.message}
-                                        </p>
+                                        <div class="oldMessage seleccionar" data-users="${user[i]._id}">
+                                            <p class="seleccionar" data-users="${user[i]._id}">${oldMessage.message}</p>
+                                            <samp class="hora seleccionar" data-users="${user[i]._id}">
+                                                ${ timeToDay }
+                                            </samp>
+                                        </div>
                                     </div>
                                 </a>
                             </div>`
@@ -210,7 +244,7 @@ class UiChat{
                 <div class="box_message">
                     <div class="opklo">
                         <span>
-                            ${message.message}
+                            <p>${message.message}</p>
                             <samp class="horas">
                                 ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
@@ -222,7 +256,7 @@ class UiChat{
                 <div class="box_message">
                     <div class="opkl">
                         <span>
-                            ${message.message}
+                            <p>${message.message}</p>
                             <samp class="horas_u">
                                 ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
@@ -236,14 +270,18 @@ class UiChat{
     }
 
     showMessageTwo(message){
+        let time = new Date()
         let divMessage = document.getElementById('message')
-        
+
         if(message.roomId == roomId){
             divMessage.innerHTML += `
             <div class="box_message">
                 <div class="opkl">
                     <span>
-                        ${message.message}
+                        <p>${message.message}</p>
+                        <samp class="horas_u">
+                            ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                        </samp>
                     </span>
                 </div>
             </div>`
@@ -252,6 +290,7 @@ class UiChat{
         divMessage.scrollBy(0, x);
     }
 
+    // 
     showMessagethree(message){
         let time = new Date()
         let divMessage = document.getElementById('message')
@@ -259,7 +298,7 @@ class UiChat{
         <div class="box_message">
             <div class="opklo">
                 <span>
-                    ${message}
+                    <p>${message}</p>
                     <samp class="horas">
                         ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                     </samp>
@@ -280,7 +319,6 @@ text_search.addEventListener('keyup', uiChat.searchUser)
 document.querySelector('.box_contain_chat').addEventListener('click', e =>{
     if(e.target.classList.contains('atras')){
         e.preventDefault()
-        console.log('cl');
         document.querySelector('.box_user').style.display = "block"
         document.querySelector('.box_contain_chat').style.display = "none"
     }
@@ -288,30 +326,13 @@ document.querySelector('.box_contain_chat').addEventListener('click', e =>{
 
 userstochat.addEventListener('click' , (e) => {
     e.preventDefault()
-    if (e.target.classList.contains('chat_name')) {
-        e.preventDefault()
-        uiChat.selectUserToChat(e)
-    }else if (e.target.classList.contains('sampMSG')) {
-        e.preventDefault()
-        uiChat.selectUserToChat(e)
-    }else if (e.target.classList.contains('userNameSelect')) {
-        e.preventDefault()
-        uiChat.selectUserToChat(e)
-    }else if (e.target.classList.contains('userFotoSelect')) {
-        e.preventDefault()
-        uiChat.selectUserToChat(e)
-    }else if (e.target.classList.contains('contentUserSelect')) {
-        e.preventDefault()
-        uiChat.selectUserToChat(e)
-    }else if (e.target.classList.contains('dateS')) {
-        e.preventDefault()
-        uiChat.selectUserToChat(e)
-    }else if (e.target.classList.contains('oldMessage')) {
+    if (e.target.classList.contains('seleccionar')) {
         e.preventDefault()
         uiChat.selectUserToChat(e)
     }
 })
 
+//para dispocitivos mobiles
 addEventListener('DOMContentLoaded', () =>{
     if(innerWidth <= 500){
         document.querySelector('.box_user').style.display = "block"
@@ -320,6 +341,7 @@ addEventListener('DOMContentLoaded', () =>{
 })
 
 // on socket
+
 socket.on('send_message', (data) => {
     let user_typping = document.getElementById('user_typping')
     user_typping.innerText = "";
@@ -327,6 +349,11 @@ socket.on('send_message', (data) => {
     uiChat.showUsers()
 })
 
+socket.on('notificacion_msj', (data) => {
+    uiChat.showUsers()
+})
+
+// cuando el usuario esa escribiendo un mensaje
 socket.on('user_is_typping', (data)=> {
     let user_typping = document.getElementById('user_typping')
     user_typping.innerText = "Esta escribiendo"
@@ -344,7 +371,7 @@ form.addEventListener('submit', (e) =>{
 
     uiChat.showMessagethree(text_msg)
     dataSocket.sendMessage(text_msg)
-    uiChat.showUsers()
+    dataSocket.notificar_msj()
 
     form.reset()
 })

@@ -69,23 +69,11 @@
    
         <div class="publicaciones">
             <h3>Posts</h3>
-            <div class="box postSave">
-                <%for(var c = user.posts.length-1; c >=0; c--){%>
-                    <%if(user.posts[c].fotoPost) {%>
-                        <div class="box_publicacion">
-                            <div class="box_img">
-                                <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
-                                    <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"></video>
-                                <%}%>
-                                <img class="imgPost view" data-img_="<%=user.posts[c].fotoPost%>" src="<%=user.posts[c].fotoPost%>" alt="">
-                            </div>
-                        </div>
-                    <%}%>    
-                <%}%>    
-            </div>
+            <div class="box postSave"></div>
         </div>
     </div>
 
     <script src="../js/view_img.js"></script>
+    <script src="../js/my_profile.js"></script>
 </body>
 </html>

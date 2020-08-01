@@ -75,15 +75,28 @@ io.on('connection', async(socket) => {
             let = mssg = {myIdMsg: data.myId, message: data.message}
             
             room.messages.push(mssg)
-            myUser.dateMessage = Date.now()
-            user.dateMessage = Date.now()
+            room.dateMessage = Date.now()
             await room.save()
             await user.save()
             await myUser.save()
             socket.to(room._id).emit('send_message', data)
         }
     })
+    
+    socket.on('notificacion_msj', async (data) =>{
+        
+        if(data.roomId != undefined){
+            const user = await User.findById({_id: data.theUserId})
+            const myUser = await User.findById({_id: data.myId})
+            const room = await Rooms.findOne({_id: data.roomId}).populate('user')
+            
+            // socket.join(myUser._id)
+            socket.join('/message/')
+            io.in('/message/').emit('notificacion_msj', data)
+        }
+    })
 })
+
 
 server.listen(app.get('port'), () => {
     console.log('servidor conectado ', app.get('port'));

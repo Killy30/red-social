@@ -46,14 +46,18 @@ class UiPost {
                     : `<img class="view" data-img_="${data.post.fotoPost}" src="${data.post.fotoPost}" alt="">`
                 }
             </div>
+            <div class="count">
+                    <p>Me gusta:${data.post.like.length}</p>
+                    <p>Comentarios: ${data.post.coment.length}</p>
+                </div>
             <div class="info">
                 <div class="like">
                     ${(likes == true)?
                         `<a href="#" data-my_id="${id}" data-id="${data.post._id}" id="btnId" class="like a_l_c verde" >
-                            Like: ${data.post.like.length}
+                            Me gusta 
                         </a>` :            
                         `<a href="#" data-my_id="${id}" data-id="${data.post._id}" id="btnId" class="like a_l_c" >
-                            Like: ${data.post.like.length}
+                            Me gusta
                         </a>`
                     }
                 </div>
@@ -68,11 +72,7 @@ class UiPost {
                         </a>`
                     }
                 </div>
-                <div>
-                    <p>
-                        Comentarios: ${data.post.coment.length}
-                    </p>
-                </div>
+
             </div>
         </div>`
         this.addComments(data)

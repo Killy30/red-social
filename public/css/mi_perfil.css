@@ -168,6 +168,20 @@ h3{
   overflow: hidden;
   
 }
+.eliminar{
+  position: absolute;
+  z-index: 1;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  color: rgb(218, 3, 3);
+  border-radius: 7px;
+}
+.eliminar:hover{
+  background-color: rgb(219, 0, 0);
+  color: #fff;
+}
 .imgPost{
   width: 100%;
   object-fit: cover;
@@ -189,7 +203,7 @@ view{
   display: flex;
   overflow: hidden;
   justify-content: center;
-
+  position: relative;
 }
 .box{
   width: 100%;
@@ -228,5 +242,13 @@ view{
     width: 31%;
     height: 130px;
     
+  }
+  .eliminar{
+    margin-top: 5px;
+    margin-left: 7px;
+    padding: 5px;
+    color: rgb(218, 3, 3);
+    border-radius: 3px;
+    font-size: 13px;
   }
 }

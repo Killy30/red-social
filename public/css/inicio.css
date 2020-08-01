@@ -4,12 +4,13 @@ body{
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(240, 240, 240);
+    justify-content: center;
 }
 
 .user_p{
-    width: 18%;
+    width: 300px;
     height: 600px;
-    margin-left: 5%;
+    margin-left: -800px;
     margin-top: 80px;
     position: fixed;
     display: flex;
@@ -39,7 +40,7 @@ body{
     flex-wrap: wrap;
     position: absolute;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 35px;
     border-radius: 50%;
 }
 .img_user{
@@ -112,19 +113,20 @@ body{
 }
 .h3_userName{
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
+    color: rgb(2, 170, 2);
 }
 .h3_userEmail{
     margin: 0;
     font-weight: unset;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 
 
 
 .content{
-    margin-left: 27%;
+    margin-left: 150px;
     margin-top: 80px;
 }
 
@@ -309,11 +311,17 @@ button{
 .eliminar{
     display: flex;
     justify-content: center;
-    width: 100%;
+    align-items: center;
     text-decoration: none;
     font-family: sans-serif;
     font-size: 12px;
     color: rgb(250, 11, 11); 
+    padding: 6px;
+    border-radius: 3px;
+}
+.eliminar:hover{
+    background-color: rgb(212, 0, 0);
+    color: #fff;
 }
 .div_E_D p{
     display: flex;
@@ -323,6 +331,7 @@ button{
     font-size: 13px;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .images{
     width: 100%;
@@ -342,19 +351,32 @@ button{
     width: 100%;
     object-fit:contain;
 }
+.count{
+    width: 90%;
+    display: flex;
+    border-bottom: 0.5px solid #ddd;
+    margin-bottom: 10px;
+}
+.count p{
+    margin: 0;
+    font-family: sans-serif;
+    margin-right: 10px;
+    color: rgb(83, 83, 83);
+}
 .l_c{
-    width: 500px;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     border-bottom: 0.5px solid #ddd;
     margin-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .a_l_c{
     text-decoration: none;
     font-family: sans-serif;
     font-size: 16px;
-    color: rgb(13, 13, 245);
+    color: rgb(0, 0, 190);
     
 }
 
@@ -422,7 +444,7 @@ b{
     color: rgb(13, 13, 245);
 }
 .verde{
-    color: rgb(2, 170, 2);
+    color: rgb(211, 0, 0);
     font-weight: bolder;
 }
 
@@ -484,5 +506,8 @@ b{
     }
     .box_cmt{
         width: 98%;
+    }
+    .count p{
+        font-size: 13px;
     }
 }

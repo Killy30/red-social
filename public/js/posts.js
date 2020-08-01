@@ -112,20 +112,24 @@ class UiAddPost{
                         }
                     </div>
                 </div>
+                <div class="count">
+                    <p>Me gusta: ${datos.publicacion[i].like.length}</p>
+                    <p>Comentarios: ${datos.publicacion[i].coment.length}</p>
+                </div>
                 <div class="l_c">
                     <div class="like">
                         ${(likes == true)?
                             `<a href="#" data-my_id="${idUser}" data-id="${datos.publicacion[i]._id}" id="btnId" class="like a_l_c verde" >
-                                Like: ${datos.publicacion[i].like.length}
+                                Me gusta 
                             </a>` :            
                             `<a href="#" data-my_id="${idUser}" data-id="${datos.publicacion[i]._id}" id="btnId" class="like a_l_c" >
-                                Like: ${datos.publicacion[i].like.length}
+                                Me gusta
                             </a>`
                         }
                     </div>
                     <div>
                         <a href="/comentar/${datos.publicacion[i]._id}" class="a_l_c">
-                            Comentar: ${datos.publicacion[i].coment.length}
+                            Comentar
                         </a>
                     </div>
                     <div ${(datos.publicacion[i].fotoPost == undefined)? ' style="display: none"' : ''}>

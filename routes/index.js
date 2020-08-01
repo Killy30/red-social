@@ -78,7 +78,7 @@ router.get('/comments', estaAutenticado, async (req, res, next) => {
 //users
 router.get('/users', estaAutenticado, async (req, res) => {
     let myUser = req.user
-    const users = await User.find().populate('rooms').sort({dateMessage: -1})
+    const users = await User.find().populate('rooms')
     res.json({users, myUser})
 })
 
@@ -207,7 +207,7 @@ router.get('/guardados',estaAutenticado, async(req, res) => {
             p_s.push(post)
         }
     }
-    res.render('guardados', {myUser,p_s})
+    res.render('guardados', {myUser, p_s, user})
 })
 
 //funcion para guardar los posts
@@ -294,6 +294,12 @@ router.get('/my_perfil', estaAutenticado,async(req,res) => {
         user :  user
     })
 })
+
+router.get('/my_posts', estaAutenticado, async (req, res) =>{
+    var usuario = req.user;
+    const user = await User.findOne({_id:usuario._id}).populate('posts');
+    res.json({user})
+}) 
 
 //vista de para cambiar foto de perfil
 router.get('/cambiar_foto_perfil', estaAutenticado,async(req,res) => {

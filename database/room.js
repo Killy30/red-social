@@ -6,8 +6,9 @@ const roomSchema = new Schema({
         message: String,
         dateMsg: {type: Date, default: Date.now}
     }],
-    myId:   { type: Schema.Types.ObjectId, ref: 'User' },
-    youId:  {type: Schema.Types.ObjectId, ref: 'User' }
+    dateMessage:{type: Date},
+    myId:       { type: Schema.Types.ObjectId, ref: 'User' },
+    youId:      {type: Schema.Types.ObjectId, ref: 'User' }
 })
 
 module.exports = model('Rooms', roomSchema)

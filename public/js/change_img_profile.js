@@ -23,7 +23,7 @@ form.addEventListener('submit', (e) => {
     .then(datos => {
         getData.addImg()
     })
-
+    getData.addImg()
     document.getElementById('preView-img').innerHTML=''
     form.reset()
 })
