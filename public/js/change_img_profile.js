@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
     
     if(img.length === 0) return false;
     const formData = new FormData();
-    formData.append('file', img[0])
+    formData.append('image', img[0])
 
     fetch('/cambiar_foto_perfil',{
         method:'POST',

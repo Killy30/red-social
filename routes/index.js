@@ -311,20 +311,16 @@ router.get('/cambiar_foto_perfil', estaAutenticado,async(req,res) => {
 
 //cambiar foto de perfil
 router.post('/cambiar_foto_perfil', async(req, res) =>{
-    let form = formidable.IncomingForm()
-    var usuario = req.user;
-    
-    form
-        .parse(req, (err,fields,file)=>{
+    let usuario = req.user;
+     
+    upload(req, res, async (err) =>{
+        if(err){
+            console.log(err);
+        }else{
+            await User.updateOne({_id: usuario._id}, {$set: {userFoto: '/imagePost/' + req.file.filename}})
+        }
+    })
 
-        })
-        .on('fileBegin',(name,file)=>{
-            file.path = path.join(__dirname, '../public/imagePost/' + file.name);
-        })
-        .on('file', async(name,file)=>{
-            await User.updateOne({_id: usuario._id}, {$set: {userFoto: '/imagePost/' + file.name}})
-        })
-    
     res.json({data:usuario})
 })
 
