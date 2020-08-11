@@ -89,7 +89,7 @@ class UiAddPost{
                     <div class="div_E_D">
                         ${(datos.publicacion[i].user._id == idUser)? `
                             <a  href="#"  data-eli="${datos.publicacion[i]._id}" id="btnEli" class="eliminar" >
-                            Eliminar
+                            <i class="material-icons">delete</i> Eliminar
                             </a>
                         `: ''}
                         <p>${timeago}</p>
@@ -120,26 +120,26 @@ class UiAddPost{
                     <div class="like">
                         ${(likes == true)?
                             `<a href="#" data-my_id="${idUser}" data-id="${datos.publicacion[i]._id}" id="btnId" class="like a_l_c verde" >
-                                Me gusta 
+                                <i class="material-icons">favorite</i> Me gusta 
                             </a>` :            
                             `<a href="#" data-my_id="${idUser}" data-id="${datos.publicacion[i]._id}" id="btnId" class="like a_l_c" >
-                                Me gusta
+                                <i class="material-icons">favorite</i> Me gusta
                             </a>`
                         }
                     </div>
                     <div>
                         <a href="/comentar/${datos.publicacion[i]._id}" class="a_l_c">
-                            Comentar
+                            <i class="material-icons">comment</i> Comentar
                         </a>
                     </div>
                     <div ${(datos.publicacion[i].fotoPost == undefined)? ' style="display: none"' : ''}>
                         ${
                             (saved==true) ?
                             `<a class="a_l_c guardar verde" data-i="${[i]}" data-id="${datos.publicacion[i]._id}" href="">
-                                Guardar
+                                <i class="material-icons">bookmark</i> Guardar
                             </a>` : 
                             `<a class="a_l_c guardar" data-i="${[i]}" data-id="${datos.publicacion[i]._id}" href="">
-                                Guardar
+                                <i class="material-icons">bookmark</i> Guardar
                             </a>`
                         }
                     </div>

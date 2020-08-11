@@ -1,12 +1,13 @@
-var socket = io();
 
 const userstochat = document.getElementById('users_to_chat');
-const myId = userstochat.dataset.id;
+const _myId = userstochat.dataset.id;
 const text_search = document.getElementById('text_search')
 const btn_search = document.getElementById('btn_search')
 
 var roomId;
 var theUserId;
+var socket = io();
+var messageList;
 
 document.addEventListener('DOMContentLoaded', () => {
     uiChat.showUsers()
@@ -25,19 +26,30 @@ class DataUsers{
         }
     }
 
+    async getMyRooms(){
+        try {
+            const req = await fetch('/my_rooms')
+            const res = await req.json()
+            return res
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     //al dar click a un usuario esta funcion envia el id del usuario para verificar si tienen un room 
     //si tiene un room lo manda y si no crea uno nuevo
-    async postIdUser(id){
+    async postIdUser(id, lastMsg){
         const res = await fetch('/userToChat/'+id,{
             method: 'POST',
             body: id
         })
 
         const data = await res.json()
+        
         roomId = data.room._id;
         dataSocket.joinUserToSocket()
         uiChat.showUserToChat(data)
-        console.log(data);
+        dataSocket.viewMessage(lastMsg)
     }
 
     async sendMessage(text){
@@ -62,15 +74,24 @@ class DataSocket{
         socket.emit('send_message',{
             roomId:roomId,
             message:message,
-            myId:myId,
+            myId:_myId,
             theUserId:theUserId
+        })
+    }
+
+    viewMessage(id_msg){
+        socket.emit('view_message', {
+            roomId:roomId,
+            myId:_myId,
+            theUserId:theUserId,
+            id_msg:id_msg
         })
     }
 
     notificar_msj(){
         socket.emit('notificacion_msj',{
             roomId:roomId,
-            myId:myId,
+            myId:_myId,
             theUserId:theUserId
         })
     }
@@ -78,7 +99,7 @@ class DataSocket{
     joinUserToSocket(){
         socket.emit('user_to_join', {
             roomId:roomId,
-            myId:myId
+            myId:_myId
         })
     }
 
@@ -105,7 +126,7 @@ class UiChat{
         
         for(let user of users){
             let nombre = user.nombre.toLowerCase();
-            if (myId != user._id) {
+            if (_myId != user._id) {
                 if (nombre.indexOf(textS) !== -1) {
                     userstochat.innerHTML += `
                     <div  class="ubs seleccionar">
@@ -130,53 +151,80 @@ class UiChat{
 
     //monstrar la lista de usuarios
     async showUsers(){
-        const users = await dataUsers.getUsers()
-        var user_ = users.users;
-        userstochat.innerHTML = '';
-        function compare(a, b){
-            a.rooms.forEach(an => {
-                b.rooms.forEach(bn => {
-                    return bn.dateMessage - an.dateMessage
-                })
-            })
-        }
-        let user = user_.sort(compare)
-        console.log(user);
+        const users = await dataUsers.getMyRooms()
 
-        for(var i = 0; i < user.length; i++){
-            if (myId != user[i]._id) {
+        userstochat.innerHTML = '';
+
+        let rooms = users.sort((a, b) =>{
+            if(a.dateMessage > b.dateMessage) return -1
+            if(a.dateMessage < b.dateMessage) return 1
+            return 0
+        })
+        
+        for(var i = 0; i < rooms.length; i++){
+        
+            if(rooms[i].messages.length > 0){
                 
-                for(var c = 0; c < user[i].rooms.length; c++){
-                    if(user[i].rooms[c].messages.length > 0){
-                        if(user[i].rooms[c].myId === myId || user[i].rooms[c].youId === myId){
-                            let s = user[i].rooms[c].messages.sort()
-                            let oldMessage = user[i].rooms[c].messages.pop()
-                            // console.log(s.pop());
-                            // console.log(oldMessage);
-                            let time = new Date(oldMessage.dateMsg)
-                            let timeToDay = moment(time).format('LT')
-                            // console.log(user[i].rooms);
-                            userstochat.innerHTML += `
-                            <div  class="ubs">
-                                <a class="chat_name seleccionar" id="a" data-users="${user[i]._id}" href="/chat/${user[i].nombre}">
-                                    <div class="userFotoSelect seleccionar" id="a" data-users="${user[i]._id}">
-                                        <img src="${user[i].userFoto? user[i].userFoto : '../userIcon.jpg'}" alt="">
-                                    </div>
-                                    <div class="contentUserSelect seleccionar" id="a" data-users="${user[i]._id}">
-                                        <p class="userNameSelect seleccionar" id="a" data-users="${user[i]._id}">
-                                            ${user[i].nombre}
+                let lastMessage = rooms[i].messages.pop()
+                let time = new Date(lastMessage.dateMsg)
+                let timeToDay = moment(time).format('LT')
+        
+                if(rooms[i].myId._id == _myId){
+                    userstochat.innerHTML += `
+                    <div  class="ubs">
+                        <a class="chat_name seleccionar" id="a" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}" href="/chat/${rooms[i].youId._id}">
+                            <div class="userFotoSelect seleccionar" id="a" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                <img src="${rooms[i].youId.userFoto? rooms[i].youId.userFoto : '../userIcon.jpg'}" alt="">
+                            </div>
+                            <div class="contentUserSelect seleccionar" id="a" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                <p class="userNameSelect seleccionar" id="a" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                    ${rooms[i].youId.nombre}
+                                </p>
+                                <div class="oldMessage seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                    ${(lastMessage.myIdMsg != _myId)?
+                                        `<p class="seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                            ${lastMessage.message}
                                         </p>
-                                        <div class="oldMessage seleccionar" data-users="${user[i]._id}">
-                                            <p class="seleccionar" data-users="${user[i]._id}">${oldMessage.message}</p>
-                                            <samp class="hora seleccionar" data-users="${user[i]._id}">
-                                                ${ timeToDay }
-                                            </samp>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>`
-                        }
-                    }
+                                        <samp class="hora seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                            ${ timeToDay }
+                                        </samp>` :
+                                        `<p class="seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">${lastMessage.message}</p>
+                                        <samp class="hora seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                            ${ timeToDay }
+                                        </samp>`
+                                    }
+                                </div>
+                            </div>
+                        </a>
+                    </div>`
+                }else{
+                    userstochat.innerHTML += `
+                    <div  class="ubs">
+                        <a class="chat_name seleccionar" id="a" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}" href="/chat/${rooms[i].myId._id}">
+                            <div class="userFotoSelect seleccionar" id="a" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                <img src="${rooms[i].myId.userFoto? rooms[i].myId.userFoto : '../userIcon.jpg'}" alt="">
+                            </div>
+                            <div class="contentUserSelect seleccionar" id="a" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                <p class="userNameSelect seleccionar" id="a" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                    ${rooms[i].myId.nombre}
+                                </p>
+                                <div class="oldMessage seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                    ${(lastMessage.myIdMsg != _myId)?
+                                        `<p class="seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                            ${lastMessage.message}
+                                        </p>
+                                        <samp class="hora seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                            ${ timeToDay }
+                                        </samp>` :
+                                        `<p class="seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">${lastMessage.message}</p>
+                                        <samp class="hora seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                            ${ timeToDay }
+                                        </samp>`
+                                    }
+                                </div>
+                            </div>
+                        </a>
+                    </div>`
                 }
             }
         }
@@ -185,10 +233,13 @@ class UiChat{
     selectUserToChat(e) {
         const idUser = e.target.dataset.users;
         theUserId = e.target.dataset.users;
-        dataUsers.postIdUser(idUser)
+        const lastMsg = e.target.dataset.lmsg
+        dataUsers.postIdUser(idUser, lastMsg)
     }
 
     async showUserToChat(data){
+        let data_ = await dataUsers.getUsers()
+        
         document.querySelector('.img_message').style.display = 'none'
         document.querySelector('.box_form').style.display = 'flex'
 
@@ -226,29 +277,43 @@ class UiChat{
         if (innerWidth <= 500) {
             document.querySelector('.atras').style.display = "block"
         }
+        messageList = data.room.messages;
         this.showMessage(data.room.messages)
+
     }
 
     showMessage(messages){
-        let divMessage = document.getElementById('message')
+        let divMessage = document.getElementById('message');
+        
         //monstrar los mensajes
-        for(let message of messages){
+        divMessage.innerHTML = ''
+        for(var i = 0; i < messages.length; i++){
             moment.locale('es-do')
             let toDay = new Date()
-            let time = new Date(message.dateMsg)
+            let time = new Date(messages[i].dateMsg)
+            let viewLastMsg = new Date(messages[i].viewMsg.dateView)
             let timeAgo = moment(time).format('dddd');
             let timeToDay = moment(time).format('LT')
+
+            let timeAgo_lastView = moment(viewLastMsg).format('dddd');
+            let timeToDay_lastView = moment(viewLastMsg).format('LT')
     
-            if(message.myIdMsg == myId){
+            if(messages[i].myIdMsg == _myId){
                 divMessage.innerHTML += `
                 <div class="box_message">
                     <div class="opklo">
                         <span>
-                            <p>${message.message}</p>
+                            <p>${messages[i].message}</p>
                             <samp class="horas">
                                 ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
                         </span>
+                        <div id="vista" class="vista">
+                            <p>${(messages.length-1 == i && messages[i].viewMsg.view == true)? 
+                                `Vista: ${(toDay.getDate() === viewLastMsg.getDate())? timeToDay_lastView : timeAgo_lastView+' '+timeToDay_lastView}` 
+                            : ''
+                            }</p>
+                        </div>
                     </div>
                 </div>`;
             }else{
@@ -256,7 +321,7 @@ class UiChat{
                 <div class="box_message">
                     <div class="opkl">
                         <span>
-                            <p>${message.message}</p>
+                            <p>${messages[i].message}</p>
                             <samp class="horas_u">
                                 ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
@@ -269,11 +334,16 @@ class UiChat{
         divMessage.scrollBy(0, x);
     }
 
-    showMessageTwo(message){
+    //estos son los mensajes que el usuario me manda
+    showMessageTwo(data){
+        let message = data.room_.messages.pop()
+        
         let time = new Date()
         let divMessage = document.getElementById('message')
+        console.log(message);
+        
 
-        if(message.roomId == roomId){
+        if(message.myIdMsg != _myId){
             divMessage.innerHTML += `
             <div class="box_message">
                 <div class="opkl">
@@ -285,26 +355,20 @@ class UiChat{
                     </span>
                 </div>
             </div>`
+        }else{
+            divMessage.innerHTML += `
+            <div class="box_message">
+                <div class="opklo">
+                    <span>
+                        <p>${message.message}</p>
+                        <samp class="horas">
+                            ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                        </samp>
+                    </span>
+                </div>
+            </div>`
         }
-        var x = divMessage.scrollHeight
-        divMessage.scrollBy(0, x);
-    }
-
-    // 
-    showMessagethree(message){
-        let time = new Date()
-        let divMessage = document.getElementById('message')
-        divMessage.innerHTML += `
-        <div class="box_message">
-            <div class="opklo">
-                <span>
-                    <p>${message}</p>
-                    <samp class="horas">
-                        ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
-                    </samp>
-                </span>
-            </div>
-        </div>`
+        
         var x = divMessage.scrollHeight
         divMessage.scrollBy(0, x);
     }
@@ -316,6 +380,7 @@ const dataSocket = new DataSocket();
 
 text_search.addEventListener('keyup', uiChat.searchUser)
 
+//el boton 'atras'
 document.querySelector('.box_contain_chat').addEventListener('click', e =>{
     if(e.target.classList.contains('atras')){
         e.preventDefault()
@@ -324,6 +389,7 @@ document.querySelector('.box_contain_chat').addEventListener('click', e =>{
     }
 })
 
+//capturar el evento cuando el usuario da click a otro usuario en la lista del chat
 userstochat.addEventListener('click' , (e) => {
     e.preventDefault()
     if (e.target.classList.contains('seleccionar')) {
@@ -340,38 +406,66 @@ addEventListener('DOMContentLoaded', () =>{
     }
 })
 
-// on socket
 
+
+// on socket
+//-------------------------------------------------------------------------------
+//
 socket.on('send_message', (data) => {
     let user_typping = document.getElementById('user_typping')
     user_typping.innerText = "";
-    uiChat.showMessageTwo(data)
-    uiChat.showUsers()
+    if(data.room_._id === roomId){
+        uiChat.showMessage(data.room_.messages)
+    }
 })
 
+socket.on('view_message', (data) =>{
+    uiChat.showUsers()
+    
+})
+socket.on('view_message_room', data =>{
+    if(data.room._id === roomId){
+        uiChat.showMessage(data.room.messages)
+    }
+})
+
+//actualiza toda la aplicacion para ver los cambios
 socket.on('notificacion_msj', (data) => {
     uiChat.showUsers()
 })
 
 // cuando el usuario esa escribiendo un mensaje
 socket.on('user_is_typping', (data)=> {
-    let user_typping = document.getElementById('user_typping')
-    user_typping.innerText = "Esta escribiendo"
+    if(data.roomId == roomId){
+        let user_typping = document.getElementById('user_typping')
+        user_typping.innerText = "Esta escribiendo"
+    }
 })
 
 let form = document.getElementById('form')
 const text = document.getElementById('text_msg')
 text.addEventListener('keyup', dataSocket.userIsTypping)
 
+//enviar mensajes cuando preciones el enter
+text.addEventListener('keyup', e =>{
+    let key = event.which || event.keyCode;
+    if(key === 13){
+        if(text.value.trim() === '') return false
+        
+        dataSocket.sendMessage(text.value)
+        dataSocket.notificar_msj()
+        form.reset()
+    }
+})
+
+//enviar mensajes cuando preciones el boton
 form.addEventListener('submit', (e) =>{
     e.preventDefault()
     const text_msg = document.getElementById('text_msg').value;
-    
+  
     if(text_msg.trim() === '') return false
-
-    uiChat.showMessagethree(text_msg)
+    
     dataSocket.sendMessage(text_msg)
     dataSocket.notificar_msj()
-
     form.reset()
 })

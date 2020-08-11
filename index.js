@@ -53,8 +53,9 @@ app.use( async(req, res, next) => {
 app.use( require('./routes/index'));
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-
+//---------------------------------------------------------------------
 // socket
+
 io.on('connection', async(socket) => {
     console.log('chat connect');
 
@@ -63,7 +64,7 @@ io.on('connection', async(socket) => {
     })
 
     socket.on('user_is_typping', (data) => {
-        socket.to(data.roomId).broadcast.emit('user_is_typping', {type:'Esta escribiendo'})
+        socket.to(data.roomId).broadcast.emit('user_is_typping', data)
     })
 
     socket.on('send_message', async(data) =>{
@@ -71,28 +72,48 @@ io.on('connection', async(socket) => {
         if(data.roomId != undefined){
             const user = await User.findById({_id: data.theUserId})
             const myUser = await User.findById({_id: data.myId})
-            const room = await Rooms.findOne({_id: data.roomId}).populate('user')
+            const room = await Rooms.findOne({_id: data.roomId})
             let = mssg = {myIdMsg: data.myId, message: data.message}
             
             room.messages.push(mssg)
             room.dateMessage = Date.now()
             await room.save()
-            await user.save()
-            await myUser.save()
-            socket.to(room._id).emit('send_message', data)
+
+            let room_ = await Rooms.findOne({_id: data.roomId})
+            io.in(room._id).emit('send_message', {data, room, room_})
         }
     })
     
     socket.on('notificacion_msj', async (data) =>{
         
         if(data.roomId != undefined){
-            const user = await User.findById({_id: data.theUserId})
-            const myUser = await User.findById({_id: data.myId})
-            const room = await Rooms.findOne({_id: data.roomId}).populate('user')
+            const room = await Rooms.findOne({_id: data.roomId})
             
-            // socket.join(myUser._id)
-            socket.join('/message/')
-            io.in('/message/').emit('notificacion_msj', data)
+            io.emit('notificacion_msj', {data, room})
+        }
+    })
+
+    socket.on('view_message', async (data) =>{
+        if(data.roomId != undefined){
+            const myUser = await User.findById({_id: data.myId})
+            const room = await Rooms.findOne({_id: data.roomId})
+
+            let lastMessage = room.messages.find(item =>{
+                return item._id == data.id_msg
+            })
+        
+            if(lastMessage != undefined){
+                if(lastMessage.myIdMsg != myUser._id){
+                    if(lastMessage.viewMsg.view == false){
+                        
+                        let obj = {view: view=true, dateView: Date.now()}
+                        lastMessage.viewMsg = obj
+                        await room.save()
+                        socket.emit('view_message', {data, room})
+                        socket.to(room._id).broadcast.emit('view_message_room', {data, room})
+                    }
+                }
+            }
         }
     })
 })

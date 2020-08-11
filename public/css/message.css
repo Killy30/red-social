@@ -52,10 +52,11 @@ body{
     height: 10%;
     display: flex;
     justify-content: center;
-    background-color: rgb(24, 24, 24);
+    /* background-color: rgb(24, 24, 24); */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     align-items: center;
+    border-top: 1px solid rgb(145, 145, 145);
 }
 .box_form form{
     width: 90%;
@@ -65,25 +66,25 @@ body{
     justify-content: space-between;
 }
 .box_form form button{
-    background-color: rgb(2, 170, 2);
+    background-color: #073ef2;
     border: 0;
     outline: none;
-    height: 30px;
+    height: 35px;
     width: 15%;
-    border-radius: 7px;
+    border-radius: 50px;
     font-size: 16px;
     color: #fff;
 }
 textarea{
     width: 80%;
-    height: 40px;
+    height: 35px;
     min-height: 30px;
     max-height: 50px;
     font-family: sans-serif;
-    border-radius: 7px;
-    border: 0;
+    border-radius: 50px;
+    border: 0.5px solid rgb(145, 145, 145);
     resize: none;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     outline: none;
     box-sizing: border-box;
     font-size: 16px;
@@ -134,7 +135,7 @@ textarea{
     font-family: sans-serif;
     font-size: 18px;
     font-weight: bold;
-    color: rgb(2, 170, 2);
+    color: #073ef2;
 }
 .formSearch{
     width: 100%;
@@ -275,7 +276,7 @@ textarea{
     display: flex;
     align-self: flex-start;
     font-weight: bold;
-    color: rgb(2, 170, 2);
+    color: #073ef2;
     font-size: 18px;
 }
 .fn p{
@@ -323,12 +324,23 @@ textarea{
     display: flex;
     justify-content: flex-end;
     padding-right: 15px;
+    flex-wrap: wrap;
+}
+.vista{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.vista p{
+    margin: 0;
+    color: rgb(85, 85, 85);
+    font-size: 14px;
 }
 .opklo span{
     max-width:  60%;
     padding: 8px 13px;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 11px;
     font-family: sans-serif;
     background-color: rgb(255, 251, 251);
     color: rgb(29, 29, 29);
@@ -347,7 +359,7 @@ textarea{
 }
 .opkl span{
     background-color: #4a00d1;
-    border-radius: 8px;
+    border-radius: 11px;
     max-width:  60%;
     padding: 8px 13px;
     box-sizing: border-box;
@@ -377,6 +389,10 @@ textarea{
     display: flex;
     align-self: flex-end;
     justify-content: flex-end;
+}
+.view_msg{
+    font-weight: bolder;
+    color: #e20000;
 }
 
 

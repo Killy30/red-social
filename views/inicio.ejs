@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inicio</title>
     <link rel="stylesheet" href="../css/inicio.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -35,19 +37,19 @@
            </div>
            <div class="h_d">
                <div class="h_d_a">
-                   <a class="la" href="/guardados">Guardados</a>
+                   <a class="la" href="/guardados"><i class="material-icons">bookmark</i> Guardados</a>
                </div>
                <div class="h_d_a">
-                   <a class="la" href="/message">Mensajeria</a>
+                   <a class="la" href="/message"><i class="material-icons md-48"> mail</i> Mensajeria</a>
                </div>
                <div class="h_d_a">
-                   <a class="la" href="/usuario">Usuarios</a>
+                   <a class="la" href="/usuario"><i class="material-icons">people_alt</i> Usuarios</a>
                </div>
                <div class="h_d_a">
-                    <a class="la" href="/config">Configuraciones</a>
+                    <a class="la" href="/config"><i class="material-icons">brightness_high</i> Configuraciones</a>
                 </div>
                <div class="h_d_a">
-                    <a class="la" href="/logout">Salir</a>
+                    <a class="la" href="/logout"><i class="material-icons">logout</i> Salir</a>
                </div>
            </div>
            
@@ -60,11 +62,14 @@
                 <h2 class="h2">Crear Post</h2>
             </div>
             <form class="formulario" id="form" enctype="multipart/form-data">
-                <textarea id="descripcion" placeholder="Escribir un post"  cols="30" required rows="10"></textarea>
+                <textarea id="descripcion" placeholder="Escribe algo"  cols="30" required rows="10"></textarea>
                 <div class="preView-img" id="preView-img"></div>
                 <div class="box_input_file">
                     <input type="file"  id="image" name="image" class="file_img">
-                    <label for="image">Subir foto/video</label>
+                    <label for="image">
+                        <i class="material-icons">photo_library</i> 
+                         foto/video
+                    </label>
                     <button type="submit" id="btnSbmit">Publicar</button>
                 </div>
             </form>

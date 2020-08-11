@@ -30,7 +30,7 @@
                     <a href="/guardados">Guardados</a>
                 </div>
                 <div class="nav_p">
-                    <a href="/message">Mensajeria</a>
+                    <a href="/message/<%=user.id%>">Mensajeria</a>
                 </div>
                 <div class="nav_p">
                     <a  href="/config">Configuraciones</a>
@@ -68,7 +68,10 @@
         </div>
    
         <div class="publicaciones">
-            <h3>Posts</h3>
+            <div class="head_">
+                <h3>Posts</h3>
+                <a href="/guardados">Guardados</a>
+            </div>
             <div class="box postSave"></div>
         </div>
     </div>

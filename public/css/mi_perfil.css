@@ -151,8 +151,15 @@ h3{
   box-sizing: border-box;
   box-shadow: 1px 1px 10px -5px;
 }
-.publicaciones h3{
+.head_{
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.head_ a{
+  display: none;
+  text-decoration: none;
+  color: rgb(111, 0, 255);
 }
 .box_publicacion{
   width: 24%;
@@ -250,5 +257,9 @@ view{
     color: rgb(218, 3, 3);
     border-radius: 3px;
     font-size: 13px;
+  }
+
+  .head_ a{
+    display: flex;
   }
 }

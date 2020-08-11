@@ -100,11 +100,17 @@ body{
     color: #313131;
     width: 100%;
     padding: 12px 5px;
+    display: flex;
+    align-items: flex-end;
 }
 .h_d_a a:hover{
     background-color: #313131;
     border-radius: 8px;
     color:#fff;
+}
+.h_d_a a i{
+    font-size: 25px;
+    padding-right: 8px;
 }
 .divUserName{
     width: 100%;
@@ -192,20 +198,23 @@ input{
     display: none;
 }
 .box_input_file{
+    padding-top: 10px;
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 95%;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 5px 0 10px ;
+    border-top: 0.5px solid rgb(163, 163, 163);
+    box-sizing: border-box;
 }
 .box_input_file label{
-    background-color: #05F29B;
-    height: 30px;
+    background-color: #1a1a1a;
+    height: 40px;
     width: 35%;
     top: 160px;
     right: 0;
     left: -460px;
-    font-size: 20px;
+    font-size: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -214,18 +223,23 @@ input{
     color: #fff;
     cursor: pointer;
 }
+.box_input_file label i{
+    padding-right: 5px;
+}
+.box_input_file label:hover{
+    background-color: #d6d6d6;
+    color: #141414;
+}
 
 button{
-    background-color: #5207F2;
+    background-color: #073ef2;
     border: none;
     width: 25%;
     color: #fff;
     font-family: sans-serif;
     border-radius: 7px;
-    font-size: 19px;
-    margin-top: 7px;
-    height: 30px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    height: 40px;
     font-weight: bolder;
     cursor: pointer;
     outline: none;
@@ -295,7 +309,7 @@ button{
     margin: 0;
     font-family: sans-serif;
     font-size: 15px;
-    color: rgb(2, 170, 2);
+    color: #073ef2;
 }
 .postTitulo{
     width: 100%;
@@ -322,6 +336,9 @@ button{
 .eliminar:hover{
     background-color: rgb(212, 0, 0);
     color: #fff;
+}
+.eliminar i{
+    font-size: 20px;
 }
 .div_E_D p{
     display: flex;
@@ -377,8 +394,13 @@ button{
     font-family: sans-serif;
     font-size: 16px;
     color: rgb(0, 0, 190);
-    
+    display: flex;
+    align-items: flex-end;
 }
+.a_l_c i{
+    font-size: 21px;
+}
+
 
 /* comentarios */
 .coment{
@@ -464,13 +486,22 @@ b{
         justify-content: center;
     }
     .form{
-        width: 98%;
+        width: 100%;
         min-height: 160px;
         background-color: #fff;
         margin-top: 60px;
         margin-bottom: 15px;
         border-radius: 10px;
+        max-height: 760px;
+        border-radius: 0px;
     }
+    .post{
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+
+
+
     .box_input_file label{
         font-size: 15px;
     }
@@ -478,17 +509,14 @@ b{
         font-size: 15px;
     }
     .contenido{
-        width: 98%;
+        width: 100%;
     }
     .publicacion{
         width: 100%;
+        border-radius: 0px;
+    
     }
-    .form{
-        width: 98%;
-        max-height: 760px;
-        background-color: #fff;
-        margin-top: 60px;
-    }
+   
     .preView-img{
         width: 80%;
         max-height: 400px;
@@ -509,5 +537,12 @@ b{
     }
     .count p{
         font-size: 13px;
+    }
+
+    .a_l_c{
+        font-size: 14px;
+    }
+    .a_l_c i{
+        font-size: 16px;
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%=user.nombre%></title>
+    <title><%=users.nombre%></title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/mi_perfil.css">
     <link rel="stylesheet" href="../css/view_img.css">
@@ -35,38 +35,38 @@
         <div class="cabecera">
             <div class="portada"></div>
             <div class="foto">
-                <%if(!user.userFoto){%>
+                <%if(!users.userFoto){%>
                     <img class="imgPerfil" src="../userIcon.jpg" >
                 <%}%>
-                <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
+                <img class="imgPerfil" src="<%=users.userFoto%>" alt="">
             </div>
             <div class="name">
-                <h2 class="h2"><%=user.nombre%></h2>
-                <h3 class=""><%=user.email%></h3>
+                <h2 class="h2"><%=users.nombre%></h2>
+                <h3 class=""><%=users.email%></h3>
             </div>
         </div>
         
         <div class="info">
             <h3 class="">Informacion Personal</h3>
             <div class="datos">
-                <%if(user.estudio){%>
+                <%if(users.estudio){%>
                     <div class="gh">
-                        <p><strong>Estudios o Carera:</strong> <%=user.estudio%></p>
+                        <p><strong>Estudios o Carera:</strong> <%=users.estudio%></p>
                     </div>
                 <%}%>
-                <%if(user.pais){%>
+                <%if(users.pais){%>
                     <div class="gh">
-                        <p><strong>Pais:</strong> <%=user.pais%></p>
+                        <p><strong>Pais:</strong> <%=users.pais%></p>
                     </div>
                 <%}%>
-                <%if(user.cuidad){%>
+                <%if(users.cuidad){%>
                     <div class="gh">
-                        <p><strong>Cuidad:</strong> <%=user.cuidad%></p>
+                        <p><strong>Cuidad:</strong> <%=users.cuidad%></p>
                     </div>
                 <%}%>
-                <%if(user.dia && user.mes && user.ano){%>
+                <%if(users.dia && users.mes && users.ano){%>
                     <div class="gh">
-                        <p><strong>Fecha de nacimiento:</strong> <%=user.dia%></p><p><%=user.mes%></p><p><%=user.ano%></p>
+                        <p><strong>Fecha de nacimiento:</strong> <%=users.dia%></p><p><%=users.mes%></p><p><%=users.ano%></p>
                     </div>
                 <%}%>
             </div>
@@ -75,14 +75,14 @@
         <div class="publicaciones">
             <h3>Posts</h3>
             <div class="box postSave">
-                <%for(var c = user.posts.length-1; c >=0; c--){%>
-                    <%if(!user.posts[c].descripcion) {%>
+                <%for(var c = users.posts.length-1; c >=0; c--){%>
+                    <%if(!users.posts[c].descripcion) {%>
                         <div class="box_publicacion">
                             <div class="box_img">
-                                <%if(user.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
-                                    <video controls class="imgPost" src="<%=user.posts[c].fotoPost%>"</video>
+                                <%if(users.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                                    <video controls class="imgPost" src="<%=users.posts[c].fotoPost%>"</video>
                                 <%}%>
-                                <img class="imgPost view" data-img_="<%=user.posts[c].fotoPost%>" src="<%=user.posts[c].fotoPost%>" alt="">
+                                <img class="imgPost view" data-img_="<%=users.posts[c].fotoPost%>" src="<%=users.posts[c].fotoPost%>" alt="">
                             </div>
                         </div>
                     <%}%>

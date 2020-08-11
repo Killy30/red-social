@@ -78,8 +78,13 @@ router.get('/comments', estaAutenticado, async (req, res, next) => {
 //users
 router.get('/users', estaAutenticado, async (req, res) => {
     let myUser = req.user
+
+    const rooms = await Rooms.find({$or:[
+        {myId: myUser._id},{youId: myUser._id}
+    ]}).populate('myId').populate('youId')
+
     const users = await User.find().populate('rooms')
-    res.json({users, myUser})
+    res.json({users, myUser, rooms})
 })
 
 router.post('/data', async(req, res) =>{
@@ -202,7 +207,7 @@ router.get('/guardados',estaAutenticado, async(req, res) => {
     const myUser = await User.findOne({_id: user._id}).populate('posts');
     let p_s = [];
     for(var i  = 0; i <= user.postsSaved.length; i++){
-        if(user.postsSaved[i] !== undefined){
+        if(user.postsSaved[i] != undefined){
             let post = await Posts.findById({_id: user.postsSaved[i]})
             p_s.push(post)
         }
@@ -230,60 +235,8 @@ router.post('/savedPost/:id', async(req, res) => {
     res.json(fv)
 })
 
-//----------------------------------------------------------------------------------------//
-//funciones del chat
-//vista de messager
-router.get('/message', estaAutenticado, async (req, res) => {
-    const user = req.user
-    res.render('message', {user})
-})
-
-//funcion para crear un nuevo room para el chat
-//este room se creara cuando le das click a un usuario 
-router.post('/userToChat/:id', async(req, res) => {
-    const idUser = req.params.id
-    const myUser = req.user
-    const user = await User.findById({_id: idUser})
-
-    //verificar si existe un room con los ids de los usuarios
-    const room = await Rooms.findOne({$and:[
-        {myId: {$in:[user.id, myUser.id]}},
-        {youId: {$in:[user.id, myUser.id]}}
-    ]})
-    
-    //si no existe crealo
-    if(room == null){
-        const newRoom = new Rooms()
-        newRoom.myId = myUser;
-        newRoom.youId = user;
-
-        await newRoom.save();
-        myUser.rooms.push(newRoom);
-        user.rooms.push(newRoom)
-        await myUser.save();
-        await user.save()
-
-        return res.json({user, room:newRoom})
-    }
-    
-    res.json({user,room})
-})
-
-//message send
-router.post('/messageSend/:msg', async(req, res) => {
-    const data = JSON.parse(req.params.msg)
-    const myUser = req.user;
-    console.log(req.body);
-    if(data.roomId != undefined){
-        const room = await Rooms.findById({_id: data.roomId})
-        let = mssg = {myIdMsg: myUser.id, message: data.text}
-    
-        room.messages.push(mssg)
-        await room.save()
-        res.json({room})
-    }
-})
-//------------------------------------------------------------------------------------------------//
+//message
+require('./message')(router, estaAutenticado)
 
 //vista de mi perfil
 router.get('/my_perfil', estaAutenticado,async(req,res) => {
@@ -326,8 +279,9 @@ router.post('/cambiar_foto_perfil', async(req, res) =>{
 
 //vista de perfil de los usuarios
 router.get('/perfil/:id', estaAutenticado,async(req,res) => {
-    const user = await User.findById({_id: req.params.id}).populate('posts');
-    res.render('perfil', {user})
+    let user = req.user;
+    const users = await User.findById({_id: req.params.id}).populate('posts');
+    res.render('perfil', {user, users })
 })
 
 //vista para buscar usuarios
