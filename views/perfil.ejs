@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/mi_perfil.css">
     <link rel="stylesheet" href="../css/view_img.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -41,10 +43,12 @@
                 <img class="imgPerfil" src="<%=users.userFoto%>" alt="">
             </div>
             <div class="name">
-                <h2 class="h2"><%=users.nombre%></h2>
-                <h3 class=""><%=users.email%></h3>
+                <h1 class="h2"><%=users.nombre%></h1>
+                <p class=""><%=users.email%></p>
             </div>
         </div>
+
+        <div class="espace"></div>
         
         <div class="info">
             <h3 class="">Informacion Personal</h3>
@@ -73,7 +77,9 @@
         </div>
 
         <div class="publicaciones">
-            <h3>Posts</h3>
+            <div class="head_p">
+                <p><i class="material-icons">collections</i> Posts</p>
+            </div>
             <div class="box postSave">
                 <%for(var c = users.posts.length-1; c >=0; c--){%>
                     <%if(!users.posts[c].descripcion) {%>

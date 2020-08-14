@@ -15,7 +15,9 @@ class Post{
             if(user.posts[c].fotoPost){ 
                 let ext = user.posts[c].fotoPost.split('.',2)[1].toLowerCase()
                 box.innerHTML += `<div class="box_publicacion">
-                    <a href="#"  data-id="${user.posts[c]._id}" id="btnEli" class="eliminar">Eliminar</a>
+                    <a href="#"  data-id="${user.posts[c]._id}" id="btnEli" class="eliminar">
+                        <i class="material-icons">delete</i> Eliminar
+                    </a>
                     <div class="box_img">
                         ${(ext === 'mp4')?
                             `<video controls class="imgPost" src="${user.posts[c].fotoPost}"></video>`:

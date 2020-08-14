@@ -268,14 +268,14 @@ class UiChat{
                 </div>
                 <div class="ue">
                     <samp>${data.user.email}</samp>
-                    <a href="#" class="atras" style="display: none">Atras</a>
+                    <a href="#" class="atras" style="display: none"><i class="material-icons">keyboard_arrow_left</i> Atras </a>
                 </div>
             </div>
             <div id="message" class=""> </div>
         </div>
         `
         if (innerWidth <= 500) {
-            document.querySelector('.atras').style.display = "block"
+            document.querySelector('.atras').style.display = "flex"
         }
         messageList = data.room.messages;
         this.showMessage(data.room.messages)

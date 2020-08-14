@@ -54,10 +54,10 @@ class UiPost {
                 <div class="like">
                     ${(likes == true)?
                         `<a href="#" data-my_id="${id}" data-id="${data.post._id}" id="btnId" class="like a_l_c verde" >
-                            Me gusta 
+                            <i class="material-icons">favorite</i> Me gusta 
                         </a>` :            
                         `<a href="#" data-my_id="${id}" data-id="${data.post._id}" id="btnId" class="like a_l_c" >
-                            Me gusta
+                            <i class="material-icons">favorite</i> Me gusta
                         </a>`
                     }
                 </div>
@@ -65,10 +65,10 @@ class UiPost {
                     ${
                         (saved==true) ?
                         `<a class="a_l_c guardar verde" data-id="${data.post._id}" href="">
-                            Guardar
+                            <i class="material-icons">bookmark</i> Guardar
                         </a>` : 
                         `<a class="a_l_c guardar" data-id="${data.post._id}" href="">
-                            Guardar
+                            <i class="material-icons">bookmark</i> Guardar
                         </a>`
                     }
                 </div>

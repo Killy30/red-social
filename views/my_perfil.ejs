@@ -7,6 +7,8 @@
     <title><%=user.nombre%></title>
     <link rel="stylesheet" href="../css/mi_perfil.css">
     <link rel="stylesheet" href="../css/view_img.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <%-include('header')%>
@@ -23,21 +25,24 @@
                 <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
             </div>
             <div class="name">
-                <h2 class="h2"><%=user.nombre%></h2>
+                <h1 class="h2"><%=user.nombre%></h1>
+                <p class=""><%=user.email%></p>
             </div>
-            <div class="more">
-                <div class="nav_p">
-                    <a href="/guardados">Guardados</a>
-                </div>
-                <div class="nav_p">
-                    <a href="/message/<%=user.id%>">Mensajeria</a>
-                </div>
-                <div class="nav_p">
-                    <a  href="/config">Configuraciones</a>
-                </div>
-                <div class="nav_p">
-                    <a class="a_cam" href="cambiar_foto_perfil">Cambiar foto perfil</a>
-                </div>
+        
+        </div>
+
+        <div class="more">
+            <div class="nav_p">
+                <a href="/guardados"><i class="material-icons">bookmark</i>Guardados</a>
+            </div>
+            <div class="nav_p">
+                <a href="/message"><i class="material-icons md-48"> mail</i> Mensajeria</a>
+            </div>
+            <div class="nav_p">
+                <a  href="/config"><i class="material-icons">brightness_high</i> Configuraciones</a>
+            </div>
+            <div class="nav_p">
+                <a class="a_cam" href="cambiar_foto_perfil"><i class="material-icons">add_a_photo</i> Editar foto de perfil</a>
             </div>
         </div>
         
@@ -69,8 +74,8 @@
    
         <div class="publicaciones">
             <div class="head_">
-                <h3>Posts</h3>
-                <a href="/guardados">Guardados</a>
+                <p><i class="material-icons">collections</i> Posts</p>
+                <a href="/guardados"><i class="material-icons">bookmark</i> Guardados</a>
             </div>
             <div class="box postSave"></div>
         </div>

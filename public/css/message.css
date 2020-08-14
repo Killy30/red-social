@@ -133,9 +133,9 @@ textarea{
     width: 100%;
     align-items: center;
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
-    color: #073ef2;
+    color: #1d1d1d;
 }
 .formSearch{
     width: 100%;
@@ -152,9 +152,9 @@ textarea{
 .formSearch input{
     width: 95%;
     height: 32px;
-    border-radius: 9px;
+    border-radius: 50px;
     outline: none;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border: 0;
     box-sizing: border-box;
     font-size: 16px;
@@ -462,13 +462,17 @@ textarea{
     .user_typping{
         font-size: 13px;
     }
+
     .atras{
-        display: flex;
         text-decoration: none;
-        padding: 7px;
+        padding: 5px;
         background-color: rgb(179, 0, 0);
         color: #fff;
         border-radius: 7px;
+        align-items: center;
+    }
+    .atras i{
+        font-size: 30px;
     }
 
     .opkl span{

@@ -8,7 +8,7 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="../css/inicio.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -17,18 +17,21 @@
    <div class="user_p">
        <div class="content_user">
            <div class="f_n">
+               <div class="logo_post">
+                   <img src="../img/logo_postLine.png" alt="">
+               </div>
                 <div class="fotoPerfil">
                     <%if(!user.userFoto){%>
                         <img class="img_user" src="../userIcon.jpg" >
                     <%}%>
                     <img class="img_user" src="<%=user.userFoto%> " >
                     <div class="cambiarFoto">
-                        <a class="a_cam" href="cambiar_foto_perfil">Agregar foto</a>
+                        <a class="a_cam" href="cambiar_foto_perfil">Editar foto</a>
                     </div>
                 </div>
                 <div class="nameUser">
                     <div class="divUserName">
-                        <strong class="h3_userName"><%=user.nombre%></strong>
+                        <h1 class="h3_userName"><%=user.nombre%></h1>
                     </div>
                     <div class="divUserName">
                         <h5 class="h3_userEmail"><%=user.email%></h5>
@@ -59,7 +62,7 @@
    <div class="content">
         <div class="form">
             <div class="post">
-                <h2 class="h2">Crear Post</h2>
+                <h3 class="h2">Crear Post</h3>
             </div>
             <form class="formulario" id="form" enctype="multipart/form-data">
                 <textarea id="descripcion" placeholder="Escribe algo"  cols="30" required rows="10"></textarea>
@@ -67,7 +70,7 @@
                 <div class="box_input_file">
                     <input type="file"  id="image" name="image" class="file_img">
                     <label for="image">
-                        <i class="material-icons">photo_library</i> 
+                        <i class="material-icons">add_photo_alternate</i> 
                          foto/video
                     </label>
                     <button type="submit" id="btnSbmit">Publicar</button>

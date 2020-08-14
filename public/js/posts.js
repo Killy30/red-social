@@ -89,7 +89,7 @@ class UiAddPost{
                     <div class="div_E_D">
                         ${(datos.publicacion[i].user._id == idUser)? `
                             <a  href="#"  data-eli="${datos.publicacion[i]._id}" id="btnEli" class="eliminar" >
-                            <i class="material-icons">delete</i> Eliminar
+                                <i class="material-icons">delete</i> Eliminar
                             </a>
                         `: ''}
                         <p>${timeago}</p>
