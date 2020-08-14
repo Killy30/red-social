@@ -21,6 +21,7 @@ form.addEventListener('submit', (e) => {
     })
     .then(res => res.json())
     .then(datos => {
+        console.log(datos);
         getData.addImg()
     })
     getData.addImg()
