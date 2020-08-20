@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/view_img.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link href="../lightbox2-master//dist/css/lightbox.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -51,7 +52,9 @@
         <div class="espace"></div>
         
         <div class="info">
-            <h3 class="">Informacion Personal</h3>
+            <div class="in">
+                <h3 class="">Informacion Personal</h3>
+            </div>
             <div class="datos">
                 <%if(users.estudio){%>
                     <div class="gh">
@@ -82,13 +85,15 @@
             </div>
             <div class="box postSave">
                 <%for(var c = users.posts.length-1; c >=0; c--){%>
-                    <%if(!users.posts[c].descripcion) {%>
+                    <%if(users.posts[c].fotoPost) {%>
                         <div class="box_publicacion">
-                            <div class="box_img">
-                                <%if(users.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
-                                    <video controls class="imgPost" src="<%=users.posts[c].fotoPost%>"</video>
-                                <%}%>
-                                <img class="imgPost view" data-img_="<%=users.posts[c].fotoPost%>" src="<%=users.posts[c].fotoPost%>" alt="">
+                            <div class="img_post">
+                                <a class="box_img" href="<%=users.posts[c].fotoPost%>" data-lightbox="example-set" data-title="<%=users.posts[c].descripcion%>">
+                                    <%if(users.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                                        <video controls class="imgPost" src="<%=users.posts[c].fotoPost%>"</video>
+                                    <%}%>
+                                    <img class="imgPost" data-img_="<%=users.posts[c].fotoPost%>" src="<%=users.posts[c].fotoPost%>" alt="">
+                                </a>
                             </div>
                         </div>
                     <%}%>
@@ -97,6 +102,8 @@
         </div>
     </div>
 
-    <script src="../js/view_img.js"></script>
+    
+    <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script>
+
 </body>
 </html>

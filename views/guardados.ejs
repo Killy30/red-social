@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/guardados.css">
     <link rel="stylesheet" href="../css/view_img.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link href="../lightbox2-master//dist/css/lightbox.min.css" rel="stylesheet" />
 </head>
 <body>
     <%include header%>
@@ -20,18 +21,18 @@
         </div>
         <div  class="postSave">
             <%for(var c = p_s.length-1; c >=0; c--){%>
-                <div class="publicacion">
+                <a href="<%=p_s[c].fotoPost%>" data-lightbox="example-set" class="publicacion">
                     <div class="images">
                         <%if(p_s[c].fotoPost.split('.',2)[1] === "mp4"){%>
                             <video controls class="img_v" src="<%=p_s[c].fotoPost%>"></video>
                         <%}%>
                         <img class="view" data-img_="<%=p_s[c].fotoPost%>" src="<%=p_s[c].fotoPost%>" alt="">
                     </div>
-                </div>
+                </a>
             <%}%>
         </div>
     </div>
 
-    <script src="../js/view_img.js"></script>
+    <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>

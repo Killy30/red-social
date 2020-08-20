@@ -9,7 +9,7 @@ header{
     position: relative;
     position: fixed;
     z-index: 1;
-    border-bottom: 1px solid rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(218, 0, 0);
 }
 .h1{
     margin: 0;
@@ -32,26 +32,35 @@ header{
     font-weight: 100;
     margin-top: 5px;
 }
-
+nav{
+    padding: 0;
+}
 nav ul{
     display: flex;
-    justify-content:flex-end;
+    justify-content:space-between;
     text-align: center;
     margin: 8px;
+    padding: 0;
 }
 li{
-    padding: 6px;
     list-style: none;
+    padding-left: 5px;
+    box-sizing: border-box;
 }
 li a {
     text-decoration: none;
     color: #fff;
-    font-size: 15px;
     font-family: sans-serif;
+    box-sizing: border-box;
     transition: 1s;
-
+    margin-left: 10px;
 }
 li a:hover{
-    transition: 1s;
-    border-bottom: 1px solid #ffffff
+    border-bottom: 1px solid white;
+}
+
+
+
+@media only screen and (max-width: 500px){
+
 }

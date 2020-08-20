@@ -2,9 +2,10 @@ const form = document.getElementById('form')
 const box = document.getElementById('boxF')
 const btn = document.getElementById('btn')
 
-let h = innerHeight;
-document.querySelector('.content').style.height = h+'px'
-
+document.addEventListener('DOMContentLoaded', () => {
+    let h = innerHeight;
+    document.querySelector('.content').style.height = h+'px'
+})
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()

@@ -70,3 +70,41 @@ select{
     color: white;
     font-size: 20px;
 }
+
+
+@media only screen and (max-width: 500px){
+    .container{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .logo{
+        padding-left: 15px;
+        box-sizing: border-box;
+    }
+    .logo img{
+        width: 50%;
+        
+    }
+    h3{
+        margin: 0;
+        font-size: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    .form{
+        width: 90%;
+    }
+    input{
+        width: 90%;
+    }
+    h2{
+        font-size: 20px;
+    }
+    .div_fecha input{
+        width: 20%;
+    }
+    .btn{
+        width: 50%;
+        font-size: 20px;
+    }
+}

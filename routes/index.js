@@ -7,6 +7,7 @@ const Rooms = require('../database/room')
 const multer = require('multer');
 const path = require('path');
 const formidable = require('formidable');
+const fs = require('fs')
 
 
 const router = express.Router();
@@ -153,6 +154,7 @@ router.get('/eliminar/:id',estaAutenticado, async(req, res) => {
     const post = await Posts.findByIdAndDelete({_id: id})
     const allUser = await User.find()
     const user = req.user;
+    let id_img = post.fotoPost.split('t/', 2)[1]
 
     let i = user.posts.indexOf(id)
     const i_ = user.postsSaved.indexOf(id)
@@ -176,6 +178,13 @@ router.get('/eliminar/:id',estaAutenticado, async(req, res) => {
                 user.postsSaved.splice(index, 1)
                 await user.save()
             }
+        }
+    })
+
+    //esto borra el imagen en el folde imagePost
+    fs.unlink(path.join(__dirname, `../public/imagePost/${id_img}`), function(err){
+        if(err){
+            console.log(err);
         }
     })
 

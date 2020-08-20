@@ -268,14 +268,14 @@ class UiChat{
                 </div>
                 <div class="ue">
                     <samp>${data.user.email}</samp>
-                    <a href="#" class="atras" style="display: none"><i class="material-icons">keyboard_arrow_left</i> Atras </a>
+                    <a href="#" class="atras back" style="display: none"><i class="material-icons back">keyboard_arrow_left</i> Atras </a>
                 </div>
             </div>
             <div id="message" class=""> </div>
         </div>
         `
         if (innerWidth <= 500) {
-            document.querySelector('.atras').style.display = "flex"
+            document.querySelector('.back').style.display = "flex"
         }
         messageList = data.room.messages;
         this.showMessage(data.room.messages)
@@ -382,7 +382,7 @@ text_search.addEventListener('keyup', uiChat.searchUser)
 
 //el boton 'atras'
 document.querySelector('.box_contain_chat').addEventListener('click', e =>{
-    if(e.target.classList.contains('atras')){
+    if(e.target.classList.contains('back')){
         e.preventDefault()
         document.querySelector('.box_user').style.display = "block"
         document.querySelector('.box_contain_chat').style.display = "none"
