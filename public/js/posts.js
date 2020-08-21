@@ -145,25 +145,27 @@ class UiAddPost{
                     </div>
                 </div>
                 <div class="coment" id="com">
-                    ${array.map(element => {
-                        return `
-                            <div class="box_cmt">
-                                <div class="cm">
-                                    <div class="cm_">
-                                        <div class="hjk">
-                                            <div class="c_user_foto">
-                                                <img src="${element.user.userFoto? element.user.userFoto : '../userIcon.jpg'}" alt="">
-                                            </div> 
+                    ${array.map((element, i) => {
+                        if(i<=4){
+                            return `
+                                <div class="box_cmt">
+                                    <div class="cm">
+                                        <div class="cm_">
+                                            <div class="hjk">
+                                                <div class="c_user_foto">
+                                                    <img src="${element.user.userFoto? element.user.userFoto : '../userIcon.jpg'}" alt="">
+                                                </div> 
+                                            </div>
+                                            <span>
+                                                <a class="c_a_user" href="${(element.user._id == idUser)? '/my_perfil' : `/perfil/${element.user._id}`}">
+                                                    <b>${element.user.nombre}</b> 
+                                                </a>
+                                                ${element.comentario}
+                                            </span>
                                         </div>
-                                        <span>
-                                            <a class="c_a_user" href="${(element.user._id == idUser)? '/my_perfil' : `/perfil/${element.user._id}`}">
-                                                <b>${element.user.nombre}</b> 
-                                            </a>
-                                            ${element.comentario}
-                                        </span>
                                     </div>
-                                </div>
-                            </div>`
+                                </div>`
+                        }
                     })}
                 </div>
             </div>`   

@@ -14,6 +14,9 @@ body{
     margin-bottom: 20px;
     position: relative;
 }
+#container{
+    width: 100%;
+}
 .publicacion{
     width: 95%;
     display: flex;
@@ -56,6 +59,8 @@ body{
     font-family: sans-serif;
     margin-bottom: 10px;
     margin-top: 5px;
+    padding-left: 10px;
+    box-sizing: border-box;
 }
 .p{
     width: 100%;
@@ -207,7 +212,7 @@ form button{
     padding: 5px 13px;
 }
 b{
-    color: rgb(2, 170, 2);
+    color: rgb(0, 74, 212);
 }
 
 
