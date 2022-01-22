@@ -1,4 +1,3 @@
-
 body{
   padding: 0;
   margin: 0;
@@ -26,38 +25,19 @@ h1{
   justify-content: center;
   flex-wrap: wrap;
 }
-.card_profile_img{
-  margin-top: 70px;
-  position: relative;
 
-}
 .foto{
   width: 150px;
   height: 150px;
+  margin-top: 70px;
+  /* background-color: #000761; */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 4px solid #000761; */
   border-radius: 50%;
-  position: relative;
-}
-.add_profile{
-  position: absolute;
-  right: 0;
-  bottom: 20px;
-  color: #ffffff;
-  background-color:var(--color_two);
-  padding: 5px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  
-}
-.add_profile span{
-  font-size: 17px;
-  
+  overflow: hidden;
 }
 .imgPerfil{
   width: 100%;
@@ -71,16 +51,16 @@ h1{
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 10px 0 15px 0;
+  margin: 10px 0 10px 0;
 }
-.name_user{
+.users_name{
   margin: 0;
   font-family: var(--name_user_font);
+  font-weight: 500;
   width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
 }
 .user_link{
   display: flex;
@@ -100,56 +80,58 @@ h1{
 }
 
 
-.more{
-  width: 96%;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0 10px 0;
-  border-bottom: 1px solid #ccc;
-}
-.nav_p a{
-  text-decoration: none;
-  font-size: 18px;
-  font-family: sans-serif;
-  color: #00a2ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
+
+
+
 
 .info{
   width: 70%;
+  background-color: #fff;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .bio{
   width: 100%;
+  margin-bottom: 20px;
 }
 .bio p{
+  margin: 0;
   text-align: center;
   font-family: var(--name_user_font);
   font-weight: 300;
   font-size: 17px;
-  margin: 0;
 }
 
 
+.btn_follow{
+  outline: 0;
+  /* border: 2px solid #00a2ff; */
+  color: #fff;
+  background-color: #00a2ff;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 25px;
+  transition: 0.5s;
+  font-family: var(--name_user_font);
+}
+
 
 .in{
-  display: grid;
   display: grid;
   width: 100%;
   height: 55px;
   grid-template-columns: repeat(3, 1fr);
   border-bottom: 1px solid rgba(177, 177, 177, 0.8);
   border-top: 1px solid rgba(177, 177, 177, 0.8);
+  margin-top: 10px;
   align-items: center;
 }
+
 .movil_follow:nth-child(2n+2){
   border-left: 1px solid rgba(177, 177, 177, 0.8);
   border-right: 1px solid rgba(177, 177, 177, 0.8);
@@ -169,26 +151,6 @@ h1{
   font-weight: 300;
 }
 
-.datos{
-  display: flex;
-  flex-wrap: wrap;
-}
-.gh{
-  width: 100%;
-  display: flex;
-  margin-bottom: 10px;
-}
-.gh p{
-  margin: 0 0 0 5px;
-}
-.fhk{
-  font-weight: bold;
-  margin-right: 5px;
-  color: #313131;
-}
-
-
-
 
 .publicaciones{
   width: 100%;
@@ -197,14 +159,13 @@ h1{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border-radius: 10px;
-  box-sizing: border-box;
 }
-.box{
+.box_post{
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+   
 }
 
 .box_publicacion{
@@ -212,7 +173,18 @@ h1{
   height: 250px;
   display: flex;
   justify-content: center;
+    
 }
+/* .box_publicacion:nth-col{
+    margin-right: 2%;
+} */
+/* .box_publicacion:nth-child(3n+2){
+    margin-right: 2%;
+    margin-left: 2%;
+} */
+
+
+
 .img_post{
   width: 100%;
   height: 100%;
@@ -220,7 +192,7 @@ h1{
   flex-wrap: wrap;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
+
 }
 .box_img{
   width: 100%;
@@ -230,49 +202,29 @@ h1{
   justify-content: center;
   position: relative;
 }
-
-.post_menu{
-  position: absolute;
-  z-index: 1;
-  top: 10px;
-  right: 7px;
-  padding: 5px;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: flex-end;
-  background-color: rgba(10, 10, 10, 0.637);
-  cursor: pointer;
-}
-.body_post_menu{
-  display: none;
-  position: absolute;
-  z-index: 1;
-  top: 50px;
-  right: 7px;
-  background-color: rgba(10, 10, 10, 0.726);
-  padding: 10px;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-.body_post_menu a{
-  color: #fff;
-  text-decoration: none;
-  font-family: var(--name_user_font);
-  font-weight: 300;
-}
-
-.display{
-  display: flex;
-  transition: 0.3s;
-}
-
 .imgPost{
   width: 100%;
-  height: 100%;
   object-fit: cover;
   cursor: pointer;
 }
+
+.eliminar{
+  position: absolute;
+  z-index: 1;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  color: rgb(218, 3, 3);
+  border-radius: 7px;
+  display: flex;
+  align-items: flex-end;
+}
+.eliminar:hover{
+  background-color: rgb(219, 0, 0);
+  color: #fff;
+}
+
 view{
   cursor: pointer;
 }
@@ -293,6 +245,7 @@ view{
     width: 120px;
     height: 120px;
   }
+  
 }
 
 @media only screen and (max-width: 780px){
@@ -301,7 +254,7 @@ view{
     margin-left: 10px;
     margin-right: 10px;
   }
-  .box{
+  .box_post{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -315,7 +268,7 @@ view{
   
 }
 
-/* phone */
+
 @media only screen and (max-width: 500px){
   .content{
     width: 100%;
@@ -326,15 +279,10 @@ view{
     height: 175px;
     /* margin-bottom: 10px; */
   }
-  .card_profile_img{
-    margin-top: 15px;
-    position: relative;
-  
-  }
   .foto{
     width: 100px;
     height: 100px;
-    /* margin-top: 15px; */
+    margin-top: 15px;
   }
   .imgPerfil{
     width: 100%;
@@ -348,11 +296,14 @@ view{
   .name_1 {
     width: 100%;
   }
-  .name_user{
-    margin: 0;
-    font-size: 17px;
-  }
+  .h2{
+    font-size: 18px;
 
+  }
+  .bio{
+    
+    margin-bottom: 5px;
+  }
   .bio p{
     margin: 0;
     font-size: 14px;
@@ -361,19 +312,48 @@ view{
   .follow{
     display: none;
   }
+  .info{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .btn-follow{
+    margin: 10px;
+  }
+  .in{
+    width: 96%;
+    margin-bottom: 10px;
+  }
+  .movil_follow{
+    
+  }
+  .movil_follow p{
+    font-size: 14px;
+  }
 
-  .box{
+  .box_post{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3px;
+    padding-top: 0;
+    border-top: none;
+  }
+ 
+  .publicaciones{
+    width: 98%;
   }
   .box_publicacion{
     width: 100%;
     height: 115px;
     margin-bottom: 3px;
+    
   }
-  
+  .box_publicacion:nth-child(3n+2){
+    margin-right: 0%;
+    margin-left: 0%;
+  }
   .imgPost{
     width: 100%;
     /* height: 100%; */
@@ -382,63 +362,15 @@ view{
   }
 
 
-  
-  .more{
-    display: none;
-  }
-  .info{
-    width: 95%;
-  }
-  h3{
-    font-size: 18px;
-  }
-  .in{
-    display: grid;
-    width: 100%;
-    height: 50px;
-    grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid rgba(177, 177, 177, 0.8);
-    border-top: 1px solid rgba(177, 177, 177, 0.8);
-    margin-top: 10px;
-    align-items: center;
-  }
- 
-  .movil_follow:nth-child(2n+2){
-    border-left: 1px solid rgba(177, 177, 177, 0.8);
-    border-right: 1px solid rgba(177, 177, 177, 0.8);
-  }
-  .movil_follow p{
-    margin: 0;
-    text-align: center;
-    font-size: 14px;
-  }
-  .n_x623{
-    font-family: var(--name_user_font);
-    font-weight: 500;
-  }
-  .n_x542{
-    color: rgba(143, 143, 143, 0.8);
-    font-family: var(--name_user_font);
-    font-weight: 300;
-  }
-
-
-  .publicaciones{
-    width: 98%;
-  }
-  
-  
-
   .eliminar{
-    display: none;
-    /* margin-top: 5px;
+    margin-top: 5px;
     margin-left: 7px;
     padding: 5px;
     color: rgb(218, 3, 3);
     border-radius: 3px;
     font-size: 13px;
     display: flex;
-    align-items: flex-end; */
+    align-items: flex-end;
   }
   .eliminar i{
     font-size: 18px;

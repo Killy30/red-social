@@ -55,6 +55,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //---------------------------------------------------------------------
 // socket
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, './public/imagePost'),
+    filename: (req, file, cb, filename) =>{
+        cb(null, new Date().getTime() + path.extname(file.originalname));
+    }
+})
+
+
+
+const upload = multer({storage}).single('image')
 
 io.on('connection', async(socket) => {
     console.log('chat connect');
@@ -67,8 +77,44 @@ io.on('connection', async(socket) => {
         socket.to(data.roomId).broadcast.emit('user_is_typping', data)
     })
 
-    socket.on('send_message', async(data) =>{
+    app.post('/upload-img-to-send', async(req, res) =>{    
+        upload(req, res, async(err) =>{
+            if(err){
+                console.log(err);
+            }else{
+                
+                let data = req.body;
+                const room = await Rooms.findOne({_id: req.body.roomId}).populate('myId')
+                // let room = await Room.findOne({groupeId:req.body.idGroupe}).populate('users').populate('groupeId')
+                if (req.file == undefined) {
+        
+                    let = mssg = {myIdMsg: req.body.myId, message: req.body.message}
 
+                    room.messages.push(mssg)
+                    room.dateMessage = Date.now()
+
+                    await room.save()
+                    let room_ = await Rooms.findOne({_id: req.body.roomId})
+                    io.in(room._id).emit('send_message', {data, room, room_})
+                }else{
+                    let = mssg = {
+                        myIdMsg: req.body.myId, 
+                        message: req.body.message,
+                        img: '/imagePost/'+ req.file.filename
+                    }
+                    
+                    room.messages.push(mssg)
+                    room.dateMessage = Date.now()
+                    await room.save()
+                    let room_ = await Rooms.findOne({_id: data.roomId})
+                    io.in(room._id).emit('send_message', {data, room, room_})
+                }
+            } 
+        })
+        res.json('sucess')
+    })
+
+    socket.on('send_message', async(data) =>{
         if(data.roomId != undefined){
             const user = await User.findById({_id: data.theUserId})
             const myUser = await User.findById({_id: data.myId})

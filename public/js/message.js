@@ -52,7 +52,8 @@ class DataUsers{
         dataSocket.viewMessage(lastMsg)
     }
 
-    async sendMessage(text){
+    async sendMessage(text, file){
+
         let dataSended = { 
             text:text, 
             roomId:roomId 
@@ -71,11 +72,12 @@ class DataUsers{
 
 class DataSocket{
     sendMessage(message){
+        
         socket.emit('send_message',{
             roomId:roomId,
             message:message,
             myId:_myId,
-            theUserId:theUserId
+            theUserId:theUserId 
         })
     }
 
@@ -183,12 +185,14 @@ class UiChat{
                                 <div class="oldMessage seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
                                     ${(lastMessage.myIdMsg != _myId)?
                                         `<p class="seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
-                                            ${lastMessage.message}
+                                            ${lastMessage.message.substring(0,25)}
                                         </p>
                                         <samp class="hora seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
                                         </samp>` :
-                                        `<p class="seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">${lastMessage.message}</p>
+                                        `<p class="seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
+                                            ${lastMessage.message.substring(0,25)}
+                                        </p>
                                         <samp class="hora seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
                                         </samp>`
@@ -211,12 +215,14 @@ class UiChat{
                                 <div class="oldMessage seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
                                     ${(lastMessage.myIdMsg != _myId)?
                                         `<p class="seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
-                                            ${lastMessage.message}
+                                            ${lastMessage.message.substring(0,25)}
                                         </p>
                                         <samp class="hora seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
                                         </samp>` :
-                                        `<p class="seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">${lastMessage.message}</p>
+                                        `<p class="seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
+                                            ${lastMessage.message.substring(0,25)}
+                                        </p>
                                         <samp class="hora seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
                                         </samp>`
@@ -244,7 +250,7 @@ class UiChat{
         document.querySelector('.box_form').style.display = 'flex'
 
         //para dispocitivos mobiles
-        if (innerWidth <= 500) {
+        if (innerWidth <= 670) {
             document.querySelector('.box_user').style.display = "none"
             document.querySelector('.box_contain_chat').style.display = "block"
         }
@@ -255,6 +261,9 @@ class UiChat{
         contain_chat.innerHTML =`
         <div class="box">
             <div class="header">
+                <a href="#" class="atras back" style="display: none">
+                    <span class="material-icons-outlined back">arrow_back</span>
+                </a>
                 <div class="fn">
                     <div class="fotoUser">
                         <img src="${data.user.userFoto? data.user.userFoto : '../userIcon.jpg'}" alt="">
@@ -266,15 +275,11 @@ class UiChat{
                         <p class="user_typping" id="user_typping"></p>
                     </div>
                 </div>
-                <div class="ue">
-                    <samp>${data.user.email}</samp>
-                    <a href="#" class="atras back" style="display: none"><i class="material-icons back">keyboard_arrow_left</i> Atras </a>
-                </div>
             </div>
             <div id="message" class=""> </div>
         </div>
         `
-        if (innerWidth <= 500) {
+        if (innerWidth <= 670) {
             document.querySelector('.back').style.display = "flex"
         }
         messageList = data.room.messages;
@@ -288,6 +293,7 @@ class UiChat{
         //monstrar los mensajes
         divMessage.innerHTML = ''
         for(var i = 0; i < messages.length; i++){
+            
             moment.locale('es-do')
             let toDay = new Date()
             let time = new Date(messages[i].dateMsg)
@@ -303,7 +309,8 @@ class UiChat{
                 <div class="box_message">
                     <div class="opklo">
                         <span>
-                            <p>${messages[i].message}</p>
+                            ${ messages[i].img ? `<img class="img_msg" src="${messages[i].img}" alt=""></img>`:``}
+                            <p>${messages[i].message.replace(/\n/g, '<br>')}</p>
                             <samp class="horas">
                                 ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
@@ -321,7 +328,8 @@ class UiChat{
                 <div class="box_message">
                     <div class="opkl">
                         <span>
-                            <p>${messages[i].message}</p>
+                            ${ messages[i].img ? `<img class="img_msg" src="${messages[i].img}" alt=""></img>`:``}
+                            <p>${messages[i].message.replace(/\n/g, '<br>')}</p>
                             <samp class="horas_u">
                                 ${(toDay.getDate() === time.getDate())? timeToDay : timeAgo+' '+timeToDay}
                             </samp>
@@ -336,6 +344,7 @@ class UiChat{
 
     //estos son los mensajes que el usuario me manda
     showMessageTwo(data){
+        
         let message = data.room_.messages.pop()
         
         let time = new Date()
@@ -348,7 +357,8 @@ class UiChat{
             <div class="box_message">
                 <div class="opkl">
                     <span>
-                        <p>${message.message}</p>
+                        ${ message.img ? `<img class="img_msg" src="${message.img}" alt=""></img>`:``}
+                        <p>${message.message.replace(/\n/g, '<br>')}</p>
                         <samp class="horas_u">
                             ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                         </samp>
@@ -360,7 +370,8 @@ class UiChat{
             <div class="box_message">
                 <div class="opklo">
                     <span>
-                        <p>${message.message}</p>
+                        ${ message.img ? `<img class="img_msg" src="${message.img}" alt=""></img>`:``}
+                        <p>${message.message.replace(/\n/g, '<br>')}</p>
                         <samp class="horas">
                             ${time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                         </samp>
@@ -398,18 +409,8 @@ userstochat.addEventListener('click' , (e) => {
     }
 })
 
-//para dispocitivos mobiles
-addEventListener('DOMContentLoaded', () =>{
-    if(innerWidth <= 500){
-        document.querySelector('.box_user').style.display = "block"
-        document.querySelector('.box_contain_chat').style.display = "none"
-    }
-})
-
-
-
 // on socket
-//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------
 //
 socket.on('send_message', (data) => {
     let user_typping = document.getElementById('user_typping')
@@ -442,30 +443,81 @@ socket.on('user_is_typping', (data)=> {
     }
 })
 
-let form = document.getElementById('form')
+
+
+
+//enviar mensajes cuando preciones el boton
+const messageToSend = (e)=>{
+    e.preventDefault()
+    const text_msg = document.getElementById('text_msg').value;
+    const file = document.getElementById('image').files
+  
+    if(text_msg.trim() === '' && file.length === 0) return false
+
+    const formData = new FormData()
+    formData.append('image', file[0])
+    formData.append('message', text_msg)
+    formData.append('myId', _myId)
+    formData.append('roomId', roomId)
+    formData.append('theUserId', theUserId)
+
+
+    if(file.length === 0){
+        dataSocket.sendMessage(text_msg)
+    }else{
+        if((/\.(jpg|jpeg|png|gif|JPG)$/i).test(file[0].name)){
+            fetch('/upload-img-to-send', {
+                method: 'POST', 
+                body: formData,
+            })
+            .then(res => res.json())
+            .then(data =>{})
+        }else{
+            alert('El tipo de archivo que usted a subido no es aceptado en este chat, favor de subir otro tipo de archivo ')
+        }
+    }
+    
+    
+    dataSocket.notificar_msj()
+    
+    document.getElementById('preView-img').innerHTML = ""
+    form.reset()
+}
+
+const form = document.getElementById('form')
 const text = document.getElementById('text_msg')
-text.addEventListener('keyup', dataSocket.userIsTypping)
 
 //enviar mensajes cuando preciones el enter
-text.addEventListener('keyup', e =>{
+text.addEventListener('keydown', e =>{
     let key = event.which || event.keyCode;
-    if(key === 13){
+    if(key === 13 && !e.shiftKey){
         if(text.value.trim() === '') return false
-        
-        dataSocket.sendMessage(text.value)
-        dataSocket.notificar_msj()
-        form.reset()
+        messageToSend(e)
     }
 })
 
-//enviar mensajes cuando preciones el boton
-form.addEventListener('submit', (e) =>{
-    e.preventDefault()
-    const text_msg = document.getElementById('text_msg').value;
-  
-    if(text_msg.trim() === '') return false
-    
-    dataSocket.sendMessage(text_msg)
-    dataSocket.notificar_msj()
-    form.reset()
+const view_imgs = document.querySelector('#view_imgs')
+const messages = document.getElementById('message')
+
+window.addEventListener('click', e =>{
+    if(e.target.classList.contains('img_msg')){
+        let imgURL = e.target.src
+        view_imgs.classList.add('display_on')
+        view_imgs.innerHTML = `
+            <a href="#" class="close_img btn_close">
+                <span class="material-icons-outlined btn_close">close</span>
+            </a>
+            <div class="card_img">
+                <img src="${imgURL}" alt="">
+            </div>
+        `
+    }
+    if(e.target.classList.contains('btn_close')){
+        e.preventDefault()
+        console.log(e.target);
+        view_imgs.classList.remove('display_on')
+    }
 })
+
+form.addEventListener('submit', messageToSend)
+text.addEventListener('keyup', dataSocket.userIsTypping)

@@ -20,6 +20,8 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage}).single('image');
+const uploadProfileImg = multer({storage}).single('img_profile');
+
 
 router.get('/', (req, res) =>{
     res.render('index')
@@ -246,6 +248,8 @@ router.post('/savedPost/:id', async(req, res) => {
 
 //message
 require('./message')(router, estaAutenticado)
+require('./config')(router, estaAutenticado)
+
 
 //vista de mi perfil
 router.get('/my_perfil', estaAutenticado,async(req,res) => {
@@ -258,17 +262,15 @@ router.get('/my_perfil', estaAutenticado,async(req,res) => {
 })
 
 router.get('/my_posts', estaAutenticado, async (req, res) =>{
-    var usuario = req.user;
-    const user = await User.findOne({_id:usuario._id}).populate('posts');
-    res.json({user})
+    var my_user = req.user;
+    const posts = await Posts.find({user:my_user._id}).populate('user').populate('coment');
+    res.json({posts})
 }) 
 
 //vista de para cambiar foto de perfil
 router.get('/cambiar_foto_perfil', estaAutenticado,async(req,res) => {
-    var usuario = req.user;
-    res.render('cambiarFoto', {
-        user :  usuario
-    })
+    var user = req.user;
+    res.render('cambiarFoto', { user })
 })
 
 //cambiar foto de perfil
@@ -283,7 +285,7 @@ router.post('/cambiar_foto_perfil', async(req, res) =>{
         }
     })
 
-    res.json({data:usuario})
+    res.redirect('/config')
 })
 
 //vista de perfil de los usuarios
@@ -295,40 +297,85 @@ router.get('/perfil/:id', estaAutenticado,async(req,res) => {
 
 //vista para buscar usuarios
 router.get('/usuario', estaAutenticado, async (req, res) => {
-    const user = await User.find();
-    res.render('users', {user:user})
+    const user = req.user
+    const users = await User.find();
+    res.render('users', {users, user})
 })
 
-//vista de configuraciones
-router.get('/config', estaAutenticado, (req, res) =>{
-    res.render('configuracion', {user:req.user})
+// //vista de configuraciones
+// router.get('/config', estaAutenticado, (req, res) =>{
+//     const user = req.user
+//     res.render('configuracion', {user})
+// })
+
+router.post('/follow', estaAutenticado, async(req, res) =>{
+    let id = req.body._id;
+    let user = req.user
+    const userID = await User.findById({_id: id})
+
+    let v_f = user.linked.includes(id)
+
+    if(v_f == false){
+        user.linked.push(userID)
+        userID.followers.push(user)
+        await user.save()
+        await userID.save()
+    }else{
+        let i = user.linked.indexOf(id)
+        let x = user.followers.indexOf(user._id)
+
+        user.linked.splice(i,1)
+        userID.followers.splice(x,1)
+        await user.save()
+        await userID.save()
+    }
+
+    res.json({res:v_f})
 })
 
 //actualizar los datos de la vista config
-router.post('/config', async(req, res) =>{
-    let _user = req.user;
-    let data = req.body;
-    await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
-    await User.updateOne({_id: _user._id},{$set: {estudio: data.estudios}})
-    await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
-    await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
-    await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
-    await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
-    await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
+// router.post('/config', async(req, res) =>{
+//     let _user = req.user;
+//     let data = req.body;
+//     uploadProfileImg(req, res, async(err)=>{
+//         if(err){
+//             console.log(err);
+//         }else{
+//             if(req.file == undefined){
+//                 console.log(data);
+//                 await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
+//                 await User.updateOne({_id: _user._id},{$set: {bio: data.bio}})
+//                 await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
+//                 await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
+//                 await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
+//                 await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
+//                 await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
+//             }else{
+//                 console.log(req.file);
+//                 await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
+//                 await User.updateOne({_id: _user._id},{$set: {bio: data.bio}})
+//                 await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
+//                 await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
+//                 await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
+//                 await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
+//                 await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
+//             }
+//         }
+//     })
 
-    res.redirect('/config')
-})
+//     res.redirect('/config')
+// })
 
 router.get('/logout', (req, res, next) => {
     req.logout();
-    res.redirect('/iniciar-sesion')
+    res.redirect('/')
 })
 
 function estaAutenticado(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect('/iniciar-sesion')
+    res.redirect('/')
 }
 
 module.exports = router;

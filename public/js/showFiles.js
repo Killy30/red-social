@@ -1,5 +1,5 @@
 
-( ()=>{
+(()=>{
     var file = document.getElementById('image');
     
     file.addEventListener('change', (e)=> {
@@ -12,6 +12,7 @@
         divImg.classList.add('divImg', imgId);
         divImg.dataset.id = imgId;
         document.getElementById('preView-img').innerHTML =""
+        document.getElementById('preView-img').setAttribute('style', `background-image: url(  )`)
         divImg.setAttribute('style', `background-image: url(${URL.createObjectURL( file.files[0])})`);
         document.getElementById('preView-img').appendChild(divImg)
     }

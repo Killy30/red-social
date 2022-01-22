@@ -7,54 +7,99 @@ body{
 }
 
 .container{
-    width: 90%;
+    width: 1000px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .box_chat{
-    width: 95%;
-    height: 90%;
-    margin-top: 80px;
+    width: 100%;
+    height: 85%;
+    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.box_user{
-    width: 30%;
-    height: 95%;
-    background-color: #fff;
+    background-color: #efefef;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px -5px;
-    padding-bottom: 5px;
+    padding: 20px;
     box-sizing: border-box;
 }
-.box_contain_chat{
-    width: 65%;
-    height: 95%;
+.box_user{
+    width: 320px;
+    height: 100%;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px -5px;
-    overflow: hidden;
 }
-.img_message{
+.box_contain_chat{
+    width: calc(100% - 340px);
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    /* box-shadow: 1px 1px 10px -5px; */
+    
+    overflow: hidden;
+    position: relative;
+}
+.welcome_text{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
+.welcome_card{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #00a2ff;
+    border-radius: 50%;
+}
+.card_text_welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.card_text_welcome span{
+    font-size: 100px;
+    color: #00a2ff;
+    display: flex;
+    align-self: center;
+}
+.card_text_welcome p{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #00a2ff;
+    /* align-self: center; */
+}
+
+
+
 .contain_chat{
     width: 100%;
     height: 90%;
+    position: relative;
 }
 .box_form{
     width: 100%;
     height: 10%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     align-items: center;
-    border-top: 1px solid rgb(145, 145, 145);
+    
+    
 }
 .box_form form{
     width: 90%;
@@ -62,34 +107,89 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+  
 }
 .box_form form button{
-    background-color: #073ef2;
+    background-color: #00a2ff;
     border: 0;
     outline: none;
-    height: 35px;
-    width: 15%;
+    height: 50px;
+    width: 50px;
     border-radius: 50px;
-    font-size: 16px;
     color: #fff;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.box_form form button span{
+    font-size: 30px;
+
+}
+.card_text{
+    width: calc(100% - 60px);
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid rgb(145, 145, 145);
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 10px;
 }
 textarea{
-    width: 80%;
-    height: 35px;
-    min-height: 30px;
-    max-height: 50px;
+    width: 93%;
+    /* height: 0px; */
+    height: 30px;
     font-family: sans-serif;
-    border-radius: 50px;
-    border: 0.5px solid rgb(145, 145, 145);
+    display: flex;
+    align-items: center;
     resize: none;
     padding: 5px 10px 5px 10px;
     outline: none;
+    border: 0;
     box-sizing: border-box;
     font-size: 16px;
+    margin-right: 5px;
 }
+.file_img{
+    display: none;
+}
+
+.card_text label{
+    height: 30px;
+    width: 30px;
+    top: 160px;
+    right: 0;
+    left: -460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0px;
+}
+.preView-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10%;
+    background-color: rgb(0, 0, 0, 0.70);
+}
+.divImg{
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: cover;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+
 .name_user{
     width: 100%;
-    height: 20%;
+    height: 120px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -99,18 +199,13 @@ textarea{
     display: flex;
     padding-left: 10px;
     box-sizing: border-box;
-    background-color: #ffffff;
-    border-top-left-radius:10px;
-    border-top-right-radius: 10px;
-    color: rgb(34, 34, 34);
     align-items: center;
 }
 .myUserPic{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50px;
     overflow: hidden;
-    background-color: rgb(172, 170, 170);
 }
 .imgU{
     width: 100%;
@@ -119,48 +214,59 @@ textarea{
     overflow: hidden;
 }
 .imgU img{
+    object-fit: cover;
     width: 100%;
-    
+    height: 100%;
 }
 .myName{
-    width: 70%;
-    padding-left: 5px;
+    margin-left: 10px;
+    
 }
-.myName p{
+
+.myName_1256{
     margin: 0;
-    width: 100%;
-    align-items: center;
-    font-family: sans-serif;
-    font-size: 22px;
-    font-weight: bold;
-    color: #1d1d1d;
+    font-weight: 500;
+    font-family: var(--name_user_font);
+    font-size: 18px;
 }
 .formSearch{
     width: 100%;
     height: 43%;
 }
+
 .formSearch form{
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(32, 32, 32);
+    background-color: rgb(230, 230, 230);
+}
+.card_search{
+    width: 90%;
+    height: 37px;
+    border-radius: 50px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0px 5px 0px 5px;
+
+}
+.card_search span{
+    color: #00a2ff;
 }
 .formSearch input{
-    width: 95%;
-    height: 32px;
-    border-radius: 50px;
+    width: 90%;
+    height: 30px;
     outline: none;
-    padding: 5px 10px 5px 10px;
     border: 0;
     box-sizing: border-box;
     font-size: 16px;
 }
 .users_to_chat{
     width: 100%;
-    height: 80%;
-    overflow-y: scroll;
+    height: calc(100% - 120px);
+    overflow-y: auto;
     padding-top: 10px;
     box-sizing: border-box;
 }
@@ -204,7 +310,7 @@ textarea{
     padding-left: 5px;
 }
 .userNameSelect{
-    font-family: sans-serif;
+    font-family: var(--name_user_font);
     margin: 0;
     color: rgb(31, 31, 31);
 }
@@ -213,9 +319,6 @@ textarea{
     margin: 0;
     padding-top: 5px;
     overflow: hidden;
-    font-family: sans-serif;
-    font-size: 15px;
-    height: 20px;
     font-weight: normal;
     display: flex;
     width: 100%;
@@ -223,12 +326,17 @@ textarea{
 .oldMessage p{
     margin: 0;
     width: 75%;
+    font-family: var(--name_user_font);
+    /* font-weight: 300; */
+    font-size: 14px;
 }
 .hora{
-    font-family: sans-serif;
+    font-family: var(--name_user_font);
     font-size: 12px;
     width: 25%;
 }
+
+
 .box{
     width: 100%;
     height: 100%;
@@ -238,81 +346,71 @@ textarea{
 }
 .header{
     width: 100%;
-    height: 12%;
+    height: 67px;
     display: flex;
     justify-content: space-between;
     border-top-left-radius:10px;
     border-top-right-radius: 10px;
     background-color: #ffffff;
     font-family: sans-serif;
-    border-bottom: 0.5px solid #bdbdbd;
+    border-bottom: 0.5px solid #ccc;
 }
 .fn{
     width: 50%;
     display: flex;
-    margin-left: 7px;
+    margin-left: 15px;
     align-items: center;
 }
 .t_n{
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
-    height: 60%;
+    /* width: 80%; */
+    height: 50%;
     padding-top: 5px;
     box-sizing: border-box;
 }
 .t_n a{
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 .user_typping{
-    color: rgb(202, 0, 0);
+    color: rgb(0, 15, 100);
     width: 100%;
     transition: 1s;
-
+    font-size: 14px;
 }
 .name_u{
-    display: flex;
-    align-self: flex-start;
-    font-weight: bold;
-    color: #073ef2;
+    font-family: var(--name_user_font);
+    font-weight: 500;
+    color: #1f1f1f;
     font-size: 18px;
 }
 .fn p{
     margin: 0;
 }
 .fotoUser{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     overflow: hidden;
     margin-right: 5px;
-    background-color: rgb(172, 170, 170);
 }
 .fotoUser img{
+    object-fit: cover;
     width: 100%;
-}
-.ue{
-    width: 30%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    font-family: sans-serif;
-    font-size: 16px;
-    padding-right: 20px;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    color: rgb(78, 78, 78);
 }
+
 
 
 #message{
     width: 100%;
-    height: 88%;
-    overflow-y: scroll;
+    height: calc(100% - 67px);
+    overflow-y: auto;
     padding-top: 10px;
-    box-sizing: border-box;
     padding-bottom: 10px;
-    background-color: rgb(231, 231, 231);
+    /* background-color: rgb(231, 231, 231); */
 }
 .box_message{
     width: 100%;
@@ -321,7 +419,7 @@ textarea{
 .opklo{
     display: flex;
     justify-content: flex-end;
-    padding-right: 15px;
+    padding-right: 25px;
     flex-wrap: wrap;
 }
 .vista{
@@ -332,15 +430,16 @@ textarea{
 .vista p{
     margin: 0;
     color: rgb(85, 85, 85);
-    font-size: 14px;
+    font-size: 12px;
+    font-family: var(--name_user_font);
 }
 .opklo span{
     max-width:  60%;
-    padding: 8px 13px;
+    padding: 15px 20px;
     box-sizing: border-box;
-    border-radius: 11px;
+    border-radius: 30px;
     font-family: sans-serif;
-    background-color: rgb(255, 251, 251);
+    background-color: #efefef;
     color: rgb(29, 29, 29);
     display: flex;
     flex-wrap: wrap;
@@ -348,19 +447,22 @@ textarea{
 .opklo span p{
     display: flex;
     margin: 0;
-    margin-right: 7px;
+    /* margin-right: 7px; */
+    font-family: var(--name_user_font);
+    font-weight: 300;
 }
+
+
 .opkl{
     display: flex;
     justify-content: flex-start;
     padding-left: 25px;
 }
 .opkl span{
-    background-color: #4a00d1;
-    border-radius: 11px;
+    background-color: #00a2ff;
+    border-radius: 30px;
     max-width:  60%;
-    padding: 8px 13px;
-    box-sizing: border-box;
+    padding: 15px 20px;
     font-family: sans-serif;
     color: rgb(255, 255, 255);
     display: flex;
@@ -369,9 +471,13 @@ textarea{
 .opkl span p{
     display: flex;
     margin: 0;
-    margin-right: 7px;
+    /* margin-right: 7px; */
     justify-self: flex-start;
+    font-family: var(--name_user_font);
+    font-weight: 300;
 }
+
+
 .horas{
     color: rgb(97, 97, 97);
     font-family: sans-serif;
@@ -379,104 +485,212 @@ textarea{
     display: flex;
     align-self: flex-end;
     justify-self: flex-start;
+    margin-left: 8px;
 }
 .horas_u{
-    color: rgb(214, 214, 214);
+    color: rgb(255, 255, 255);
     font-family: sans-serif;
     font-size: 12px;
     display: flex;
     align-self: flex-end;
-    justify-content: flex-end;
+    justify-self: flex-end;
+    margin-left: 8px;
 }
 .view_msg{
     font-weight: bolder;
-    color: #e20000;
+    color: #00a2ff;
 }
 
+.view_imgs{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.925);
+    z-index: 2;
+    display: none;
+    justify-content: center;
+    align-items: center;
 
+}
+.card_img{
+    width: 80%;
+    height: 80%;
 
+}
+.card_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.close_img{
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.img_msg{
+    cursor: pointer;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
 
-@media only screen and (max-width: 500px){
+.display{
+    display: none;
+}
+.display_on{
+    display: flex;
+}
+
+@media only screen and (max-width: 1024px){
     .container{
         width: 100%;
     }
     .box_chat{
+        height: calc(100% - 60px);
+        /* margin-top: 40px; */
+        padding: 20;
+        border-radius: 0;
+    } 
+    
+}
+
+
+@media only screen and (max-width: 670px){
+    .container{
         width: 100%;
-        margin-top: 50px;
+    }
+    .box_chat{
+       padding: 0;
+       margin-top: 40px;
+       height: calc(100% - 40px);
     }
     .box_user{
         width: 100%;
-        height: 100%;
         border-radius: 0;
-    }
-    .header{
-        width: 100%;
-        height: 12%;
-        border-top-left-radius:0px;
-        border-top-right-radius: 0px;
-    }
-    .box_form{
-        height: 10%;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-    .box_form form{
-        width: 95%;
-    }
-    .myUserName{
-        width: 100%;
-        height: 55%;
-    }
-    .myName p{
-        font-size: 17px;
-    }
-    textarea{
-        width: 78%;
+        height: 100%;
     }
     .box_contain_chat{
         width: 100%;
         height: 100%;
         background-color: #fff;
         border-radius: 0px;
-    }
-    .fn{
-        width: 90%;
-        display: flex;
-        margin-left: 7px;
-        align-items: center;
-    }
-    .ue samp{
+        padding-bottom: 10px;
         display: none;
     }
-    .box_form form{
-        width: 95%;
+    .contain_chat{
+        padding-top: 50px;
     }
-    .box_form form button{
-        height: 30px;
-        width: 20%;
-        font-size: 15px;
+    .box{
+        position: relative;
     }
+    .header{
+        width: 100%;
+        height: 50px;
+        border-top-left-radius:0px;
+        border-top-right-radius: 0px;
+        justify-content: flex-start;
+        position: fixed;
+        top: 40px;
+        left: 0;
+    }
+
+
+    .fn{
+        width: calc(100% - 40px);
+        margin-left: 5px;
+    }
+    .t_n{
+        width: calc(100% - 45px);
+        height: 50%;
+        /* padding-top: 5px; */
     
+    }
     .user_typping{
-        font-size: 13px;
+        font-size: 12px;
+    }
+    .name_u{
+        color: #0f0f0f;
+        font-size: 17px;
+    }
+
+
+    .user_typping{
+        font-size: 12px;
     }
 
     .atras{
         text-decoration: none;
-        padding-right:5px;
-        background-color: rgb(179, 0, 0);
-        color: #fff;
-        border-radius: 7px;
+        /* padding-right:5px; */
+        color: rgb(26, 26, 26);
         align-items: center;
     }
     .atras i{
         font-size: 30px;
     }
 
-    .opkl span{
-        max-width:  80%;
+    #message{
+        /* margin-top: 50px; */
+        height: 100%;
     }
-    .opklo span{
-        max-width:  80%;
+    .opkl span {
+        max-width: 70%;
+    }
+    .opklo span {
+        max-width: 70%;
+    }
+    .img_msg{
+        height: 200px;
+    }
+
+    .card_img{
+        width: 100%;
+        height: 100%;
+    
+    }
+    .close_img{
+        left: 10px;
+    }
+
+    .card_text{
+        width: calc(100% - 50px);
+    }
+
+    .box_form form button{
+        height: 40px;
+        width: 40px;
+        margin-bottom: 0px;
+       
+    }
+    .box_form form button span{
+        font-size: 22px;
+    
     }
 }
+
+@media only screen and (max-width: 400px){
+    .opkl{
+        padding-left: 10px;
+    }
+    .opklo{
+        padding-right: 10px;
+    }
+    .opkl span {
+        max-width: 85%;
+    }
+    .opklo span {
+        max-width: 85%;
+    }
+    .img_msg{
+        height:  150px;
+    }
+
+    
+}
+

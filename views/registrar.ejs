@@ -6,46 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registrar</title>
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/registrar.css">
+    <!-- <link rel="stylesheet" href="../css/registrar.css"> -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <a class="lg" href="/">
-            <img src="../img/logo_postLine.png" alt="">
+            <img src="../img/logo_novo2.png" alt="">
         </a>
-        <nav>
-            <ul>
-                <li><a href="/registrar-usuario">Registrar</a></li>
-                <li><a href="/iniciar-sesion">Iniciar sesion</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <div class="contenido">
-        <div class="p_c">
-            <p>Crear cuenta</p>
-        </div>
-        <% if(registroMessage) { %>
-            <div class="registroMessage">
-                <p><%=registroMessage%></p>
-            </div>
-        <% } %>
-        <div class="form">
+    <div class="container_">
+        <div class="form_login">
+            <h2>Crear cuenta</h2>
+            <% if(registroMessage) { %>
+                <div class="registroMessage">
+                    <p><%=registroMessage%></p>
+                </div>
+            <% } %>
             <form action="/registrar-usuario" method="post">
-                <div class="box_input">
-                    <input type="text" name="nombre" required placeholder="Ingresa tu nombre y tu Apellido">
-                </div>
-                <div class="box_input">
-                    <input type="email" name="email" required placeholder="Ingresa tu email">
-                </div>
-                <div class="box_input">
-                    <input type="password" name="password" required placeholder="Ingrese tu contraseña">
-                </div>
+                <input type="text" name="nombre" required placeholder="Nombre y Apellido">
+                <input type="text" name="email" required placeholder="nombre de usuario">
+                <input type="password" name="password" required placeholder="Ingrese tu contraseña">
                 <button type="submit">Registrar</button>
             </form>
+            <p>Ya tienes una cuenta? <a href="/">Iniciar sesion</a></p>
         </div>
-        <p>Ya tienes una cuenta?  </p><a href="/iniciar-sesion">Iniciar sesion</a>
     </div>
 </body>
 </html>

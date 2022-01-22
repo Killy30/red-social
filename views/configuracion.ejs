@@ -9,31 +9,61 @@
 </head>
 <body>
     <%include header%>
-    <div class="container">
-        <div class="logo">
-            <img src="../img/logo_postLine.png" alt="">
+
+
+    <div class="view_edit_profile">
+        <div class="view_edit">
+            <div class="close">
+                <p>Cargar imagen</p>
+                <a href="" class="close_btn">
+                    <span class="material-icons-outlined">close</span>
+                </a>
+            </div>
+            <div class="card_img">
+                <!-- <div class="current_profile_img"></div> -->
+                <div class="preView-img" id="preView-img"></div>
+            </div>
+            <form id="form" class="upload_img" action="/cambiar_foto_perfil" method="post" enctype="multipart/form-data">
+                <div class="upload_file">
+                    <label for="image">Upload</label>
+                    <input type="file" name="image" id="image" class="file_img" required>
+                </div>
+                <button type="submit" id="btn_change_img">Cambiar</button>
+            </form>
         </div>
+    </div>
+    
+
+    <div class="container">
         <div class="form">
-            <h3>Configuraciones</h3>
-            <form action="/config" method="post">
+            <h3>Configuracion</h3>
+            <form action="/config"  method="post">
                 <div class="infog_text">
                     <h2>Informacion personal</h2>
                 </div>
-                <div class="fv">
-                    <p>Cambiar nombre</p>
-                    <input type="text" name="c_nombre" id="" value="<%=user.nombre%>">
+                <div class="profile_img">
+                    <div class="img_config">
+                        <img src="<%=user.userFoto%>" alt="">
+                    </div>
+                    <div class="edite_img">
+                        <a href="" class="open_profile_img">Editar</a>
+                    </div>
                 </div>
                 <div class="fv">
-                    <p>Estudio o carera</p>
-                    <input type="text" name="estudios" id="" value="<%=user.estudio%>">
+                    <label for="c_nombre">Cambiar nombre</label>
+                    <input type="text" name="c_nombre" id="c_nombre" value="<%=user.nombre%>">
                 </div>
                 <div class="fv">
-                    <p>Pais</p>
-                    <input type="text" name="pais" id="" value="<%=user.pais%>">
+                    <label for="bio">Biografia</label>
+                    <textarea name="bio" id="bio" value="<%=user.bio%>"><%=user.bio%></textarea>
                 </div>
                 <div class="fv">
-                    <p>Cuidad</p>
-                    <input type="text" name="cuidad" id="" value="<%=user.cuidad%>">
+                    <label for="pais">Pais</label>
+                    <input type="text" name="pais" id="pais" value="<%=user.pais%>">
+                </div>
+                <div class="fv">
+                    <label for="cuidad">Cuidad</label>
+                    <input type="text" name="cuidad" id="cuidad" value="<%=user.cuidad%>">
                 </div>
                 <div class="fv">
                     <p>Fecha de nacimiento</p>
@@ -61,11 +91,15 @@
                         <input type="number" name="ano" placeholder="Año" id="" value="<%=user.ano%>">
                     </div>
                 </div>
-                <div class="fv">
-                    <input class="btn" type="submit" value="Enviar">
+                <div class="btn">
+                    <!-- <input type="submit" class="btn_submit" value="Enviar"> -->
+                    <button class="btn_submit" type="submit">Enviar</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script src="../js/change_img_profile.js"></script>
+    <!-- <script src="../js/showFiles.js"></script> -->
 </body>
 </html>

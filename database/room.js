@@ -4,6 +4,7 @@ const roomSchema = new Schema({
     messages: [{
         myIdMsg: String,
         message: String,
+        img: String,
         dateMsg: {type: Date, default: Date.now},
         viewMsg: {
             view: {type: Boolean, default: false},

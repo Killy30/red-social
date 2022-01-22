@@ -10,6 +10,8 @@
 </head>
 <body>
     <%include header%>
+
+    <div class="view_imgs" id="view_imgs"></div>
     
     <div class="container">
         <div class="box_chat">
@@ -25,12 +27,15 @@
                             </div>
                         </div>
                         <div class="myName">
-                            <p><%=user.nombre%></p>
+                            <h2 class="myName_1256"><%=user.nombre%></h2>
                         </div>
                     </div>
                     <div class="formSearch">
                         <form id="formSearch">
-                            <input type="text" placeholder="Buscar" name="" id="text_search">
+                            <div class="card_search">
+                                <span class="material-icons-outlined">search</span>
+                                <input type="text" placeholder="Buscar" name="" id="text_search">
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -39,12 +44,29 @@
                 </div>
             </div>
             <div class="box_contain_chat">
-                <img class="img_message" src="../img/img_mesg.jpg" alt="">
+                <div class="welcome_text img_message">
+                    <div class="welcome_card">
+                        <div class="card_text_welcome">
+                            <span class="material-icons-outlined">near_me</span>
+                            <p>Comienza un chat</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <img class="img_message" src="../img/img_mesg.jpg" alt=""> -->
                 <div id="contain_chat" class="contain_chat"></div>
+                <div class="preView-img" id="preView-img"></div>
                 <div class="box_form" style="display: none">
                     <form id="form">
-                        <textarea id="text_msg" cols="30" placeholder="Escribe un mensaje" rows="10"></textarea>
-                        <button type="submit" id="btn">Enviar</button>
+                        <div class="card_text">
+                            <textarea id="text_msg" cols="30" placeholder="Escribe un mensaje" rows="10"></textarea>
+                            <input type="file" name="image" id="image" class="file_img">
+                            <label for="image">
+                                <span class="material-icons-outlined">add_photo_alternate</span>
+                            </label>
+                        </div>
+                        <button type="submit" id="btn">
+                            <span class="material-icons-outlined">send</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -54,5 +76,7 @@
     <script src="../js/moment-with-locales.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="../js/message.js"></script>
+    <script src="../js/showFiles.js"></script>
+
 </body>
 </html>

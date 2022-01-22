@@ -5,95 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%=users.nombre%></title>
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/mi_perfil.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/view_img.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
-    <link href="../lightbox2-master//dist/css/lightbox.min.css" rel="stylesheet" />
+    <!-- <link href="../lightbox2-master//dist/css/lightbox.min.css" rel="stylesheet" /> -->
 </head>
 <body>
 
+    <%-include('./header')%>
     
-    <header>
-        <a href="/inicio" class="p">
-            <div class="h1">
-                <img src="../img/logop.png" alt="">
-            </div>
-        </a>
-        <nav>
-            <ul>
-                <li class="li"> <a class="la" href="/inicio">Inicio</a></li>
-                <li class="li"> <a class="la" href="/my_perfil">Perfil</a></li>
-                <li lass="li"><a class="la" href="/message">Message</a></li>
-                <li lass="li"><a class="la" href="/logout">Salir</a></li>
-            </ul>
-    
-        </nav>
-    </header>
-    
-    <div class="view_img" id="view_img" style="display: none"></div>
+    <div class="view_img" data-my_id="<%=user.id%>" data-verify="xhan" id="view_img" style="display: none"></div>
 
     <div id="off" class="content">
         <div class="cabecera">
-            <div class="portada"></div>
             <div class="foto">
                 <%if(!users.userFoto){%>
                     <img class="imgPerfil" src="../userIcon.jpg" >
                 <%}%>
                 <img class="imgPerfil" src="<%=users.userFoto%>" alt="">
             </div>
-            <div class="name">
-                <h1 class="h2"><%=users.nombre%></h1>
-                <p class=""><%=users.email%></p>
+            <div class="user_name">
+                <div class="name_1">
+                    <p class="users_name"><%=users.nombre%></p>
+                    <span class="user_link"><%=users.email%></span>
+                </div>
             </div>
         </div>
-
-        <div class="espace"></div>
         
         <div class="info">
-            <div class="in">
-                <h3 class="">Informacion Personal</h3>
+            <div class="bio">
+                <p><%=users.bio%></p>
             </div>
-            <div class="datos">
-                <%if(users.estudio){%>
-                    <div class="gh">
-                        <p><strong>Estudios o Carera:</strong> <%=users.estudio%></p>
-                    </div>
-                <%}%>
-                <%if(users.pais){%>
-                    <div class="gh">
-                        <p><strong>Pais:</strong> <%=users.pais%></p>
-                    </div>
-                <%}%>
-                <%if(users.cuidad){%>
-                    <div class="gh">
-                        <p><strong>Cuidad:</strong> <%=users.cuidad%></p>
-                    </div>
-                <%}%>
-                <%if(users.dia && users.mes && users.ano){%>
-                    <div class="gh">
-                        <p><strong>Fecha de nacimiento:</strong> <%=users.dia%></p><p><%=users.mes%></p><p><%=users.ano%></p>
-                    </div>
-                <%}%>
+            <div class="btn-follow">
+                <% if(!user.linked.includes(users._id)){ %>
+                    <a href="#" class="btn_follow follow_btn" data-id="<%=users.id%>" id="btn_follow">Seguir</a>
+                <% } else{ %>
+                    <a href="#" class="btn_follow follow_btn" data-id="<%=users.id%>" id="btn_follow">Siguiendo</a>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="in">
+            <div class="movil_follow">
+                <p class="n_x623"><%=users.followers.length%></p>
+                <p class="n_x542">seguidores</p>
+            </div>
+            <div class="movil_follow">
+                <p class="n_x623" id="count-linked"><%=users.linked.length%></p>
+                <p class="n_x542">siguiendo</p>
+            </div>
+            <div class="movil_follow">
+                <p class="n_x623"><%=users.posts.length%></p>
+                <p class="n_x542">posts</p>
             </div>
         </div>
 
         <div class="publicaciones">
-            <div class="head_p">
-                <p><i class="material-icons">collections</i> Posts</p>
-            </div>
-            <div class="box postSave">
+            <div class="box_post postSave">
                 <%for(var c = users.posts.length-1; c >=0; c--){%>
                     <%if(users.posts[c].fotoPost) {%>
                         <div class="box_publicacion">
                             <div class="img_post">
-                                <a class="box_img" href="<%=users.posts[c].fotoPost%>" data-lightbox="example-set" data-title="<%=users.posts[c].descripcion%>">
+                                <div class="box_img" >
                                     <%if(users.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
                                         <video controls class="imgPost" src="<%=users.posts[c].fotoPost%>"</video>
                                     <%}%>
-                                    <img class="imgPost" data-img_="<%=users.posts[c].fotoPost%>" src="<%=users.posts[c].fotoPost%>" alt="">
-                                </a>
+                                    <img class="imgPost view" data-id="<%=users.posts[c].id%>"  src="<%=users.posts[c].fotoPost%>" alt="">
+                                </div>
                             </div>
                         </div>
                     <%}%>
@@ -102,8 +79,10 @@
         </div>
     </div>
 
-    
-    <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script>
+    <script src="../js/moment-with-locales.js"></script>
+    <script type="module" src="../js/view_img.js"></script>
+    <script type="module" src="../js/events.js"></script>
+    <!-- <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script> -->
 
 </body>
 </html>

@@ -5,17 +5,11 @@ body{
     justify-content: center;
     flex-wrap: wrap
 }
-.contenido{
-    width: 400px;
-    height: 280px;
-    margin-top: 170px;
+.container_{
+    width: 100%;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 1px 1px 10px -5px;
 }
 .registroMessage{
     font-family: sans-serif;
@@ -29,26 +23,27 @@ body{
     margin: 0;
     color: white;
 }
-.p_c{
-    width: 100%;
-    background-color: rgb(46, 46, 46);
-    height: 40px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+.form_login{
+    width: 400px;
     display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #ccc;
+    border-radius: 10px;
     justify-content: center;
+}
+h2{
+    margin: 0px;
+    font-size: 30px;
+    display: flex;
     align-items: center;
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 20px;
-    align-self: flex-start;
 }
-.p_c p{
-    margin: 0;
-}
-.form{
-    width: 90%;
-    margin-top: 5px;
+form{
+    width: 380px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
 }
 input{
     width: 100%;

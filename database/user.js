@@ -7,7 +7,7 @@ var userSchema = new Schema({
     email:  {type: String},
     password: {type: String},
     userFoto: {type: String},
-    estudio: {type: String},
+    bio: {type: String},
     pais: {type: String},
     cuidad: {type: String},
     dia: {type: Number},
@@ -17,6 +17,8 @@ var userSchema = new Schema({
     postsSaved: [{ type: Schema.Types.ObjectId, ref: 'post' }],
     coment: [{ type: Schema.Types.ObjectId, ref: 'coment' }],
     rooms: [{type: Schema.Types.ObjectId, ref: 'Rooms'}],
+    linked: [{type: Schema.Types.ObjectId, ref: 'user'}],
+    followers: [{type: Schema.Types.ObjectId, ref: 'user'}],
     like: { type: Schema.Types.ObjectId, ref: 'post' },
     dateMessage: {type: Date}
 });

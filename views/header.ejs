@@ -3,20 +3,107 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link rel="icon" href="../img/icon_post.png" type="image/png" />
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.google.com/icons">
+
+    <!-- https://material.io/resources/icons/?style=baseline -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+    rel="stylesheet">
+    <!-- https://material.io/resources/icons/?style=outline -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+    rel="stylesheet">
+    <!-- https://material.io/resources/icons/?style=round -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round"
+    rel="stylesheet">
+    <!-- https://material.io/resources/icons/?style=sharp -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp"
+    rel="stylesheet">
+    <!-- https://material.io/resources/icons/?style=twotone -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone"
+    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Outfit:wght@300;600;900&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
 </head>
 
 <header>
-    <a href="/inicio" class="p">
-        <div class="h1">
-            <img src="../img/logop.png" alt="">
+    <div class="container_heaser">
+        <a href="" class="menu_bar">
+            <span class="material-icons-outlined">menu</span>
+        </a>
+        <a href="/inicio" class="logo">
+            <img src="../img/logo7.png" alt="">
+        </a>
+    
+        <div class="form_search_users">
+            <form action="" class="form_search">
+                <div class="hgf_251">
+                    <span class="material-icons-outlined mr-20">search</span>
+                    <input id="input_search" placeholder="Buscar usuarios" class="x_8397"  type="text">
+                </div>
+            </form>
+            <div class="box_show_result">
+                <div class="show_result" id="show-result"></div>
+            </div>
         </div>
-    </a>
-    <nav>
-        <ul>
-            <li class="li"> <a class="la" href="/inicio">Inicio</a></li>
-            <li class="li"> <a class="la" href="/my_perfil">Perfil</a></li>
-            <li lass="li"><a class="la" href="/message">Mensajeria</a></li>
-            <li lass="li"><a class="la" href="/logout">Salir</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li> <a class="la" href="/inicio">Inicio</a></li>
+                <li> <a class="la" href="/my_perfil">Perfil</a></li>
+                <li> <a class="la" href="/message">Mensajes</a></li>
+                <li> <a class="la" href="/logout">Salir</a></li>
+            </ul>
+        </nav>
+    
+        <div class="menu_items">
+            <div class="content_user_mobil">
+                <div class="f_n_mobil">
+                     <div class="fotoPerfil_mobil">
+                         <%if(!user.userFoto){%>
+                             <span class="material-icons-outlined">
+                                 person_outline
+                             </span>
+                         <%}%>
+                         <img class="img_user_mobil" src="<%=user.userFoto%>" >
+                     </div>
+                     <div class="nameUser_mobil">
+                         <div class="divUserName_movil">
+                             <h1 class="h3_userName_mobil"><%=user.nombre%></h1>
+                         </div>
+                         <div class="divUserName_movil">
+                             <h5 class="h3_userEmail_mobil"><%=user.email%></h5>
+                         </div>
+                     </div>
+                </div>
+                
+                <div class="h_d_mobil">
+                     <div class="h_d_a_mobil">
+                         <a class="la" href="/inicio"><span class="material-icons-outlined mr-20">home</span> Inicio</a>
+                     </div>
+                     <div class="h_d_a_mobil">
+                         <a class="la" href="/my_perfil"><span class="material-icons-outlined mr-20">person</span> Perfil</a>
+                     </div>
+                    <div class="h_d_a_mobil">
+                        <a class="la" href="/usuario"><span class="material-icons-outlined mr-20">search</span> Explorar</a>
+                    </div>
+                    <div class="h_d_a_mobil">
+                        <a class="la" href="/guardados"><span class="material-icons-outlined mr-20">bookmarks</span> Guardados</a>
+                    </div>
+                    <div class="h_d_a_mobil">
+                        <a class="la" href="/message"><span class="material-icons-outlined md-48 mr-20">chat_bubble_outline</span> Mensajeria</a>
+                    </div>
+                    <div class="h_d_a_mobil">
+                         <a class="la" href="/config"><span class="material-icons-outlined mr-20">brightness_low</span> Configuraciones</a>
+                     </div>
+                    <div class="h_d_a_mobil">
+                         <a class="la" href="/logout"><span class="material-icons-outlined mr-20">logout</span> Salir</a>
+                    </div>
+                </div>
+                
+             </div>
+        </div>
+    </div>
 </header>
+
+<script type="module" src="../js/header.js"></script>

@@ -13,77 +13,78 @@
 
 <body>
    <%include header%>
-   
-   <div class="user_p">
-       <div class="content_user">
-           <div class="f_n">
-               <div class="logo_post">
-                   <img src="../img/logo_postLine.png" alt="">
-               </div>
-                <div class="fotoPerfil">
-                    <%if(!user.userFoto){%>
-                        <img class="img_user" src="../userIcon.jpg" >
-                    <%}%>
-                    <img class="img_user" src="<%=user.userFoto%> " >
-                    <div class="cambiarFoto">
-                        <a class="a_cam" href="cambiar_foto_perfil">Editar foto</a>
-                    </div>
-                </div>
-                <div class="nameUser">
-                    <div class="divUserName">
-                        <h1 class="h3_userName"><%=user.nombre%></h1>
-                    </div>
-                    <div class="divUserName">
-                        <h5 class="h3_userEmail"><%=user.email%></h5>
-                    </div>
-                </div>
-           </div>
-           <div class="h_d">
-               <div class="h_d_a">
-                   <a class="la" href="/guardados"><i class="material-icons">bookmark</i> Guardados</a>
-               </div>
-               <div class="h_d_a">
-                   <a class="la" href="/message"><i class="material-icons md-48"> mail</i> Mensajeria</a>
-               </div>
-               <div class="h_d_a">
-                   <a class="la" href="/usuario"><i class="material-icons">people_alt</i> Usuarios</a>
-               </div>
-               <div class="h_d_a">
-                    <a class="la" href="/config"><i class="material-icons">brightness_high</i> Configuraciones</a>
-                </div>
-               <div class="h_d_a">
-                    <a class="la" href="/logout"><i class="material-icons">logout</i> Salir</a>
-               </div>
-           </div>
-           
-        </div>
-   </div>
-   
    <div class="content">
-        <div class="form">
-            <div class="post">
-                <h3 class="h2">Crear Post</h3>
-            </div>
-            <form class="formulario" id="form" enctype="multipart/form-data">
-                <textarea id="descripcion" placeholder="Escribe algo"  cols="30" required rows="10"></textarea>
-                <div class="preView-img" id="preView-img"></div>
-                <div class="box_input_file">
-                    <input type="file"  id="image" name="image" class="file_img">
-                    <label for="image">
-                        <i class="material-icons">add_photo_alternate</i> 
-                         foto/video
-                    </label>
-                    <button type="submit" id="btnSbmit">Publicar</button>
+        <div class="user_p">
+            <div class="content_user">
+                <div class="f_n">
+                        <div class="fotoPerfil">
+                            <%if(!user.userFoto){%>
+                                <span class="material-icons-outlined">
+                                    person_outline
+                                </span>
+                            <%}%>
+                            <img class="img_user" src="<%=user.userFoto%>" >
+                        </div>
+                        <div class="nameUser">
+                            <div class="divUserName">
+                                <h1 class="h3_userName"><%=user.nombre%></h1>
+                            </div>
+                            <div class="divUserName">
+                                <h5 class="h3_userEmail"><%=user.email%></h5>
+                            </div>
+                        </div>
                 </div>
-            </form>
+                
+                <div class="h_d">
+                    <div class="h_d_a">
+                        <a class="la" href="/message"><span class="material-icons-outlined md-48 mr-20">near_me</span> Chat</a>
+                    </div>
+                    <div class="h_d_a">
+                        <a class="la" href="/usuario"><span class="material-icons-outlined mr-20">search</span> Explorar</a>
+                    </div>
+                    <div class="h_d_a">
+                        <a class="la" href="/guardados"><span class="material-icons-outlined mr-20">bookmarks</span> Guardados</a>
+                    </div>
+                    <div class="h_d_a">
+                            <a class="la" href="/config"><span class="material-icons-outlined mr-20">brightness_low</span> Configuraciones</a>
+                        </div>
+                    <div class="h_d_a">
+                            <a class="la" href="/logout"><span class="material-icons-outlined mr-20">logout</span> Salir</a>
+                    </div>
+                </div>
+                
+                </div>
         </div>
-
-        <div id="div" data-date="<%=format%>" data-id="<%=user.id%>" class="contenido"></div>
+   
+        <div class="all_posts">
+            <div class="form">
+                <form class="formulario" id="form" enctype="multipart/form-data">
+                    <div class="preView-img" id="preView-img"></div>
+                    <textarea id="descripcion" placeholder="Escribe algo"  cols="30" required rows="10"></textarea>
+                    <div class="box_input_file">
+                        <div class="tools-post">
+                            <span class="material-icons-outlined emoji">
+                                sentiment_satisfied_alt
+                            </span>
+                            <input type="file"  id="image" name="image" class="file_img">
+                            <label for="image">
+                                <span class="material-icons-outlined">add_photo_alternate</span>    
+                            </label>
+                        </div>
+                        <button type="submit" id="btnSbmit">Publicar</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div id="div" data-date="<%=format%>" data-id="<%=user.id%>" class="contenido"></div>
+        </div>
        
     </div>
 
     <script src="../js/moment-with-locales.js"></script>
     <script src="../js/showFiles.js"></script>
     <script src="../js/posts.js"></script>
+    <!-- <script type="module" src="../js/events.js"></script> -->
+
 </body>
 </html>

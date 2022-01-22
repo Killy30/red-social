@@ -12,38 +12,29 @@
 <body>
     <header>
         <a href="/" class="lg">
-            <img src="../img/logo_postLine.png" alt="">
+            <img src="../img/logo_novo2.png" alt="">
         </a>
-        <nav>
-            <ul>
-                <li><a href="/registrar-usuario">Registrar</a></li>
-                <li><a href="/iniciar-sesion">Iniciar sesion</a></li>
-            </ul>
-        </nav>
+      
     </header>
 
 
-    <div class="contenido">
-        <div class="p_c">
-            <p>Iniciar sesion</p>
-        </div>
-        <% if(iniciarMessage){%>
-            <div class="iniciarMessage">
-                <p ><%=iniciarMessage%></p>
-            </div>
-        <%}%>
-        <div class="form">
-            <form action="/iniciar-sesion" method="post">
-                <div class="box_input">
-                    <input type="email" autofocus name="email" required placeholder="Ingresa tu email">
+    <div class="container_">
+        <div class="form_login">
+            <h2>Iniciar sesion</>
+            <% if(iniciarMessage){%>
+                <div class="iniciarMessage">
+                    <p ><%=iniciarMessage%></p>
                 </div>
-                <div class="box_input">
+            <%}%>
+            <div class="form">
+                <form action="/iniciar-sesion" method="post">
+                    <input type="text" autofocus name="email" required placeholder="nombre de usuario">
                     <input type="password" name="password" required placeholder="Ingrese tu contraseña">
-                </div>
-                <button type="submit">Iniciar sesion</button>
-            </form>
+                    <button type="submit">Iniciar sesion</button>
+                </form>
+            </div>
+            <p>No tienes una cuenta?</p>  <a href="/registrar-usuario">Registrar</a>
         </div>
-        <p>No tienes una cuenta?</p>  <a href="/registrar-usuario">Registrar</a>
     </div>
 </body>
 </html>

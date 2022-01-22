@@ -10,84 +10,73 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link href="../lightbox2-master//dist/css/lightbox.min.css" rel="stylesheet" />
+    
 </head>
 <body>
     <%-include('header')%>
 
-    <div class="view_img" id="view_img" style="display: none"></div>
+    <div class="view_img" data-my_id="<%=user.id%>" id="view_img" style="display: none"></div>
     
-    <div id="off" class="content">
+    <div class="content">
         <div class="cabecera">
-            <div class="portada"></div>
-            <div class="foto">
-                <%if(!user.userFoto){%>
-                    <img class="imgPerfil" src="../userIcon.jpg" >
-                <%}%>
-                <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
+            <div class="card_profile_img">
+                <div class="foto">
+                    <%if(!user.userFoto){%>
+                        <img class="imgPerfil" src="../userIcon.jpg" >
+                    <%}%>
+                    <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
+                </div>
+                <a  href="/config" a class="add_profile"><span class="material-icons-outlined">add_a_photo</span></a>
             </div>
-            <div class="name">
-                <h1 class="h2"><%=user.nombre%></h1>
-                <p class=""><%=user.email%></p>
-                <a href="/cambiar_foto_perfil">Editar perfil</a>
+            <div class="user_name">
+                <div class="name_1">
+                    <p class="name_user"><%=user.nombre%></p>
+                    <span class="user_link"><%=user.email%></span>
+                </div>
             </div>
-        
+        </div>
+        <div class="info">
+            <div class="bio">
+                <p><%=user.bio%></p>
+            </div>
         </div>
 
-        <div class="more">
-            <div class="nav_p">
-                <a href="/guardados"><i class="material-icons">bookmark</i>Guardados</a>
+        <div class="in">
+            <div class="movil_follow">
+                <p class="n_x623"><%=user.followers.length%></p>
+                <p class="n_x542">seguidores</p>
             </div>
-            <div class="nav_p">
-                <a href="/message"><i class="material-icons md-48"> mail</i> Mensajeria</a>
+            <div class="movil_follow">
+                <p class="n_x623" id="count-linked"><%=user.linked.length%></p>
+                <p class="n_x542">siguiendo</p>
             </div>
-            <div class="nav_p">
-                <a  href="/config"><i class="material-icons">brightness_high</i> Configuraciones</a>
-            </div>
-            <div class="nav_p">
-                <a class="a_cam" href="/cambiar_foto_perfil"><i class="material-icons">add_a_photo</i> Editar foto de perfil</a>
-            </div>
-        </div>
-        
-        <div class="info">
-            <div class="in">
-                <h3 class="">Informacion Personal</h3>
-                <a class="edi" href="/config">Editar</a>
-            </div>
-            <div class="datos">
-                <%if(user.estudio){%>
-                    <div class="gh">
-                        <p><strong>Estudios o Carera:</strong> <%=user.estudio%></p>
-                    </div>
-                <%}%>
-                <%if(user.pais){%>
-                    <div class="gh">
-                        <p><strong>Pais:</strong> <%=user.pais%></p>
-                    </div>
-                <%}%>
-                <%if(user.cuidad){%>
-                    <div class="gh">
-                        <p><strong>Cuidad:</strong> <%=user.cuidad%></p>
-                    </div>
-                <%}%>
-                <%if(user.dia && user.mes && user.ano){%>
-                    <div class="gh">
-                        <p><strong>Fecha de nacimiento:</strong> <%=user.dia%></p><p><%=user.mes%></p><p><%=user.ano%></p>
-                    </div>
-                <%}%>
+            <div class="movil_follow">
+                <p class="n_x623"><%=user.posts.length%></p>
+                <p class="n_x542">posts</p>
             </div>
         </div>
+
+        <!-- <div class="more">
+            <div class="nav_p">
+                <a class="a_cam" href="/cambiar_foto_perfil"><i class="material-icons">add_a_photo</i></a>
+            </div>
+            <div class="nav_p">
+                <a href="/guardados"><i class="material-icons">bookmark</i></a>
+            </div>
+            <div class="nav_p">
+                <a  href="/config"><i class="material-icons">brightness_high</i></a>
+            </div>
+        </div> -->
    
         <div class="publicaciones">
-            <div class="head_">
-                <p><i class="material-icons">collections</i> Posts</p>
-                <a href="/guardados"><i class="material-icons">bookmark</i> Guardados</a>
-            </div>
-            <div class="box postSave"></div>
+            <div class="box postView12x"></div>
         </div>
     </div>
-
-    <script src="../js/view_img.js"></script>
-    <script src="../js/my_profile.js"></script>
-    <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script>
+    
+    <script src="../js/moment-with-locales.js"></script>
+    <script type="module" src="../js/my_profile.js"></script>
+    <script type="module" src="../js/view_img.js"></script>
+    <script type="module" src="../js/events.js"></script>
+    <!-- <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script> -->
 </body>
 </html>

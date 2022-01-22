@@ -10,63 +10,36 @@
 <body>
     <header>
         <a class="lg" href="/">
-            <img src="../img/logo_postLine.png" alt="">
+            <img src="../img/logo_novo2.png" alt="">
         </a>
-        <nav>
+        <!-- <nav>
             <ul>
                 <li><a href="/registrar-usuario">Registrar</a></li>
                 <li><a href="/iniciar-sesion">Iniciar sesion</a></li>
             </ul>
-        </nav>
+        </nav> -->
     </header>
 
     <div class="container_">
-        <div class="descripcion">
+        <div class="form_login">
+            <h2>Iniciar sesion</h2>
+            <form action="/iniciar-sesion" method="post">
+                <input type="text" name="email" placeholder="nombre de usuario">
+                <input type="password" name="password" placeholder="Contraseña">
+                <button type="submit">Entrar</button>
+            </form>
             
-            <div class="img_in">
-                <img src="../img/img_mesg.jpg" alt="">
-            </div>
-            
-            <div class="con_uno">
-                <div class="text">
-                    <h1>postLine</h1>
-                </div>
-                <p>
-                    postLine es una red social donde puedes publicar tus contenido de manera facil y rapida,
-                    donde tambien podras estar mas conectada con tus seres queridos y conocer personas de todo el mundo.
-                </p>
-                <div class="de">
-                    <p>
-                        Es una aplicacion web sencilla con las siguientes funciones 
-                    </p>
-                    <div class="ing">
-                        <li>publicar fotos y videos</li>
-                        <li>chatear de forma privada con tus amigos</li>
-                        <li>guardar publicaciones en tu cuenta</li>
-                        <li>dar like a publicaciones y comentarlas</li>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="fgh">
-                <h2>
-                    Diviertete compartiendo tus mejores momentos
-                </h2>
-            </div>
-            <div class="desc">
-               <img src="../img/imagen.jpg" alt="">
-            </div>
+            <p class="link_sign">
+                No tienes una cuenta aun <a class="sign" href="/registrar-usuario">Registrate aqui</a>
+            </p>
         </div>
     </div>
 
-    <footer>
-        <div class="logo1">
-            <img src="../img/logop.png" alt="">
-        </div>
+    <!-- <footer>
         <div class="inf">
             <p><strong>Author</strong> Killy Cenecharles</p>
             <p><strong>Email</strong> killycenecharles30@gmail.com</p>
         </div>
-    </footer>
+    </footer> -->
 </body>
 </html>

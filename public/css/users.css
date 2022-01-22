@@ -7,8 +7,90 @@ body{
     /* background-color: rgb(240, 240, 240); */
     font-family: sans-serif;
 }
+.container{
+    width: 1000px;
+    margin-top: 70px;
+}
+.header_explore{
+    width: 100%;
+    height: 50px;
+    font-family: sans-serif;
+    display: flex;
+    align-self:flex-start;
+    font-size: 23px;
+    align-items: flex-end;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+h5{
+    margin: 0;
+}
+.explore{
+    width: 100%;
+    display: grid;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-flow: dense;
+   
+
+}
+
+.each_post{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.each_post:first-child{
+    width: 100%;
+    height: 400px;
+    grid-column: 1 / span 3;
+}
+.each_post:nth-child(3n+3){
+    grid-column: span 2;
+}
+.each_post:hover{
+    filter: opacity(0.6);
+    transition: 0.3s;
+}
+.post{
+    width: 100%;
+    height: 100%;
+}
+.img{
+    width: 100%;
+    height: 100%;
+}
+.img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 .users{
-    width: 23%;
+    width: 31%;
     height: 75px;
     border: 0.5px solid #eee;
     display: flex;
@@ -20,15 +102,9 @@ body{
     border-radius: 20px;
     box-shadow: 1px 1px 10px -5px;
 }
-.content{
-    width: 90%;
-    margin-top: 150px;
-}
-.user{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
+
+
+
 .formB{
     width: 50%;
     height: 100%;
@@ -80,17 +156,7 @@ button{
     background-color: #ddd;
     border-radius: 50%;
 }
-.text{
-    width: 100%;
-    height: 50px;
-    font-family: sans-serif;
-    display: flex;
-    align-self:flex-start;
-    font-size: 23px;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    justify-content: space-between;
-}
+
 .text h4{
     margin: 0;
     display: flex;
@@ -98,16 +164,45 @@ button{
 }
 .text h4 i{
     font-size: 30px;
+} */
+
+
+@media only screen and (max-width: 1024px){
+    .container{
+      width: 90%;
+    }
+}
+
+@media only screen and (max-width: 780px){
+    .container{
+      width: 100%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .explore{
+        gap: 10px;
+    }
+    .each_post{
+        height: 200px;
+        /* border-radius: 10px; */
+    }
 }
 
 
-
-
-
 @media only screen and (max-width: 500px){
-    .content{
+    .container{
         width: 98%;
-        margin-top: 100px;
+        margin-top: 50px;
+    }
+    .explore{
+        gap: 5px;
+    }
+    .each_post{
+        height: 130px;
+        border-radius: 10px;
+    }
+    .each_post:first-child{
+        height: 250px;
     }
     .text h4{
         font-size: 18px;

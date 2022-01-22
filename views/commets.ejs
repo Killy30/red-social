@@ -14,24 +14,7 @@
 </head>
 
 <body>
-
-    <header>
-        <a href="/inicio" class="p_a">
-            <div class="h1">
-                <img src="../img/logop.png" alt="">
-            </div>
-        </a>
-        <nav>
-            <ul>
-                <li class="li"> <a class="la" href="/inicio">Inicio</a></li>
-                <li class="li"> <a class="la" href="/my_perfil">Perfil</a></li>
-                <li lass="li"><a class="la" href="/message">Message</a></li>
-                <li lass="li"><a class="la" href="/logout">Salir</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="view_img" id="view_img" style="display: none"></div>
+    <%include header%>
 
     <div id="off" class="container">
         <div data-id="<%=posts.id%>" data-id_m="<%=user.id%>" class="postSave"  id="container"></div>
@@ -39,15 +22,18 @@
         <div class="coment">
             <div class="divForm">
                 <form id="formComment" enctype="multipart/form-data">
-                    <textarea id="comentario" required placeholder="Escribe un comentar" name="comentario" ></textarea>
-                    <button type="submit">Comentar</button>
+                    <div class="input_comment">
+                        <textarea id="comentario" required placeholder="Escribe un comentar" name="comentario" ></textarea>
+                    </div>
+                    <button type="submit">Publicar</button>
                 </form>
             </div>
             <div id="comments"></div>
         </div>
     </div >
     
-    <script src="../js/fileComment.js"></script>
-    <script src="../js/view_img.js"></script>
+    <script type="module" src="../js/fileComment.js"></script>
+    <script type="module" src="../js/events.js"></script>
+
 </body>
 </html>
