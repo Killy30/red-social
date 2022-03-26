@@ -316,9 +316,7 @@ textarea{
 }
 .oldMessage{
     color: rgb(83, 83, 83);
-    margin: 0;
     padding-top: 5px;
-    overflow: hidden;
     font-weight: normal;
     display: flex;
     width: 100%;
@@ -327,8 +325,10 @@ textarea{
     margin: 0;
     width: 75%;
     font-family: var(--name_user_font);
-    /* font-weight: 300; */
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .hora{
     font-family: var(--name_user_font);

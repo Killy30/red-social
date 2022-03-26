@@ -185,13 +185,13 @@ class UiChat{
                                 <div class="oldMessage seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
                                     ${(lastMessage.myIdMsg != _myId)?
                                         `<p class="seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
-                                            ${lastMessage.message.substring(0,25)}
+                                            ${lastMessage.message}
                                         </p>
                                         <samp class="hora seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
                                         </samp>` :
                                         `<p class="seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
-                                            ${lastMessage.message.substring(0,25)}
+                                            ${lastMessage.message}
                                         </p>
                                         <samp class="hora seleccionar" data-users="${rooms[i].youId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
@@ -215,13 +215,13 @@ class UiChat{
                                 <div class="oldMessage seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
                                     ${(lastMessage.myIdMsg != _myId)?
                                         `<p class="seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
-                                            ${lastMessage.message.substring(0,25)}
+                                            ${lastMessage.message}
                                         </p>
                                         <samp class="hora seleccionar ${(lastMessage.viewMsg.view == false)? 'view_msg':''}" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
                                         </samp>` :
                                         `<p class="seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
-                                            ${lastMessage.message.substring(0,25)}
+                                            ${lastMessage.message}
                                         </p>
                                         <samp class="hora seleccionar" data-users="${rooms[i].myId._id}" data-lmsg="${lastMessage._id}">
                                             ${ timeToDay }
