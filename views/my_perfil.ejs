@@ -69,7 +69,11 @@
         </div> -->
    
         <div class="publicaciones">
-            <div class="box postView12x"></div>
+            <%if(user.posts.length == 0) {%>
+                <%include no_photo%>
+            <%}else {%>
+                <div class="box postView12x"></div>
+            <%}%>
         </div>
     </div>
     

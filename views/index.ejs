@@ -5,32 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
     <title>postLine</title>
-    <link rel="icon" href="../img/icon_post.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- <link rel="icon" href="../img/icon_post.png" type="image/png"> -->
 </head>
 <body>
     <header>
         <a class="lg" href="/">
             <img src="../img/logo_novo2.png" alt="">
         </a>
-        <!-- <nav>
-            <ul>
-                <li><a href="/registrar-usuario">Registrar</a></li>
-                <li><a href="/iniciar-sesion">Iniciar sesion</a></li>
-            </ul>
-        </nav> -->
     </header>
 
     <div class="container_">
         <div class="form_login">
-            <h2>Iniciar sesion</h2>
+            <div class="img_logo">
+                <img src="../img/logo8.png" alt="">
+            </div>
+            <h2>Bienvenidos</h2>
             <form action="/iniciar-sesion" method="post">
-                <input type="text" name="email" placeholder="nombre de usuario">
-                <input type="password" name="password" placeholder="Contraseña">
-                <button type="submit">Entrar</button>
+                <input type="text" name="email" required placeholder="nombre de usuario">
+                <input type="password" name="password" required placeholder="Contraseña">
+                <button type="submit">Iniciar sesion</button>
             </form>
             
             <p class="link_sign">
-                No tienes una cuenta aun <a class="sign" href="/registrar-usuario">Registrate aqui</a>
+                No tienes una cuenta aun? <a class="sign" href="/registrar-usuario">Registrate aqui</a>
             </p>
         </div>
     </div>

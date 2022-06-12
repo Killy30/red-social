@@ -20,9 +20,9 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #efefef;
+    /* background-color: #efefef; */
     border-radius: 10px;
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
 }
 .box_user{
@@ -307,7 +307,8 @@ textarea{
     width: 85%;
     font-size: 15px;
     font-weight: bold;
-    padding-left: 5px;
+    padding-left: 8px;
+
 }
 .userNameSelect{
     font-family: var(--name_user_font);
@@ -316,7 +317,6 @@ textarea{
 }
 .oldMessage{
     color: rgb(83, 83, 83);
-    padding-top: 5px;
     font-weight: normal;
     display: flex;
     width: 100%;
@@ -438,18 +438,18 @@ textarea{
     padding: 15px 20px;
     box-sizing: border-box;
     border-radius: 30px;
-    font-family: sans-serif;
+    font-family: var(--name_user_font);
     background-color: #efefef;
     color: rgb(29, 29, 29);
     display: flex;
     flex-wrap: wrap;
+    
 }
 .opklo span p{
     display: flex;
     margin: 0;
-    /* margin-right: 7px; */
     font-family: var(--name_user_font);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 
@@ -471,10 +471,9 @@ textarea{
 .opkl span p{
     display: flex;
     margin: 0;
-    /* margin-right: 7px; */
     justify-self: flex-start;
     font-family: var(--name_user_font);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 

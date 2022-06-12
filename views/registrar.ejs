@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registrar</title>
     <link rel="stylesheet" href="../css/index.css">
-    <!-- <link rel="stylesheet" href="../css/registrar.css"> -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -18,8 +20,11 @@
 
     <div class="container_">
         <div class="form_login">
+            <div class="img_logo">
+                <img src="../img/logo8.png" alt="">
+            </div>
             <h2>Crear cuenta</h2>
-            <% if(registroMessage) { %>
+            <% if(registroMessage.length !== 0) { %>
                 <div class="registroMessage">
                     <p><%=registroMessage%></p>
                 </div>

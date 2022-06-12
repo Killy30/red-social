@@ -6,15 +6,16 @@ body{
 }
 .contenair{
     width: 1000px;
-    margin-top: 100px;
-    /* padding: 0px 20px; */
+    /* margin-top: 60px; */
     box-sizing: border-box;
     flex-wrap: wrap;
+    background-color: #fff;
+    padding: 20px;
 }
 .postSave{
     width: 100%;
     display: grid;
-    border-top: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
     padding-top: 20px;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -43,14 +44,16 @@ body{
 }
 .tx{
     width: 100%;
+    border-bottom: 1px solid #ccc;
 }
 h4{
     font-family: sans-serif;
     font-size: 20px;
     display: flex;
     align-items: flex-end;
-    margin: 0;
-    margin-bottom: 10px;
+    margin: 100px 0 10px 0;
+    /* margin-bottom: 10px; */
+
 }
 
 @media only screen and (max-width: 1024px){

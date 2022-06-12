@@ -9,7 +9,9 @@ body{
 }
 .container{
     width: 1000px;
-    margin-top: 70px;
+    margin-top: 60px;
+    background-color: #fff;
+    padding: 20px;
 }
 .header_explore{
     width: 100%;
@@ -72,99 +74,6 @@ h5{
     object-fit: cover;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.users{
-    width: 31%;
-    height: 75px;
-    border: 0.5px solid #eee;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    box-sizing: border-box;
-    margin: 10px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 1px 1px 10px -5px;
-}
-
-
-
-.formB{
-    width: 50%;
-    height: 100%;
-}
-form{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-input{
-    width: 50%;
-    height: 30px;
-    outline: none;
-    border-radius: 7px;
-    margin-right: 8px;
-    border: none;
-    padding: 5px 9px;
-    box-sizing: border-box;
-}
-button{
-    width: 15%;
-    height: 30px;
-    font-family: sans-serif;
-    background-color: rgb(2, 170, 2);
-    color: white;
-    outline: none;
-    border: none;
-    border-radius: 7px;
-}
-.user_a{
-    text-decoration: none;
-    font-family: sans-serif;
-    color: rgb(2, 170, 2);
-    display: flex;
-    align-items: center;
-    font-weight: bolder;
-}
-.img{
-    width: 60px;
-    object-fit:cover;
-}
-.divImg{
-    width: 55px;
-    height: 55px;
-    overflow: hidden;
-    display: flex;
-    margin-right: 5px;
-    background-color: #ddd;
-    border-radius: 50%;
-}
-
-.text h4{
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-.text h4 i{
-    font-size: 30px;
-} */
 
 
 @media only screen and (max-width: 1024px){

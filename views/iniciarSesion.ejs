@@ -5,35 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Iniciar sesion</title>
-    <link rel="stylesheet" href="../css/iniciarSesion.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <a href="/" class="lg">
             <img src="../img/logo_novo2.png" alt="">
         </a>
-      
     </header>
-
 
     <div class="container_">
         <div class="form_login">
-            <h2>Iniciar sesion</>
-            <% if(iniciarMessage){%>
+            <div class="img_logo">
+                <img src="../img/logo8.png" alt="">
+            </div>
+            <h2>Bienvenidos</h2>
+            <%if(iniciarMessage.length !== 0){%>
                 <div class="iniciarMessage">
                     <p ><%=iniciarMessage%></p>
                 </div>
             <%}%>
-            <div class="form">
-                <form action="/iniciar-sesion" method="post">
-                    <input type="text" autofocus name="email" required placeholder="nombre de usuario">
-                    <input type="password" name="password" required placeholder="Ingrese tu contraseña">
-                    <button type="submit">Iniciar sesion</button>
-                </form>
-            </div>
-            <p>No tienes una cuenta?</p>  <a href="/registrar-usuario">Registrar</a>
+            <form action="/iniciar-sesion" method="post">
+                <input type="text" autofocus name="email" required placeholder="nombre de usuario">
+                <input type="password" name="password" required placeholder="Ingrese tu contraseña">
+                <button type="submit">Iniciar sesion</button>
+            </form>
+            
+            <p class="link_sign">
+                No tienes una cuenta aun? <a class="sign" href="/registrar-usuario">Registrate aqui</a>
+            </p>
         </div>
     </div>
 </body>

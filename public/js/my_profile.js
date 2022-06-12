@@ -32,7 +32,7 @@ class Post{
                         <div class="box_img" data-title="${posts[c].descripcion}" id="card_images">
                             ${(ext === 'mp4')?
                                 `<video controls class="imgPost" src="${posts[c].fotoPost}"></video>`:
-                                `<img class="imgPost view" data-id="${posts[c]._id}" data-place="myprofile" data-img_="${posts[c].fotoPost}" src="${posts[c].fotoPost}" alt="">`
+                                `<img class="imgPost view" loading="lazy"  data-id="${posts[c]._id}" data-place="myprofile" data-img_="${posts[c].fotoPost}" src="${posts[c].fotoPost}" alt="">`
                             }
                         </div>
                     <div>

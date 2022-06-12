@@ -1,14 +1,28 @@
+*{
+    box-sizing: border-box;
+
+}
+:root{
+    --text_font: 'Heebo', sans-serif;
+    --color_one: #010B40;
+    --color_two: #00a2ff;
+    --color_three: #3730F2;
+    --color_four: #CC0429;
+    --color_grey: #686868;
+}
+
 body{
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    font-family: sans-serif;
     justify-content: center;
+    background-color: rgb(232, 230, 230);
+    font-family: var(--text_font);
 }
 header{
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-color: #000761;
     display: flex;
     justify-content: space-around;
@@ -22,8 +36,6 @@ header{
     width: 100%;
 }
 
-
-
 .container_{
     width: 100%;
     margin-top: 70px;
@@ -32,20 +44,60 @@ header{
 }
 .form_login{
     width: 400px;
-    /* height: 300px; */
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid #ccc;
+    border: 2px solid #fff;
     border-radius: 10px;
     justify-content: center;
+    background-color: #fff;
+    padding:50px 30px;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.46);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.46);
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.46);
+}
+.img_logo{
+    width: 65px;
+}
+.img_logo img{
+    width: 100%;
 }
 h2{
     /* margin: 0px; */
     font-size: 30px;
     display: flex;
     align-items: center;
-
+    font-weight: 400;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    margin-bottom: 15px;
 }
+.registroMessage{
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.728);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.registroMessage p{
+    margin: 0;
+    color: white;
+    padding: 7px;
+}
+
+.iniciarMessage{
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.728);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.iniciarMessage p{
+    margin: 0;
+    color: white;
+    padding: 7px;
+}
+
 form{
     width: 380px;
     display: flex;
@@ -59,112 +111,20 @@ input{
     border-radius: 10px;
     border: 0;
     padding: 5px 10px;
-    box-sizing: border-box;
-    border: 2px solid #CCC;
+    border: 1px solid #CCC;
     margin-bottom: 25px;
     font-size: 18px;
+    outline-style: none;
 }
 button{
     width: 100%;
-    height: 35px;
+    height: 40px;
     background-color: #000761;
     color: #fff;
     border-radius: 10px;
     border: 0;
-}
-.link_sign{
-    /* margin: 0; */
-
-}
-.sign{
-    color: #000761;
-}
-
-h1{
-    width: 100%;
-    font-size: 60px;
-    font-weight: unset;
-    margin: 0;
-    color: rgb(0, 162, 255);
-}
-.con_uno{
-    width: 35%;
-    display: flex;
-    background-color: #ffff;
-    border-radius: 20px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-bottom: 10px;
-    box-sizing: border-box;
-    box-shadow: 1px 1px 10px -5px;
-}
-.con_uno p{
-    width: 90%;
-    font-size: 30px;
-    margin: 0;
-}
-.img_in{
-    width: 600px;
-    height: 600px;
-    overflow: hidden;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffff;
-    box-shadow: 1px 1px 10px -5px;
-}
-.img_in img{
-    width: 100%;
-    object-fit: contain;
-}
-.fgh{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-}
-.fgh h2{
-    font-size: 55px;
-    font-weight: unset;
-    color: rgb(78, 0, 151);
-    text-align: center;
-}
-
-.desc{
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-}
-.desc img{
-    width: 100%;
-}
-.de{
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.de p{
-    width: 100%;
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    text-align: left;
-}
-.ing{
-    margin-top: 15px;
-    width: 100%;
-}
-.ing li{
-    font-size: 22px;
-    text-align: left;
-    color: rgb(90, 90, 90);
+    font-weight: 300;
+    font-size: 18px;
 }
 
 footer{
@@ -177,13 +137,7 @@ footer{
     justify-content: center;
     margin-top: 70px;
 }
-.logo1{
-    width: 60px;
-    margin-right: 10px;
-}
-.logo1 img{
-    width: 100%;
-}
+
 footer p{
     color: white;
 }
@@ -192,99 +146,17 @@ footer p{
 
 @media only screen and (max-width: 500px){
     header{
-        background-color: #000761;
-        width: 100%;
-        height: 170px;
-        display: flex;
-        justify-content:center;
-        align-items: center;
-
+        height: 100px;
+    }
+    .container_{
+        margin-top: 50px;
     }
     .form_login{
-        width: 100%;
-
-        
-        border: 0px;
-        border-radius: 0px;
-        justify-content: center;
+        width: 90%;
     }
-
-    button{
-        width: 100%;
-        height: 40px;
-        background-color: #000761;
-        color: #fff;
-        border-radius: 10px;
-        border: 0;
-        font-size: 20px;
-        font-weight: bolder;
-    }
-
 
     .lg{
         width: 50%;
         margin-top: 15px;
-    }
-    li a{
-        font-size: 13px;
-    }
-    ul{
-        padding: 0;
-    }
-
-
-    .img_in{
-        width: 100%;
-        height: 500px;
-        border-radius: 0%;
-        background-color: rgb(231, 229, 229);
-        display: flex;
-        align-items: flex-start;
-    }
-    .con_uno{
-        width: 100%;
-        border-radius: 0px;
-    }
-    .con_uno p{
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    .text{
-        margin: 15px 0 15px 0;
-    }
-    h1{
-        font-size: 40px;
-        
-    }
-
-   
-    .de p{
-        font-size: 19px;
-        margin: 0;
-    }
-    .ing{
-        margin-top: 10px;
-        margin-bottom: 15px;
-    }
-    .ing li{
-        font-size: 17px;
-    }
-
-    .fgh{
-        margin-top: 40px;
-    }
-    .fgh h2{
-        text-align: center;
-        font-size: 25px;
-    }
-
-    .desc{
-        height: 200px;
-        align-items: flex-start;
-    }
-    .desc img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
 }

@@ -1,12 +1,17 @@
 *{
     box-sizing: border-box;
 }
+
+body{
+    background-color: rgb(241, 241, 241);
+}
 :root{
-    --name_user_font: 'Roboto', sans-serif;
+    --name_user_font: 'Heebo', sans-serif;
     --color_one: #010B40;
     --color_two: #00a2ff;
     --color_three: #3730F2;
     --color_four: #CC0429;
+    --color_grey: #686868;
 }
 
 header{

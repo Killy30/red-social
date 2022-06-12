@@ -19,18 +19,22 @@
         <div class="tx">
             <h4><span class="material-icons-outlined">bookmarks</span> Fotos guardados</h4>
         </div>
-        <div  class="postSave">
-            <%for(var c = p_s.length-1; c >=0; c--){%>
-                <div class="publicacion">
-                    <div class="images">
-                        <%if(p_s[c].fotoPost.split('.',2)[1] === "mp4"){%>
-                            <video controls class="img_v" src="<%=p_s[c].fotoPost%>"></video>
-                        <%}%>
-                        <img class="imgPost view" data-id="<%=p_s[c].id%>" src="<%=p_s[c].fotoPost%>" alt="">
+        <%if(p_s.length == 0) {%>
+            <%include no_photo%>
+        <%}else {%>
+            <div  class="postSave">
+                <%for(var c = p_s.length-1; c >=0; c--){%>
+                    <div class="publicacion">
+                        <div class="images">
+                            <%if(p_s[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                                <video controls class="img_v" src="<%=p_s[c].fotoPost%>"></video>
+                            <%}%>
+                            <img class="imgPost view" loading="lazy"  data-id="<%=p_s[c].id%>" src="<%=p_s[c].fotoPost%>" alt="">
+                        </div>
                     </div>
-                </div>
-            <%}%>
-        </div>
+                <%}%>
+            </div>
+        <%}%>
     </div>
 
     <!-- <script src="../lightbox2-master/dist/js/lightbox-plus-jquery.min.js"></script> -->

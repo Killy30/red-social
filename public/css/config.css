@@ -8,11 +8,13 @@ body{
     font-family: sans-serif;
 }
 .container{
-    margin-top: 80px;
+    margin-top: 60px;
     width: 1000px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #fff;
+    padding: 20px;
 }
 .form{
     width: 100%;

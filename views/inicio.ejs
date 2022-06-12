@@ -17,22 +17,18 @@
         <div class="user_p">
             <div class="content_user">
                 <div class="f_n">
-                        <div class="fotoPerfil">
-                            <%if(!user.userFoto){%>
-                                <span class="material-icons-outlined">
-                                    person_outline
-                                </span>
-                            <%}%>
-                            <img class="img_user" src="<%=user.userFoto%>" >
-                        </div>
-                        <div class="nameUser">
-                            <div class="divUserName">
-                                <h1 class="h3_userName"><%=user.nombre%></h1>
-                            </div>
-                            <div class="divUserName">
-                                <h5 class="h3_userEmail"><%=user.email%></h5>
-                            </div>
-                        </div>
+                    <div class="profile_img">
+                        <%if(!user.userFoto){%>
+                            <span class="material-icons-outlined">
+                                person_outline
+                            </span>
+                        <%}%>
+                        <img class="img_user" src="<%=user.userFoto%>" >
+                    </div>
+                    <div class="box_nameUser">
+                        <p class="name"><%=user.nombre%></p>
+                        <span class="userName"><%=user.email%></span>
+                    </div>
                 </div>
                 
                 <div class="h_d">
@@ -53,14 +49,22 @@
                     </div>
                 </div>
                 
-                </div>
+            </div>
         </div>
    
         <div class="all_posts">
             <div class="form">
                 <form class="formulario" id="form" enctype="multipart/form-data">
                     <div class="preView-img" id="preView-img"></div>
-                    <textarea id="descripcion" placeholder="Escribe algo"  cols="30" required rows="10"></textarea>
+                    <a href="#" class="white_something text_click">
+                        <span class="text_click">Que estas pensando <%=user.email%>?</span>
+                    </a>
+                    <div class="box_textarea_contains" >
+                        <textarea id="descripcion" placeholder="Escribe algo"  cols="30" required rows="10"></textarea>
+                        <a href="#" class="close_textarea btn_close_textarea">
+                            <span class="material-icons-outlined btn_close_textarea">close</span>
+                        </a>
+                    </div>
                     <div class="box_input_file">
                         <div class="tools-post">
                             <span class="material-icons-outlined emoji">
@@ -71,12 +75,12 @@
                                 <span class="material-icons-outlined">add_photo_alternate</span>    
                             </label>
                         </div>
-                        <button type="submit" id="btnSbmit">Publicar</button>
+                        <button type="submit" id="btnSbmit">Post</button>
                     </div>
                 </form>
             </div>
     
-            <div id="div" data-date="<%=format%>" data-id="<%=user.id%>" class="contenido"></div>
+            <div id="all_posts" data-date="<%=format%>" data-id="<%=user.id%>" class="contenido"></div>
         </div>
        
     </div>

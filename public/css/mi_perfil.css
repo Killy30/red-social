@@ -19,6 +19,8 @@ h1{
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 50px;
+  background-color: #fff;
+  padding: 20px;
 }
 .cabecera{
   width: 100%;
@@ -192,7 +194,6 @@ h1{
 
 .publicaciones{
   width: 100%;
-  background-color: #fff;
   margin-top: 25px;
   display: flex;
   flex-wrap: wrap;

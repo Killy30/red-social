@@ -1,0 +1,27 @@
+
+.box_no_post{
+    width: 100%;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.icon_post{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.icon_post span{
+    font-size: 45px;
+    color: #010B40;
+}
+.text_no_post{
+    width: 100%;
+    text-align: center;
+    font-family: var(--name_user_font);
+    font-size: 30px;
+    margin: 0;
+    color: #010B40;
+}

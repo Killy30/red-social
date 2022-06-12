@@ -26,7 +26,7 @@ const showAllPost = async()=>{
             <div class="each_post">
                 <div class="post">
                     <div class="img" href="">
-                        <img src="${post.fotoPost}" class="imgPost view" data-id="${post._id}" data-place="explore" alt="">
+                        <img src="${post.fotoPost}" loading="lazy" class="imgPost view" data-id="${post._id}" data-place="explore" alt="">
                     </div>
                 </div>
             </div>

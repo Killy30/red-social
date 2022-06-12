@@ -60,22 +60,26 @@
         </div>
 
         <div class="publicaciones">
-            <div class="box_post postSave">
-                <%for(var c = users.posts.length-1; c >=0; c--){%>
-                    <%if(users.posts[c].fotoPost) {%>
-                        <div class="box_publicacion">
-                            <div class="img_post">
-                                <div class="box_img" >
-                                    <%if(users.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
-                                        <video controls class="imgPost" src="<%=users.posts[c].fotoPost%>"</video>
-                                    <%}%>
-                                    <img class="imgPost view" data-id="<%=users.posts[c].id%>"  src="<%=users.posts[c].fotoPost%>" alt="">
+            <%if(users.posts.length == 0) {%>
+                <%include no_photo%>
+            <%}else {%>
+                <div class="box_post postSave">
+                    <%for(var c = users.posts.length-1; c >=0; c--){%>
+                        <%if(users.posts[c].fotoPost) {%>
+                            <div class="box_publicacion">
+                                <div class="img_post">
+                                    <div class="box_img" >
+                                        <%if(users.posts[c].fotoPost.split('.',2)[1] === "mp4"){%>
+                                            <video controls class="imgPost" src="<%=users.posts[c].fotoPost%>"</video>
+                                        <%}%>
+                                        <img class="imgPost view" loading="lazy"  data-id="<%=users.posts[c].id%>"  src="<%=users.posts[c].fotoPost%>" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <%}%>
-                <%}%>    
-            </div>
+                        <%}%>
+                    <%}%>    
+                </div>
+            <%}%> 
         </div>
     </div>
 

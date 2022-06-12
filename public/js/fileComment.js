@@ -41,29 +41,36 @@ class UiPost {
                     <img src="${data.post.user.userFoto? data.post.user.userFoto : '../userIcon.jpg'}" alt="">
                 </div>
                 <a href="${(data.post.user._id == data.user._id)?'/my_perfil':`/perfil/${data.post.user._id}`}"> 
-                    <h2>${data.post.user.nombre}</h2>
+                    <p class="name_user">${data.post.user.nombre}</p>
                 </a>
             </div>
             <div class="postTitulo">
-                <div class="p">
+                <div class="description">
                     <p>${data.post.descripcion.replace(/\n/g, '<br>')}</p>
                 </div>
             </div> 
             <div class="info">
-                <div class="like">
-                    <a href="#" data-my_id="${id}" data-id="${data.post._id}" id="btnId" class="like a_l_c ${likes == true?"verde":""}" >
-                        <span class="material-icons-outlined like" data-id="${data.post._id}" data-likes="${data.post.like.length}">
-                            favorite_border
-                        </span> 
-                        ${data.post.like.length}
-                    </a>                             
+                <div class="box_group_icons">
+                    <div class="like">
+                        <a href="#" data-my_id="${id}" data-id="${data.post._id}" id="btnId" class="like a_l_c ${likes == true?"verde":""}" >
+                            <span class="material-icons-outlined like" data-id="${data.post._id}" data-likes="${data.post.like.length}">
+                                favorite_border
+                            </span> 
+                            <span class="count_xzr25">${data.post.like.length}</span>
+                        </a>                             
+                    </div>
+                    <div class="box_icons">
+                        <a href="/comentar/" class="a_l_c">
+                            <span class="material-icons-outlined">mode_comment</span> 
+                            <span class="count_xzr25">${data.post.coment.length}</span>
+                        </a>
+                    </div>
+                    <div ${(data.post.fotoPost == undefined)? ' style="display: none"' : ''}>
+                        <a class="a_l_c guardar ${saved == true?"verde":""}" data-id="${data.post._id}" href="">
+                            <span class="material-icons-outlined guardar" data-id="${data.post._id}">bookmark_border</span> 
+                        </a>
+                    </div>
                 </div>
-                <div ${(data.post.fotoPost == undefined)? ' style="display: none"' : ''}>
-                    <a class="a_l_c guardar ${saved == true?"verde":""}" data-id="${data.post._id}" href="">
-                        <span class="material-icons-outlined guardar" data-id="${data.post._id}">bookmark_border</span> 
-                    </a>
-                </div>
-
             </div>
         </div>`
         this.addComments(data)
