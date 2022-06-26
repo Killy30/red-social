@@ -9,12 +9,13 @@ body{
 }
 .container{
     margin-top: 60px;
-    width: 1000px;
+    width: 1250px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 20px 100px 20px;
+
 }
 .form{
     width: 100%;
@@ -33,12 +34,17 @@ form{
     display: flex;
     align-items: center;
     width: 100%;
+
 }
 .img_config{
     width: 100px;
     height: 100px;
     overflow: hidden;
     border-radius: 50%;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* margin-bottom: 20px; */
 }
 .img_config img{
@@ -46,6 +52,12 @@ form{
     height: 100%;
     object-fit: cover;
 }
+.img_config span{
+    color: var(--color_black);
+    margin: auto;
+    font-size:75px;
+}
+
 .edite_img{
     margin-left: 15px;
 }

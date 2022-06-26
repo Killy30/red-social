@@ -12,6 +12,7 @@ body{
     --color_three: #3730F2;
     --color_four: #CC0429;
     --color_grey: #686868;
+    --color_black: #252525;
 }
 
 header{
@@ -26,7 +27,7 @@ header{
     z-index: 2;
 }
 .container_heaser{
-    width: 1000px;
+    width: 1250px;
     height: 100%;
     display: flex;
     justify-content: space-between;

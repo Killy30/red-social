@@ -10,10 +10,10 @@ body{
 
 h1{
   margin: 0; 
- 
 }
 .content{
-  width: 1000px;
+  width: 1250px;
+  height: 100%;
   margin-top: 50px;
   display: flex;
   justify-content: center;
@@ -41,8 +41,22 @@ h1{
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  border: 3px solid var(--color_two);
   position: relative;
+  background-color: rgb(242, 242, 242);
 }
+.foto .icon_user{
+  color: var(--color_black);
+  margin: auto;
+  font-size:130px;
+}
+
+.imgPerfil{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .add_profile{
   position: absolute;
   right: 0;
@@ -61,11 +75,7 @@ h1{
   font-size: 17px;
   
 }
-.imgPerfil{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .user_name{
   width: 96%;
   display: flex;
@@ -87,10 +97,10 @@ h1{
 .user_link{
   display: flex;
   justify-content: center;
-  font-size: 15px;
+  font-size: 18px;
   color: rgb(110, 110, 110);
   font-family: var(--name_user_font);
-  font-weight: 300;
+  font-weight: 400;
 }
 .follow p{
   margin: auto;
@@ -140,21 +150,20 @@ h1{
   margin: 0;
 }
 
-
-
 .in{
   display: grid;
-  display: grid;
+  padding: 5px;
+  box-sizing: border-box;
   width: 100%;
-  height: 55px;
+  height: 65px;
   grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid rgba(177, 177, 177, 0.8);
-  border-top: 1px solid rgba(177, 177, 177, 0.8);
+  border-bottom: 2px solid rgba(177, 177, 177, 0.8);
+  border-top: 2px solid rgba(177, 177, 177, 0.8);
   align-items: center;
 }
 .movil_follow:nth-child(2n+2){
-  border-left: 1px solid rgba(177, 177, 177, 0.8);
-  border-right: 1px solid rgba(177, 177, 177, 0.8);
+  border-left: 2px solid rgba(177, 177, 177, 0.8);
+  border-right: 2px solid rgba(177, 177, 177, 0.8);
 }
 .movil_follow p{
   margin: 0;
@@ -164,11 +173,12 @@ h1{
 .n_x623{
   font-family: var(--name_user_font);
   font-weight: 500;
+  font-size: 28px;
 }
 .n_x542{
   color: rgba(143, 143, 143, 0.8);
   font-family: var(--name_user_font);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .datos{
@@ -210,7 +220,7 @@ h1{
 
 .box_publicacion{
   width: 100%;
-  height: 250px;
+  height: 280px;
   display: flex;
   justify-content: center;
 }

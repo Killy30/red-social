@@ -22,8 +22,9 @@
                             <span class="material-icons-outlined">
                                 person_outline
                             </span>
+                        <%}else{%>
+                            <img class="img_user" src="<%=user.userFoto%>" >
                         <%}%>
-                        <img class="img_user" src="<%=user.userFoto%>" >
                     </div>
                     <div class="box_nameUser">
                         <p class="name"><%=user.nombre%></p>
@@ -79,8 +80,12 @@
                     </div>
                 </form>
             </div>
-    
+        
             <div id="all_posts" data-date="<%=format%>" data-id="<%=user.id%>" class="contenido"></div>
+        </div>
+
+        <div class="notification">
+            <p>Notificaciones</p>
         </div>
        
     </div>

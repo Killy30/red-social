@@ -22,11 +22,17 @@
             <div class="card_profile_img">
                 <div class="foto">
                     <%if(!user.userFoto){%>
-                        <img class="imgPerfil" src="../userIcon.jpg" >
+                        <span class="material-icons-outlined icon_user">
+                            person_outline
+                        </span>
+                        <!-- <img class="imgPerfil" src="../userIcon.jpg" > -->
+                    <%}else{%>
+                        <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
                     <%}%>
-                    <img class="imgPerfil" src="<%=user.userFoto%>" alt="">
                 </div>
-                <a  href="/config" a class="add_profile"><span class="material-icons-outlined">add_a_photo</span></a>
+                <a  href="/config" a class="add_profile">
+                    <span class="material-icons-outlined">add_a_photo</span>
+                </a>
             </div>
             <div class="user_name">
                 <div class="name_1">

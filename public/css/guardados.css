@@ -5,7 +5,7 @@ body{
     justify-content: center;
 }
 .contenair{
-    width: 1000px;
+    width: 1250px;
     /* margin-top: 60px; */
     box-sizing: border-box;
     flex-wrap: wrap;
@@ -22,7 +22,7 @@ body{
 }
 .publicacion{
     width: 100%;
-    height: 250px;
+    height: 280px;
 }
 
 .images{

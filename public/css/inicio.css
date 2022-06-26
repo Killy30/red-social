@@ -9,19 +9,60 @@ body{
     /* margin-left: 150px; */
     margin-top: 80px;
     position: relative;
-    width: 1000px;
+    width: 1250px;
 }
+
+.card_msg_welcome{
+    width: 100%;
+    height: 330px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    font-family: var(--name_user_font);
+}
+.card_w p{
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 35px;
+    margin: 0;
+}
+.card_b{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.card_b p{
+    width: 70%;
+    text-align: center;
+    font-size: 23px;
+    margin: 0;
+}
+.card_f{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.card_f a{
+    text-decoration: none;
+    padding: 10px 23px;
+    color: #fff;
+    font-size: 18px;
+    background-color: var(--color_two);
+    border-radius: 50px;
+}
+
+
 .all_posts{
     width: 600px;
-    margin-left: 340px;
+    margin-left: 330px;
 }
 
 .user_p{
     width: 300px;
-    height: 670px;
+    height: 600px;
     position: fixed;
-    /* top: 120px;
-    left: 450px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,11 +81,15 @@ body{
 }
 
 .profile_img{
-    width: 80px;
-    height: 80px;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
+    /* border: 3px solid var(--color_two); */
     overflow: hidden;
-    background-color: #ddd;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .img_user{
     width: 100%;
@@ -53,10 +98,9 @@ body{
 }
 
 .profile_img span{
-    color: #00a2ff;
+    color: var(--color_black);
     margin: auto;
-    font-size: 48px;
-    margin-top: 20px;
+    font-size:75px;
 }
 
 
@@ -73,13 +117,12 @@ body{
     color: var(--color_one);
     font-family: var(--name_user_font);
     width: 100%;
-    margin-bottom: 7px;
     font-weight: 500;
 }
 .userName{
     margin: 0;
     font-family: var(--name_user_font);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 15px;
     color: var(--color_grey);
 }
@@ -148,9 +191,9 @@ body{
     color: var(--color_grey);
     text-decoration: none;
     font-family: var(--name_user_font);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 17px;
-    background-color: rgb(241, 240, 240);
+    background-color: rgb(242, 242, 242);
     border-radius: 30px;
     padding: 8px 20px;
     margin-bottom: 10px;
@@ -267,6 +310,20 @@ button{
 }
 
 
+.notification{
+    width: 290px;
+    height: 500px;
+    background-color: #fff;
+    /* position: fixed; */
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    right: 0;
+    /* left: 0; */
+    padding: 15px;
+    font-family: var(--name_user_font);
+
+}
 
 
 
@@ -344,7 +401,7 @@ button{
     border-radius: 50%;
     margin-right: 5px;
     overflow: hidden;
-    background-color: #ddd;
+    background-color: rgb(242, 242, 242);
     display: flex;
 }
 .imgP{
@@ -353,7 +410,7 @@ button{
 }
 .foto_u_p span{
     font-size: 30px;
-    color: #00a2ff;
+    color: var(--color_black);
     margin: auto;
 }
 

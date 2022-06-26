@@ -5,7 +5,7 @@ const btn_text = document.querySelector('.white_something')
 const idUser = all_posts.dataset.id; 
 
 document.addEventListener('DOMContentLoaded', () => {
-    part_array()
+    // part_array()
     getPost()
 })
 
@@ -86,6 +86,22 @@ const part_array = async() =>{
     // return loading_posts
 }
 
+//welcome
+const welcome = ()=>{
+    
+    all_posts.innerHTML = `<div class="card_msg_welcome">
+        <div class="card_w">
+            <p>Bienvenido a novo!</p>
+        </div>
+        <div class="card_b">
+            <p>Nos alegra tenerte aqui, ahora empieza a buscar a tus amigos y a compartir tus mejores momentos</p>
+        </div>
+        <div class="card_f">
+            <a href="/usuario">Buscar amigos</a>
+        </div>
+    </div>`
+}
+
 
 //show all post 
 const addPost = async() => {
@@ -102,6 +118,8 @@ const addPost = async() => {
             return element.post === datas[i]._id
         })
 
+        
+
         moment.locale('es-do')
         let saved = datos.user.postsSaved.includes(datas[i]._id);
         let likes = datas[i].like.includes(idUser)
@@ -111,6 +129,12 @@ const addPost = async() => {
         if(datas[i].fotoPost != undefined){
             var ext = datas[i].fotoPost.split('.',2)[1].toLowerCase()
         }
+
+        if(datos.user.posts.length == 0 && datos.user.linked.length == 0){
+            welcome()
+        }
+        console.log(datos.user.posts.length);
+        console.log(datos.user.linked.length);
         if(datos.user.linked.includes(datas[i].user._id) || datas[i].user._id === idUser){
             
             all_posts.innerHTML += `<div class="publicacion" >

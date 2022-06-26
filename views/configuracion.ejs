@@ -43,7 +43,14 @@
                 </div>
                 <div class="profile_img">
                     <div class="img_config">
-                        <img src="<%=user.userFoto%>" alt="">
+                        <%if(!user.userFoto){%>
+                            <span class="material-icons-outlined">
+                                person_outline
+                            </span>
+                        <%}else{%>
+                            <img class="img_user" src="<%=user.userFoto%>" >
+                        <%}%>
+                        <!-- <img src="<%=user.userFoto%>" alt=""> -->
                     </div>
                     <div class="edite_img">
                         <a href="" class="open_profile_img">Editar</a>
