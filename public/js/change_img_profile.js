@@ -1,6 +1,4 @@
-// const form = document.getElementById('form')
-// const box = document.getElementById('boxF')
-// const btn = document.getElementById('btn')
+
 const view_edit_profile = document.querySelector('.view_edit_profile')
 const open_profile_img = document.querySelector('.open_profile_img')
 const close_btn = document.querySelector('.close_btn')
@@ -10,55 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let h = innerHeight;
     document.querySelector('.view_edit_profile').style.height = h+'px'
 })
-
-
-
-
-
-
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault()
-
-//     let img = document.getElementById('image').files;
-    
-//     if(img.length === 0) return false;
-//     const formData = new FormData();
-//     formData.append('image', img[0])
-
-//     fetch('/cambiar_foto_perfil',{
-//         method:'POST',
-//         body: formData,
-//     })
-//     .then(res => res.json())
-//     .then(datos => {
-//         console.log(datos);
-//         getData.addImg()
-//     })
-//     getData.addImg()
-//     document.getElementById('preView-img').innerHTML=''
-//     form.reset()
-// })
-
-
-// class Data {
-//     async getUser(){
-//         let response = await fetch('/users')
-//         let res = await response.json()
-//         return res
-//     }
-
-//     async addImg(){
-//         let res = await this.getUser()
-//         let user = res.myUser
-//         box.innerHTML = `
-//             <img class="imgU" src="${!user.userFoto ? '../userIcon.jpg': user.userFoto}" >
-//         `
-//     }
-// }
-
-
-// let getData = new Data()
-// getData.addImg()
 
 close_btn.addEventListener('click', async(e) =>{
     e.preventDefault()
@@ -74,7 +23,6 @@ open_profile_img.addEventListener('click', async(e) =>{
     let res = await response.json()
     
     let user = res.myUser
-    console.log(user);
     preView_img.innerHTML=''
     divImg.src = user.userFoto
     preView_img.appendChild(divImg)

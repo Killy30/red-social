@@ -141,6 +141,7 @@ select{
     padding: 10px 40px;
     border: none;
     border-radius: 20px;
+    cursor: pointer;
 }
 .view_edit_profile{
     width: 100%;

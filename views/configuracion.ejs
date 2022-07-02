@@ -23,7 +23,7 @@
                 <!-- <div class="current_profile_img"></div> -->
                 <div class="preView-img" id="preView-img"></div>
             </div>
-            <form id="form" class="upload_img" action="/cambiar_foto_perfil" method="post" enctype="multipart/form-data">
+            <form id="form" class="upload_img" action="/upload_img_profile" method="post" enctype="multipart/form-data">
                 <div class="upload_file">
                     <label for="image">Upload</label>
                     <input type="file" name="image" id="image" class="file_img" required>
@@ -37,7 +37,7 @@
     <div class="container">
         <div class="form">
             <h3>Configuracion</h3>
-            <form action="/config"  method="post">
+            <form action="/update_user_info"  method="post">
                 <div class="infog_text">
                     <h2>Informacion personal</h2>
                 </div>

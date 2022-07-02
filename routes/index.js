@@ -267,26 +267,26 @@ router.get('/my_posts', estaAutenticado, async (req, res) =>{
     res.json({posts})
 }) 
 
-//vista de para cambiar foto de perfil
-router.get('/cambiar_foto_perfil', estaAutenticado,async(req,res) => {
-    var user = req.user;
-    res.render('cambiarFoto', { user })
-})
+// //vista de para cambiar foto de perfil
+// router.get('/cambiar_foto_perfil', estaAutenticado,async(req,res) => {
+//     var user = req.user;
+//     res.render('cambiarFoto', { user })
+// })
 
-//cambiar foto de perfil
-router.post('/cambiar_foto_perfil', async(req, res) =>{
-    let usuario = req.user;
+// //cambiar foto de perfil
+// router.post('/cambiar_foto_perfil', async(req, res) =>{
+//     let usuario = req.user;
      
-    upload(req, res, async (err) =>{
-        if(err){
-            console.log(err);
-        }else{
-            await User.updateOne({_id: usuario._id}, {$set: {userFoto: '/imagePost/' + req.file.filename}})
-        }
-    })
+//     upload(req, res, async (err) =>{
+//         if(err){
+//             console.log(err);
+//         }else{
+//             await User.updateOne({_id: usuario._id}, {$set: {userFoto: '/imagePost/' + req.file.filename}})
+//         }
+//     })
 
-    res.redirect('/config')
-})
+//     res.redirect('/config')
+// })
 
 //vista de perfil de los usuarios
 router.get('/perfil/:id', estaAutenticado,async(req,res) => {

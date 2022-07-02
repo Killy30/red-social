@@ -20,36 +20,30 @@ module.exports = (router, estaAutenticado) =>{
         res.render('configuracion', {user})
     })
 
-    router.post('/config', estaAutenticado,  async(req, res) =>{
+    router.post('/upload_img_profile', estaAutenticado, async(req, res)=>{
         let _user = req.user;
-        let data = req.body;
-        console.log(data);
         upload(req, res, async(err)=>{
             if(err){
                 console.log(err);
             }else{
-                if(req.file == undefined){
-                    
-                    await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
-                    await User.updateOne({_id: _user._id},{$set: {bio: data.bio}})
-                    await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
-                    await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
-                    await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
-                    await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
-                    await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
-                }else{
-                    
-                    await User.updateOne({_id: _user._id},{$set: {userFoto: '/imagePost/' + req.file.filename}})
-                    await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
-                    await User.updateOne({_id: _user._id},{$set: {bio: data.bio}})
-                    await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
-                    await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
-                    await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
-                    await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
-                    await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
-                }
+                await User.updateOne({_id: _user._id},{$set: {userFoto: '/imagePost/' + req.file.filename}})
             }
         })
+        res.redirect('/config')
+    })
+
+
+    router.post('/update_user_info', estaAutenticado,  async(req, res) =>{
+        let _user = req.user;
+        let data = req.body;
+                    
+        await User.updateOne({_id: _user._id},{$set: {nombre: data.c_nombre}})
+        await User.updateOne({_id: _user._id},{$set: {bio: data.bio}})
+        await User.updateOne({_id: _user._id},{$set: {pais: data.pais}})
+        await User.updateOne({_id: _user._id},{$set: {cuidad: data.cuidad}})
+        await User.updateOne({_id: _user._id},{$set: {dia: data.dia}})
+        await User.updateOne({_id: _user._id},{$set: {mes: data.mes}})
+        await User.updateOne({_id: _user._id},{$set: {ano: data.ano}})
     
         res.redirect('/config')
     })
